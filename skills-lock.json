@@ -1,11 +1,35 @@
 {
   "version": 1,
   "skills": {
+    "convert": {
+      "source": "remotion-dev/remotion",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/convert/SKILL.md",
+      "computedHash": "144c18763520a747f27114cc6013d601094bc8a5a6a754f3af237288238e7df7"
+    },
+    "docs": {
+      "source": "remotion-dev/remotion",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/docs/SKILL.md",
+      "computedHash": "3657edfb27bef104b1ac3b73623f0df3ffea6ca8f1ab5bf6791035c672756865"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
       "skillPath": "skills/find-skills/SKILL.md",
       "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+    },
+    "interactivity-best-practices": {
+      "source": "remotion-dev/remotion",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/interactivity-best-practices/SKILL.md",
+      "computedHash": "5d2a777af0938b2109d3b4e92af4c7321595408993c840862ef53b26f34d5ce5"
+    },
+    "player-example": {
+      "source": "remotion-dev/remotion",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/player-example/SKILL.md",
+      "computedHash": "a761460ae9d5b57fd2a88bee1924d4db743d531206b2a9194b45a481791cfab5"
     }
   }
 }

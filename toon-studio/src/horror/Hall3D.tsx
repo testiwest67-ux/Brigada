@@ -102,6 +102,9 @@ export type HallState = {
   feet: number;       // x of the feet outside (m, relative to the door centre); |x|>0.6 = gone
   handle: number;     // handle angle (rad)
   moon: number;       // 0..1 moonlight from the bedroom
+  phone?: number;     // 0..1 phone screen light
+  phoneAt?: V3;
+  noDoor?: boolean;   // hide the front door (camera dollies out through it)
 };
 
 const Door: React.FC<{S: HallState}> = ({S}) => {
@@ -205,6 +208,14 @@ const Shell: React.FC = () => {
       <Box s={[0.02, 0.09, L]} p={[-w / 2 + 0.01, 0.045, zc]} m={M.skirting()} />
       <Box s={[w, 0.09, 0.02]} p={[0, 0.045, z0 + 0.01]} m={M.skirting()} />
       <Box s={[0.02, 0.09, o0 - z0]} p={[w / 2 - 0.01, 0.045, (z0 + o0) / 2]} m={M.skirting()} />
+      {/* back wall (behind the camera in most shots) with a black kitchen doorway: x in [-0.5, 0.3] */}
+      <mesh position={[(-w / 2 - 0.5) / 2, h / 2, z1]} rotation={[0, Math.PI, 0]} material={M.wall()} receiveShadow><planeGeometry args={[w / 2 - 0.5, h]} /></mesh>
+      <mesh position={[(0.3 + w / 2) / 2, h / 2, z1]} rotation={[0, Math.PI, 0]} material={M.wall()} receiveShadow><planeGeometry args={[w / 2 - 0.3, h]} /></mesh>
+      <mesh position={[-0.1, (oh + h) / 2, z1]} rotation={[0, Math.PI, 0]} material={M.wall()} receiveShadow><planeGeometry args={[0.8, h - oh]} /></mesh>
+      <mesh position={[-0.1, oh / 2, z1 + 1.2]} rotation={[0, Math.PI, 0]}><planeGeometry args={[2, oh + 0.4]} /><meshBasicMaterial color="#020203" /></mesh>
+      <Box s={[0.07, oh, 0.06]} p={[-0.53, oh / 2, z1 - 0.01]} m={M.trim()} />
+      <Box s={[0.07, oh, 0.06]} p={[0.33, oh / 2, z1 - 0.01]} m={M.trim()} />
+      <Box s={[0.93, 0.07, 0.06]} p={[-0.1, oh + 0.035, z1 - 0.01]} m={M.trim()} />
       {/* doorway trims */}
       <Box s={[0.06, oh, 0.07]} p={[w / 2 - 0.01, oh / 2, o0 - 0.03]} m={M.trim()} />
       <Box s={[0.06, oh, 0.07]} p={[w / 2 - 0.01, oh / 2, o1 + 0.03]} m={M.trim()} />
@@ -243,6 +254,7 @@ const Lights: React.FC<{S: HallState}> = ({S}) => {
       <pointLight position={[HALL.bulb[0], HALL.bulb[1] - 0.1, HALL.bulb[2]]} color="#ffbe78" intensity={1.6 * S.bulb} distance={5} decay={1.8} />
       {/* stairwell glow through the door gaps */}
       <pointLight position={[HALL.door.x, 0.06, HALL.z0 + 0.12]} color="#ffad5c" intensity={1.2 * S.stair} distance={2.2} decay={2} />
+      {S.phone ? <pointLight position={S.phoneAt ?? [0, 1.1, 0.3]} color="#b9d4ff" intensity={1.4 * S.phone} distance={2.2} decay={2} /> : null}
       {/* moonlight from the bedroom doorway */}
       <spotLight ref={moon} position={[HALL.w / 2 + 1.8, 1.9, 0.55]} color="#7e9dff" intensity={22 * S.moon} distance={6} decay={1.5}
         angle={0.55} penumbra={0.7} castShadow shadow-mapSize={[1024, 1024]} shadow-bias={-0.0004} />
@@ -259,6 +271,17 @@ const Camera: React.FC<{pose: CamPose}> = ({pose}) => {
   });
   return null;
 };
+
+// the hallway geometry + lights only (camera, fog and post come from CameraRig)
+export const HallSet: React.FC<{S: HallState}> = ({S}) => (
+  <>
+    <Lights S={S} />
+    <Shell />
+    {!S.noDoor && <Door S={S} />}
+    <Props S={S} />
+    <Dust t={S.t} />
+  </>
+);
 
 export const Hall3D: React.FC<{S: HallState; pose: CamPose; glitch?: number; seed?: number}> = ({S, pose, glitch = 0, seed = 0}) => {
   const {scene, gl} = useThree();

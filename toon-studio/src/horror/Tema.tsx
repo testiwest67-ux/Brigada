@@ -32,7 +32,9 @@ export type TemaLight = {bright: number; warmRim: number; coldRim: number; cold:
 const L = TEMA_LOOK;
 const OW = 7;
 
-export const Tema: React.FC<{s: TemaState; light: TemaLight; id?: string}> = ({s, light, id = 'tema'}) => {
+// crop: keep only what is above this y (e.g. -985 = head only, -470 = waist up); view 'back' = seen from behind
+export const Tema: React.FC<{s: TemaState; light: TemaLight; id?: string; crop?: number; view?: 'front' | 'back'}> = ({s, light, id = 'tema', crop, view = 'front'}) => {
+  if (view === 'back') return <TemaBack s={s} light={light} id={id} crop={crop} />;
   const b = s.breathe * 6;
   const tr = Math.sin(s.t * 37) * s.tremble + Math.sin(s.t * 23 + 1) * s.tremble * 0.6;
   const headY = -1225 + b * 0.6;
@@ -121,7 +123,8 @@ export const Tema: React.FC<{s: TemaState; light: TemaLight; id?: string}> = ({s
   const grade = m(lerp(1, 0.72, c), lerp(1, 0.8, c), lerp(1, 1.12, c));
 
   return (
-    <g transform={`translate(${tr * 0.3} 0)`}>
+    <g transform={`translate(${tr * 0.3} 0)`} clipPath={crop !== undefined ? `url(#${id}-crop)` : undefined}>
+      {crop !== undefined && <clipPath id={`${id}-crop`}><rect x={-1500} y={-2400} width={3000} height={2400 + crop} /></clipPath>}
       <defs>
         <filter id={`${id}-light`} x="-20%" y="-10%" width="140%" height="120%" colorInterpolationFilters="sRGB">
           <feColorMatrix in="SourceGraphic" type="matrix" values={grade} result="graded" />
@@ -207,6 +210,84 @@ export const Tema: React.FC<{s: TemaState; light: TemaLight; id?: string}> = ({s
         {s.hands >= 0.5 && sleeve(aL)}
         {s.hands >= 0.5 && sleeve(aR)}
         {hand(aL, -1)}{hand(aR, 1)}
+      </g>
+    </g>
+  );
+};
+
+// rim + grade filter shared by both views
+export const LightFilter: React.FC<{id: string; light: TemaLight}> = ({id, light}) => {
+  const br = light.bright, c = light.cold;
+  const v = `${lerp(1, 0.72, c) * br} 0 0 0 0  0 ${lerp(1, 0.8, c) * br} 0 0 0  0 0 ${lerp(1, 1.12, c) * br} 0 0  0 0 0 1 0`;
+  return (
+    <filter id={`${id}-light`} x="-20%" y="-10%" width="140%" height="120%" colorInterpolationFilters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values={v} result="graded" />
+      <feOffset in="SourceAlpha" dx={14} dy={4} result="offL" />
+      <feComposite in="SourceAlpha" in2="offL" operator="out" result="edgeL" />
+      <feGaussianBlur in="edgeL" stdDeviation={3} result="edgeLb" />
+      <feFlood floodColor="#ffb867" floodOpacity={light.warmRim} />
+      <feComposite in2="edgeLb" operator="in" result="rimL0" />
+      <feComposite in="rimL0" in2="SourceAlpha" operator="in" result="rimL" />
+      <feOffset in="SourceAlpha" dx={-12} dy={2} result="offR" />
+      <feComposite in="SourceAlpha" in2="offR" operator="out" result="edgeR" />
+      <feGaussianBlur in="edgeR" stdDeviation={3} result="edgeRb" />
+      <feFlood floodColor="#8fb0ff" floodOpacity={light.coldRim} />
+      <feComposite in2="edgeRb" operator="in" result="rimR0" />
+      <feComposite in="rimR0" in2="SourceAlpha" operator="in" result="rimR" />
+      <feMerge><feMergeNode in="graded" /><feMergeNode in="rimL" /><feMergeNode in="rimR" /></feMerge>
+    </filter>
+  );
+};
+
+// seen from behind: back of the messy head, ears, hood on the back, arms (hands forward = hidden by the body)
+const TemaBack: React.FC<{s: TemaState; light: TemaLight; id: string; crop?: number}> = ({s, light, id, crop}) => {
+  const b = s.breathe * 6;
+  const tr = Math.sin(s.t * 37) * s.tremble + Math.sin(s.t * 23 + 1) * s.tremble * 0.6;
+  const k = clamp(s.hands);
+  const arm = (side: number) => {
+    const sh = {x: side * 182, y: -925 + b};
+    const mid = {x: lerp(side * 228, side * 175, k) + tr * 0.5, y: lerp(-735, -800, k) + b};
+    const end = {x: lerp(side * 236, side * 120, k) + tr, y: lerp(-560, -930, k)};
+    return `M ${sh.x} ${sh.y} Q ${lerp(sh.x, mid.x, 0.5) + side * 14} ${lerp(sh.y, mid.y, 0.5)} ${mid.x} ${mid.y} Q ${lerp(mid.x, end.x, 0.5)} ${lerp(mid.y, end.y, 0.5)} ${end.x} ${end.y}`;
+  };
+  const torso = 'M -178 -962 C -222 -950 -236 -895 -232 -815 L -220 -478 C -150 -458 150 -458 220 -478 L 232 -815 C 236 -895 222 -950 178 -962 C 110 -984 -110 -984 -178 -962 Z';
+  return (
+    <g transform={`translate(${tr * 0.3} 0)`} clipPath={crop !== undefined ? `url(#${id}-crop)` : undefined}>
+      {crop !== undefined && <clipPath id={`${id}-crop`}><rect x={-1500} y={-2400} width={3000} height={2400 + crop} /></clipPath>}
+      <defs>
+        <LightFilter id={id} light={light} />
+        <linearGradient id={`${id}-bdown`} x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stopColor="#05060f" stopOpacity={0.1} />
+          <stop offset="1" stopColor="#05060f" stopOpacity={0.6} />
+        </linearGradient>
+      </defs>
+      <g filter={`url(#${id}-light)`}>
+        <path d="M -168 -485 L -150 -40 L -30 -40 L -18 -485 Z M 168 -485 L 150 -40 L 30 -40 L 18 -485 Z" fill={L.pants} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+        <ellipse cx={-92} cy={-30} rx={74} ry={26} fill={L.socks} stroke={L.ink} strokeWidth={OW} />
+        <ellipse cx={92} cy={-30} rx={74} ry={26} fill={L.socks} stroke={L.ink} strokeWidth={OW} />
+        {[-1, 1].map((sd) => (
+          <g key={sd}>
+            <path d={arm(sd)} stroke={L.ink} strokeWidth={76 + OW * 2} strokeLinecap="round" fill="none" />
+            <path d={arm(sd)} stroke={L.top} strokeWidth={76} strokeLinecap="round" fill="none" />
+          </g>
+        ))}
+        <g transform={`translate(0 ${b * 0.5})`}>
+          <path d={torso} fill={L.top} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+          <path d={torso} fill={`url(#${id}-bdown)`} />
+          {/* hood lying on the back */}
+          <path d="M -150 -975 C -170 -880 -110 -800 0 -790 C 110 -800 170 -880 150 -975 C 100 -1000 -100 -1000 -150 -975 Z" fill={L.topShade} stroke={L.ink} strokeWidth={OW} />
+          <path d="M -60 -960 C -50 -880 50 -880 60 -960" stroke={L.ink} strokeWidth={5} fill="none" opacity={0.6} />
+        </g>
+        <rect x={-42} y={-1060} width={84} height={90} fill={L.skinShade} stroke={L.ink} strokeWidth={OW} />
+        <g transform={`translate(0 ${b * 0.6}) rotate(${s.turn * 4 + tr * 0.05} 0 -1100)`}>
+          <ellipse cx={-212} cy={-1215} rx={30} ry={50} fill={L.skin} stroke={L.ink} strokeWidth={OW} />
+          <ellipse cx={212} cy={-1215} rx={30} ry={50} fill={L.skin} stroke={L.ink} strokeWidth={OW} />
+          <path d="M 0 -1498 C 150 -1500 236 -1392 224 -1236 C 214 -1110 160 -1040 70 -1020 C 30 -1012 -30 -1012 -70 -1020 C -160 -1040 -214 -1110 -224 -1236 C -236 -1392 -150 -1500 0 -1498 Z"
+            fill={L.hair} stroke={L.ink} strokeWidth={OW} />
+          <path d="M -70 -1030 L -50 -1080 L -25 -1028 L 0 -1085 L 25 -1028 L 50 -1080 L 70 -1030" fill={L.hair} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+          <path d="M -40 -1490 L -20 -1560 L 10 -1494 M 20 -1496 L 60 -1548 L 70 -1488" fill={L.hair} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+          <path d="M -150 -1420 C -90 -1470 40 -1478 120 -1440" stroke={L.hairLight} strokeWidth={14} fill="none" strokeLinecap="round" opacity={0.6} />
+        </g>
       </g>
     </g>
   );

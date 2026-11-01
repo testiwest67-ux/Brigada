@@ -10,8 +10,11 @@ import {BED, Bedroom3D, KIT, Landing3D, OldKitchen3D} from './sets';
 import {Tema, TemaLight, TemaState} from './Tema';
 import {Fist, Grandma, Mom, ReachHand, Thing, ThingState} from './chars';
 import {FONT} from './fonts';
+import {CUTS, E, KNOCK, mouthAt, S as LS, TOTAL, W} from './timing';
 
 export type Ctx = {f: number; t: number; d: number; fps: number; g: number};
+const T = (c: Ctx) => c.g / c.fps;
+const kickAt = (c: Ctx, times: number[], freq = 7, decay = 7) => times.reduce((a, s) => a + kick(c.g, s * c.fps, c.fps, freq, decay), 0);
 
 const mix3 = (a: V3, b: V3, k: number): V3 => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
 const cam = (pos: V3, tgt: V3, fov: number, roll = 0): CamPose => ({pos, tgt, fov, roll});
@@ -55,12 +58,12 @@ const Breath: React.FC<{x: number; y: number; t: number; s?: number; o?: number}
 // ---------------- 1. bedroom door: knock + "Тёма." ----------------
 export const S01: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
-  const sh = kick(c.f, 6, c.fps, 7, 7) + kick(c.f, 18, c.fps, 7, 7);
+  const sh = kickAt(c, KNOCK.bedroom);
   const pose = cam(add(mix3([0.15, 1.05, -0.5], [0.3, 0.95, 0.15], k), [sh * 0.01, sh * 0.006, 0]), [0.6, 0.75, 1.6], lerp(50, 44, k));
   return (
     <Set3D>
       <CameraRig pose={pose} fog={['#06070f', 0.12]} look={{bloom: 0.12}} />
-      <Bedroom3D S={{t: c.g / c.fps, moon: 0.45, gap: 0.6, feet: lerp(0.45, -0.02, ramp(c.f, 0, 40, easeOut)), clockOn: 1, blanketUp: 0}} />
+      <Bedroom3D S={{t: c.g / c.fps, moon: 0.95, gap: 0.75, feet: lerp(0.45, -0.02, ramp(c.f, 0, 40, easeOut)), clockOn: 1, blanketUp: 0}} />
     </Set3D>
   );
 };
@@ -70,7 +73,7 @@ export const S02: React.FC<{c: Ctx}> = ({c}) => {
   const z = ramp(c.f, 0, 7, easeOut);
   const pose = cam(add([-1.0, 1.32, -1.0], hand(c.t, 2, 0.004)), [-1.0, 0.56, -1.28], lerp(44, 24, z));
   const open = ramp(c.f, 3, 7);
-  const s = tema(c.t, {blink: open, fear: lerp(0.2, 0.75, ramp(c.f, 5, 14)), lookX: lerp(0, 0.5, ramp(c.f, 12, 22)), mouth: lerp(0.05, 0.4, ramp(c.f, 14, 20)), tremble: 0.4, breathe: Math.sin(c.t * 6)});
+  const s = tema(c.t, {blink: open, fear: lerp(0.2, 0.75, ramp(c.f, 5, 14)), lookX: lerp(0, 0.5, ramp(c.f, 12, 22)), mouth: 0.05 + mouthAt(T(c), [1]) * 0.6, tremble: 0.4, breathe: Math.sin(c.t * 6)});
   return (
     <AbsoluteFill>
       <Set3D>
@@ -127,7 +130,7 @@ export const S03: React.FC<{c: Ctx}> = ({c}) => {
 // ---------------- 4. hallway rush to the front door: "А в дверь… стучат." ----------------
 export const S04: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps * 0.75, (x) => x * x * x);
-  const sh = kick(c.f, 40, c.fps, 8, 6) + kick(c.f, 47, c.fps, 8, 6) + kick(c.f, 54, c.fps, 8, 6);
+  const sh = kickAt(c, KNOCK.front, 8, 6);
   const pose = cam(add(mix3([0.0, 1.3, 2.6], [0.04, 1.28, -1.55], k), [sh * 0.02, sh * 0.012, 0]), [0.05, 1.15, -3], lerp(52, 44, k), sh * 0.012);
   return (
     <Set3D>
@@ -160,8 +163,8 @@ export const S05: React.FC<{c: Ctx}> = ({c}) => {
 export const S06: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
   const pose = cam(add(mix3([0.32, 1.33, 0.55], [0.1, 1.24, -0.22], k), hand(c.t, 5, 0.003)), mix3([0.08, 1.3, -0.75], [0.08, 1.2, -0.75], k), 40);
-  const gl = clamp(1 - Math.abs(c.t - 3.4) / 0.15);
-  const talk = 0.25 + 0.25 * Math.abs(Math.sin(c.t * 9));
+  const gl = clamp(1 - Math.abs(T(c) - W(7, 0) - 0.05) / 0.15);
+  const talk = 0.05 + mouthAt(T(c), [5, 6, 7]) * 0.7;
   return (
     <AbsoluteFill>
       <Set3D>
@@ -178,12 +181,11 @@ export const S06: React.FC<{c: Ctx}> = ({c}) => {
 };
 
 // ---------------- 7. top-down: grandma's knuckles on the table, two… and one ----------------
-const KNOCKS7 = [0.55, 0.9, 1.75];
 export const S07: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam([0.02, 1.62, 0.42], [0.02, 0.78, 0.18], 44);
-  const lift = Math.min(...KNOCKS7.map((k) => Math.abs(c.t - k) * 6), 1);
-  const hits = KNOCKS7.filter((k) => c.t >= k).length;
-  const sh = KNOCKS7.reduce((a, k) => a + kick(c.f, k * c.fps, c.fps, 9, 9), 0);
+  const lift = Math.min(...KNOCK.gran.map((k) => Math.abs(T(c) - k) * 6), 1);
+  const hits = KNOCK.gran.filter((k) => T(c) >= k).length;
+  const sh = kickAt(c, KNOCK.gran, 9, 9);
   const posed = add(pose.pos, [0, sh * 0.006, 0]);
   const p2 = {...pose, pos: posed};
   return (
@@ -197,7 +199,7 @@ export const S07: React.FC<{c: Ctx}> = ({c}) => {
           <g transform="scale(0.55)"><Fist sleeve="#6d6a66" /></g>
         </Puppet>
       </PuppetLayer>
-      <div style={{position: 'absolute', top: 1180, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 240, color: '#fff',
+      <div style={{position: 'absolute', top: 260, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 240, color: '#fff',
         WebkitTextStroke: '14px #000', paintOrder: 'stroke fill', textShadow: '0 0 40px rgba(0,0,0,0.9)', letterSpacing: 20}}>
         <span style={{opacity: hits >= 2 ? 1 : hits === 1 ? 0.35 : 0}}>2</span>
         <span style={{opacity: hits >= 3 ? 1 : 0, color: '#ff2a2a'}}> + 1</span>
@@ -210,7 +212,7 @@ export const S07: React.FC<{c: Ctx}> = ({c}) => {
 export const S08: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
   const pose = cam(add(mix3([-0.05, 1.2, 0.3], [0.0, 1.15, -0.7], k), hand(c.t, 7)), [0.15, 1.0, -3], 50);
-  const rattle = c.f > 10 && c.f < 70 ? Math.sin(c.f * 1.7) * 0.2 : 0;
+  const rattle = T(c) > LS(10) - 0.4 && T(c) < LS(10) + 0.5 ? Math.sin(c.f * 1.7) * 0.2 : 0;
   return (
     <Set3D>
       <CameraRig pose={pose} />
@@ -287,10 +289,9 @@ export const S11: React.FC<{c: Ctx}> = ({c}) => {
 };
 
 // ---------------- 12. mom's knuckles on the door, outside: two… and one ----------------
-const KNOCKS12 = [0.35, 0.7, 1.55];
 export const S12: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.42, 1.32, 0.6], hand(c.t, 11, 0.004)), [0.0, 1.3, 0.05], 36);
-  const away = Math.min(...KNOCKS12.map((k) => Math.abs(c.t - k) * 5), 1);
+  const away = Math.min(...KNOCK.mom.map((k) => Math.abs(T(c) - k) * 5), 1);
   return (
     <AbsoluteFill>
       <Set3D>
@@ -309,9 +310,10 @@ export const S12: React.FC<{c: Ctx}> = ({c}) => {
 // ---------------- 13. his hand to the lock… freezes ----------------
 export const S13: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.68, 1.26, -2.45], hand(c.t, 13, 0.003)), [0.36, 1.2, -3.0], 34);
-  const reach = ramp(c.f, 0, 22, easeOut);
-  const frozen = c.f > 24;
-  const gl = clamp(1 - Math.abs(c.f - 26) / 3);
+  const fz = (LS(16) - (T(c) - c.t)) * c.fps; // local frame of "Не открывай"
+  const reach = ramp(c.f, 0, fz - 2, easeOut);
+  const frozen = c.f > fz;
+  const gl = clamp(1 - Math.abs(c.f - fz - 2) / 3);
   const S = hallS(c);
   return (
     <AbsoluteFill>
@@ -321,7 +323,7 @@ export const S13: React.FC<{c: Ctx}> = ({c}) => {
       </Set3D>
       <PuppetLayer>
         <Puppet pose={pose} at={[lerp(0.75, 0.47, reach) + (frozen ? Math.sin(c.t * 40) * 0.003 : 0), 1.18, -2.82]} rot={-8}>
-          <g transform="scale(0.55)" filter="brightness(0.6)"><ReachHand curl={frozen ? lerp(0.1, 0.6, ramp(c.f, 24, 34)) : 0.1} /></g>
+          <g transform="scale(0.55)" filter="brightness(0.6)"><ReachHand curl={frozen ? lerp(0.1, 0.6, ramp(c.f, fz, fz + 10)) : 0.1} /></g>
         </Puppet>
       </PuppetLayer>
     </AbsoluteFill>
@@ -343,7 +345,7 @@ const PhoneInHands: React.FC<{glow: number}> = ({glow}) => (
 
 export const S14: React.FC<{c: Ctx}> = ({c}) => {
   const z = ramp(c.f, 0, 8, easeOut);
-  const buzz = c.t < 1.2 ? Math.sin(c.t * 90) * 0.004 : 0;
+  const buzz = c.t < 0.9 ? Math.sin(c.t * 90) * 0.004 : 0;
   const pose = doorCam(c, [0.02, 1.15, -2.9], [0.04, 1.2, -2.8], [66, 54], z);
   const S = hallS(c, {phone: 1, phoneAt: [0.05, 1.0, -1.9], bulb: 0.35});
   const s = tema(c.t, {hands: 0.3, fear: 0.7, lookY: 0.7, mouth: 0.2, tremble: 1.2, blink: blinkAt(c.f, [40], 5)});
@@ -494,7 +496,7 @@ export const S19: React.FC<{c: Ctx}> = ({c}) => {
   const base = dollyPose(c, 1);
   const pose = cam(mix3(base.pos, [0.06, 2.1, -1.95], k), mix3(base.tgt, [0.02, 2.2, -1.05], k), lerp(base.fov, 46, k));
   const S = hallS(c, {phone: 1, phoneAt: [0.05, 1.0, -1.9], bulb: 0.05, stair: 0.6, moon: 0.4, noDoor: true});
-  const talk = 0.15 + 0.5 * Math.abs(Math.sin(c.t * 8.5)) * (Math.sin(c.t * 2.1) > -0.6 ? 1 : 0.2);
+  const talk = 0.08 + mouthAt(T(c), [22, 23]) * 0.85;
   return (
     <AbsoluteFill>
       <Set3D>
@@ -545,21 +547,21 @@ export const S20: React.FC<{c: Ctx}> = ({c}) => {
 
 // ---------------- 21. its face fills the frame: "Привет, Тёма." Black. One knock. ----------------
 export const S21: React.FC<{c: Ctx}> = ({c}) => {
-  const k = ramp(c.f, 0, 60, (x) => x * x);
+  const k = ramp(c.g, LS(27) * c.fps - 3, (E(27) + 0.12) * c.fps, (x) => x * x);
   const pose = cam(add(mix3([0.05, 2.12, -2.1], [0.03, 2.25, -1.42], k), hand(c.t, 21, 0.004)), [0.02, 2.24, -1.05], 42);
   const S = hallS(c, {phone: 0.8, phoneAt: [0.05, 1.0, -1.9], bulb: 0, stair: 0.6, moon: 0.3});
-  const black = c.f >= 62;
+  const black = T(c) >= E(27) + 0.12;
   return (
     <AbsoluteFill style={{background: '#000'}}>
       {!black && (
         <>
           <Set3D>
-            <CameraRig pose={pose} look={{glitch: clamp((c.f - 52) / 10) * 0.8, seed: c.g}} />
+            <CameraRig pose={pose} look={{glitch: clamp((T(c) - E(27) + 0.25) / 0.3) * 0.8, seed: c.g}} />
             <HallSet S={S} />
           </Set3D>
           <PuppetLayer>
             <Puppet pose={pose} at={THING_AT}>
-              <Thing s={thing(c.t, {mouth: c.t > 0.4 && c.t < 1.5 ? 0.3 + 0.3 * Math.abs(Math.sin(c.t * 8)) : 0.1, smile: lerp(0.8, 1.0, k), tilt: lerp(12, 22, k), eyes: 1})} light={{bright: 1.8, warmRim: 0, coldRim: 1, cold: 1}} id="th21" />
+              <Thing s={thing(c.t, {mouth: 0.08 + mouthAt(T(c), [27]) * 0.8, smile: lerp(0.8, 1.0, k), tilt: lerp(12, 22, k), eyes: 1})} light={{bright: 1.8, warmRim: 0, coldRim: 1, cold: 1}} id="th21" />
             </Puppet>
           </PuppetLayer>
         </>
@@ -568,27 +570,10 @@ export const S21: React.FC<{c: Ctx}> = ({c}) => {
   );
 };
 
-export const SHOTS: {id: string; from: number; to: number; C: React.FC<{c: Ctx}>; fog?: number}[] = [
-  {id: '01', from: 0.0, to: 1.6, C: S01},
-  {id: '02', from: 1.6, to: 2.8, C: S02},
-  {id: '03', from: 2.8, to: 6.0, C: S03},
-  {id: '04', from: 6.0, to: 8.0, C: S04},
-  {id: '05', from: 8.0, to: 10.5, C: S05, fog: 0.4},
-  {id: '06', from: 10.5, to: 15.5, C: S06, fog: 0.3},
-  {id: '07', from: 15.5, to: 18.5, C: S07, fog: 0.2},
-  {id: '08', from: 18.5, to: 21.5, C: S08},
-  {id: '09', from: 21.5, to: 24.0, C: S09},
-  {id: '10', from: 24.0, to: 26.0, C: S10},
-  {id: '11', from: 26.0, to: 28.5, C: S11, fog: 0.3},
-  {id: '12', from: 28.5, to: 31.0, C: S12, fog: 0.3},
-  {id: '13', from: 31.0, to: 33.0, C: S13},
-  {id: '14', from: 33.0, to: 35.5, C: S14},
-  {id: '15', from: 35.5, to: 38.5, C: S15, fog: 0},
-  {id: '16', from: 38.5, to: 41.5, C: S16},
-  {id: '17', from: 41.5, to: 42.7, C: S17},
-  {id: '18', from: 42.7, to: 46.0, C: S18},
-  {id: '19', from: 46.0, to: 49.5, C: S19},
-  {id: '20', from: 49.5, to: 53.0, C: S20, fog: 0.3},
-  {id: '21', from: 53.0, to: 56.0, C: S21},
-];
-export const EP_SEC = 56;
+const FOG: Record<string, number> = {'05': 0.4, '06': 0.3, '07': 0.2, '11': 0.3, '12': 0.3, '15': 0, '17': 0.25, '20': 0.3};
+const COMPS = [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21];
+export const SHOTS: {id: string; from: number; to: number; C: React.FC<{c: Ctx}>; fog?: number}[] = COMPS.map((C, i) => {
+  const id = String(i + 1).padStart(2, '0');
+  return {id, from: CUTS[i], to: CUTS[i + 1], C, fog: FOG[id]};
+});
+export const EP_SEC = TOTAL;

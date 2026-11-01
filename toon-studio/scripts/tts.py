@@ -7,6 +7,8 @@
 #
 # lines.json: {"engine": "edge", "voice": "ru-RU-DmitryNeural", "rate": "-4%", "pitch": "-2Hz",
 #              "lead": 0.4, "tail": 1.4, "lines": [{"say": "text for the voice", "sub": "optional subtitle text", "gap": 0.3}]}
+# Per line (optional): "voice", "rate", "pitch" override the episode values for that line (several speakers),
+#   "fx": an ffmpeg audio filter for that line (muffled through a door, whisper, doubled voice).
 # For ElevenLabs: "engine": "elevenlabs", "voice": "<voice_id>", optional "model": "eleven_multilingual_v2", "stability", "similarity".
 import asyncio, base64, json, os, subprocess, sys, urllib.request, wave
 
@@ -26,9 +28,18 @@ def api_key():
 
 
 # ---------- engines: each returns (mp3 bytes, [{"w", "t"}]) ----------
+def edge_net():
+    # behind a corporate / sandbox HTTPS proxy: go through it and trust its CA bundle (verification stays on)
+    import ssl, edge_tts.communicate as ec
+    ca = os.environ.get('SSL_CERT_FILE') or os.environ.get('REQUESTS_CA_BUNDLE')
+    if ca and os.path.exists(ca):
+        ctx = ssl.create_default_context(); ctx.load_verify_locations(cafile=ca); ec._SSL_CTX = ctx
+    return os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy')
+
+
 async def edge_line(text, cfg, voice):
     import edge_tts
-    c = edge_tts.Communicate(text, voice, rate=cfg.get('rate', '+0%'), pitch=cfg.get('pitch', '+0Hz'), boundary='WordBoundary')
+    c = edge_tts.Communicate(text, voice, rate=cfg.get('rate', '+0%'), pitch=cfg.get('pitch', '+0Hz'), boundary='WordBoundary', proxy=edge_net())
     words, audio = [], bytearray()
     async for ch in c.stream():
         if ch['type'] == 'audio': audio += ch['data']
@@ -61,7 +72,7 @@ async def voice_all(cfg, voice, out):
         for attempt in range(3):
             try:
                 if cfg.get('engine', 'edge') == 'elevenlabs': audio, words = eleven_line(ln['say'], cfg, voice)
-                else: audio, words = await edge_line(ln['say'], cfg, voice)
+                else: audio, words = await edge_line(ln['say'], {**cfg, **{k: ln[k] for k in ('rate', 'pitch') if k in ln}}, ln.get('voice', voice))
                 open(f'{out}/l{i:02d}.mp3', 'wb').write(audio); res.append(words); break
             except Exception as e:
                 print('retry', i, voice, type(e).__name__, str(e)[:120]); await asyncio.sleep(2)
@@ -87,11 +98,12 @@ async def main(lines_p, out):
     trim = 'silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse'
     for i, (ln, words) in enumerate(zip(cfg['lines'], res)):
         wav = f'{out}/l{i:02d}.wav'
-        subprocess.run([FF, '-v', 'error', '-y', '-i', f'{out}/l{i:02d}.mp3', '-af', trim, '-ar', '48000', '-ac', '1', wav], check=True)
+        af = trim + (',' + ln['fx'] if ln.get('fx') else '')
+        subprocess.run([FF, '-v', 'error', '-y', '-i', f'{out}/l{i:02d}.mp3', '-af', af, '-ar', '48000', '-ac', '1', wav], check=True)
         d = dur_of(wav); lead = words[0]['t'] if words else 0
         subw = (ln.get('sub') or ln['say']).split()
         ws = [{'w': subw[k] if len(subw) == len(words) else w['w'], 't': round(t + w['t'] - lead, 3)} for k, w in enumerate(words)]
-        lines.append({'i': i, 'text': ln.get('sub') or ln['say'], 'start': round(t, 3), 'end': round(t + d, 3), 'words': ws})
+        lines.append({'i': i, 'text': ln.get('sub') or ln['say'], 'start': round(t, 3), 'end': round(t + d, 3), 'words': ws, 'who': ln.get('who', 'narrator')})
         parts.append((wav, t)); t += d + ln.get('gap', 0.4)
     total = round(t + cfg.get('tail', 1.2), 3)
     inputs = sum([['-i', p] for p, _ in parts], [])

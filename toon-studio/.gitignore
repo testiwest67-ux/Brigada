@@ -1,7 +1,8 @@
-node_modules/
-build/
-out/
-_tmp/**/*.png
-_tmp/**/*.mp4
-public/**/*.wav
 .env
+_tmp/**/*.mp4
+_tmp/**/*.png
+_tmp/**/render*.log
+build/
+node_modules/
+out/
+public/**/*.wav

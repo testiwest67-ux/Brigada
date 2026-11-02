@@ -23,7 +23,9 @@ const gl = process.env.TOON_GL || 'angle';
 const chromeBin = process.env.TOON_BROWSER || null; // own Chrome binary (e.g. a pre-installed headless shell)
 const bx = chromeBin ? [`--browser-executable=${chromeBin}`] : [];
 const run = (args) => {
-  const r = spawnSync('npx', ['remotion', ...args, ...(args[0] === 'bundle' ? [] : bx)], {stdio: ['ignore', 'ignore', 'pipe'], shell: true, encoding: 'utf8'});
+  // TOON_LOG=<file>: keep Remotion's progress (rendered / encoded frames) in a log you can tail
+  const out = process.env.TOON_LOG && args[0] === 'render' ? fs.openSync(process.env.TOON_LOG, 'a') : 'ignore';
+  const r = spawnSync('npx', ['remotion', ...args, ...(args[0] === 'bundle' ? [] : bx)], {stdio: ['ignore', out, 'pipe'], shell: true, encoding: 'utf8'});
   if (r.status !== 0) { console.error(r.stderr?.split('\n').slice(-15).join('\n')); process.exit(1); }
 };
 const q = (s) => `"${s}"`;
@@ -79,7 +81,7 @@ if (mode === 'stills') {
   console.log('ok', out, `(${((last + 1) / c.fps).toFixed(1)} s at half size)`);
 } else {
   fs.mkdirSync(path.dirname(path.resolve(out)), {recursive: true});
-  run(['render', 'build', comp, q(out), `--concurrency=${threads}`, `--gl=${gl}`, '--crf=18', '--log=error', '--timeout=120000']);
+  run(['render', 'build', comp, q(out), `--concurrency=${threads}`, `--gl=${gl}`, '--crf=18', process.env.TOON_LOG ? '--log=info' : '--log=error', '--timeout=120000']);
   console.log('ok', out);
 }
 console.log(`done in ${Math.round((Date.now() - t0) / 1000)} s (threads ${threads}, low priority)`);

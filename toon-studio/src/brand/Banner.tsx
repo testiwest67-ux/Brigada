@@ -90,7 +90,7 @@ export const Banner: React.FC<{guides?: boolean}> = ({guides = false}) => {
         </g>
 
         {/* ---------- «24 ЧАСА» neon (Ночная смена) ---------- */}
-        <g transform="translate(545 560) rotate(-4)">
+        <g transform="translate(600 585) rotate(-4) scale(0.85)">
           <ellipse cx={110} cy={20} rx={190} ry={70} fill="url(#greenHalo)" />
           <rect x={-10} y={-36} width={240} height={74} rx={10} fill="#0b1510" stroke="#1d3a28" strokeWidth={4} />
           <text x={110} y={18} textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontWeight={800} fontSize={44} fill="#8affb8" filter="url(#glow)">24 ЧАС<tspan opacity={0.25}>А</tspan></text>
@@ -98,11 +98,11 @@ export const Banner: React.FC<{guides?: boolean}> = ({guides = false}) => {
 
         {/* ---------- title (centre safe area) ---------- */}
         <ellipse cx={1280} cy={720} rx={760} ry={210} fill="#000" opacity={0.45} filter="url(#soft)" />
-        <text x={1280} y={752} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={126} letterSpacing={4}
+        <text x={1280} y={752} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={112} letterSpacing={3}
           stroke="#050407" strokeWidth={18} paintOrder="stroke fill">
           <tspan fill="#f4f1ec">НОЧНЫЕ </tspan><tspan fill="#ff2a2a" filter="url(#glow)">ПРАВИЛА</tspan>
         </text>
-        <text x={1280} y={836} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} letterSpacing={7} fill="#cfc8c0" opacity={0.9}>
+        <text x={1280} y={836} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={36} letterSpacing={6} fill="#cfc8c0" opacity={0.9}>
           НОВАЯ ЖУТКАЯ ИСТОРИЯ КАЖДУЮ НОЧЬ
         </text>
         {/* thin red rule + small eye mark between the lines */}

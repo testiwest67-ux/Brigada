@@ -6,3 +6,4 @@ build/
 node_modules/
 out/
 public/**/*.wav
+_tmp/**/*.wav

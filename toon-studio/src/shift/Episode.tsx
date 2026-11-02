@@ -1,11 +1,12 @@
 // «Ночная смена»: the whole short. Shots are cut on their own frames; fog, grain and vignette sit on top.
-// Voice, sound and captions get added after the voice-over stage.
+// Captions word by word from the voice; the sound is public/nochnaya-smena/mix.wav (scripts/shift_sound.py).
 import React from 'react';
-import {AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
-import {Fog, Grain, Vignette} from '../horror/fx';
+import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Fog, Grain, HorrorCaptions, Vignette} from '../horror/fx';
 import {ensureFont} from '../horror/fonts';
 import {ensureHand} from './hand';
 import {COLD_SHOTS, SHOTS} from './shots';
+import {CAPTIONS} from './timing';
 
 export const ShiftEpisode: React.FC = () => {
   ensureFont(); ensureHand();
@@ -25,6 +26,8 @@ export const ShiftEpisode: React.FC = () => {
       <Fog t={g / fps} o={COLD_SHOTS.has(cur.id) ? 0.8 : 0.35} tint={COLD_SHOTS.has(cur.id) ? '140,190,230' : '170,180,165'} />
       <Vignette />
       <Grain f={g} o={0.1} />
+      <HorrorCaptions lines={CAPTIONS} f={g} fps={fps} />
+      <Audio src={staticFile('nochnaya-smena/mix.wav')} />
     </AbsoluteFill>
   );
 };

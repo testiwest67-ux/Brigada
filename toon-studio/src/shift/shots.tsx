@@ -1,4 +1,4 @@
-// The 39 shots of «Ночная смена». Times are the draft from the script; after the voice they get tied to the words.
+// The 39 shots of «Ночная смена». Cut times, knocks, the phone ring and lip movement come from the voice (timing.ts).
 // Every shop shot = the 3D shop + 2D puppets. A puppet behind the counter (or outside behind the glass) from the
 // camera's side is clipped to what the counter top / the glass would let you see.
 import React from 'react';
@@ -14,6 +14,7 @@ import {Dima, DimaState, DIMA_REST} from './Dima';
 import {Babka, BABKA_REST, BabkaState, Petrovich, PETROVICH_REST, PetrovichState, Stas, STAS_REST, StasState} from './People';
 import {ABOVE_COUNTER, CLOCK, COUNTER, DOOR, DOOR_GLASS, FRIDGE, FRIDGE_GLASS, PHONE, ROOM, SHOP_REST, ShopSet, ShopState, SPOT, WIN_GLASS, WRITE_DOOR} from './Shop3D';
 import {NoteInsert} from './Note';
+import {CUTS, knockShake, mouthAt, ringOn} from './timing';
 
 export type Ctx = {f: number; t: number; d: number; fps: number; g: number};
 const T = (c: Ctx) => c.g / c.fps;
@@ -243,7 +244,7 @@ export const S15: React.FC<{c: Ctx}> = ({c}) => {
 // 16. Dima, pale: «Касса закрыта»
 export const S16: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.74, 1.4, 0.38], hand(c.t, 16, 0.003)), [0.75, 1.34, -0.62], 34);
-  return <ShopView pose={pose} S={shop(c, {clock: '01:00'})} pups={dimaWithShadow(c, dm(T(c), {fear: 0.85, tremble: 1.6, mouth: talk(c.t, 0.6, 1.6) * 0.5, lookY: -0.2}), NIGHT)} />;
+  return <ShopView pose={pose} S={shop(c, {clock: '01:00'})} pups={dimaWithShadow(c, dm(T(c), {fear: 0.85, tremble: 1.6, mouth: mouthAt(T(c), [24]) * 0.45, lookY: -0.2}), NIGHT)} />;
 };
 
 // 17. he smiles too long; the coat opens: the same green vest, badge «СТАС»
@@ -268,13 +269,11 @@ export const S18: React.FC<{c: Ctx}> = ({c}) => {
 export const S19: React.FC<{c: Ctx}> = ({c}) => <ClockShot c={c} time="03:30" o={{lamps: lerp(0.8, 0.3, K(c)), fridge: 1.6}} />;
 
 // 20. the glass fogs up, someone knocks from inside; Dima freezes with his back to it
-const N333 = (c: Ctx, o: Partial<ShopState> = {}) => shop(c, {lamps: 0.12, counter: 0.45, fridge: 1.7, frost: 0.8, clock: '03:33', ...o});
-const KNOCKS = [0.4, 0.75, 1.1, 1.7, 1.95, 2.3];
-const knockAt = (c: Ctx) => KNOCKS.reduce((a, s) => a + Math.max(0, kick(c.f, s * c.fps, c.fps, 10, 9)), 0) * 0.008;
+const N333 = (c: Ctx, o: Partial<ShopState> = {}) => shop(c, {lamps: 0.12, counter: 0.45, fridge: 1.7, frost: 0.8, clock: '03:33', knock: knockShake(T(c)), ...o});
 export const S20: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const pose = cam(add(mix3([1.15, 1.45, 1.7], [1.0, 1.42, 1.4], k), hand(c.t, 20)), [0.55, 1.2, -0.85], 52);
-  const S = N333(c, {frost: lerp(0.2, 0.85, k), knock: knockAt(c)});
+  const S = N333(c, {frost: lerp(0.2, 0.85, k)});
   return <ShopView pose={pose} S={S} fog={FOG_COLD} exposure={0.8} pups={dimaWithShadow(c, dm(T(c), {fear: 0.8, tremble: 2, lookY: 0.3, hands: 0.3}), COLD)} />;
 };
 
@@ -289,7 +288,7 @@ export const S21: React.FC<{c: Ctx}> = ({c}) => {
 // 22. Dima looks only at the floor (eyes down, shaking)
 export const S22: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.72, 1.52, 0.4], hand(c.t, 22, 0.004)), [0.75, 1.3, -0.62], 36);
-  return <ShopView pose={pose} S={N333(c, {knock: knockAt(c)})} fog={FOG_COLD} pups={dimaWithShadow(c, dm(T(c), {fear: 0.9, lookY: 1, blink: 0.45, tremble: 2.4}), COLD)} />;
+  return <ShopView pose={pose} S={N333(c)} fog={FOG_COLD} pups={dimaWithShadow(c, dm(T(c), {fear: 0.9, lookY: 1, blink: 0.45, tremble: 2.4}), COLD)} />;
 };
 
 // 23. easter egg: Dima keeps still, but his shadow on the glass turns its head and opens white eyes
@@ -309,7 +308,7 @@ export const S24: React.FC<{c: Ctx}> = ({c}) => <ClockShot c={c} time="03:34" o=
 export const S25: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const pose = cam(add(mix3([0.95, 1.5, -0.3], [1.35, 1.47, -0.45], k), hand(c.t, 25, 0.003)), [PHONE[0], PHONE[1] - 0.12, PHONE[2]], lerp(44, 34, k));
-  const ring = (Math.floor(c.t * 2.5) % 2 === 0 ? 1 : 0);
+  const ring = ringOn(T(c)) ? 1 : 0;
   return <ShopView pose={pose} S={shop(c, {ring, lamps: 0.7, clock: '04:00'})} />;
 };
 
@@ -375,7 +374,7 @@ export const S33: React.FC<{c: Ctx}> = ({c}) => {
 // 34. he takes his glasses off: «Касса закрыта, сынок»
 export const S34: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.8, 1.6, -0.25], hand(c.t, 34, 0.003)), [0.85, 1.5, 0.82], 34);
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.6, clock: '06:01'})} pups={[petPup('p34', SPOT.buyer, pv(T(c), {glasses: ramp(c.f, 4, 18), sad: 1, lookY: 0.3, mouth: talk(c.t, 0.9, 2.2) * 0.5}), DAWN)]} />;
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.6, clock: '06:01'})} pups={[petPup('p34', SPOT.buyer, pv(T(c), {glasses: ramp(c.f, 4, 18), sad: 1, lookY: 0.3, mouth: mouthAt(T(c), [57]) * 0.7}), DAWN)]} />;
 };
 
 // 35. Dima looks down: no shadow under him (Petrovich's lies right there)
@@ -430,9 +429,8 @@ export const S39: React.FC<{c: Ctx}> = ({c}) => {
   );
 };
 
-// ---------------- timeline (draft from the script; re-timed after the voice) ----------------
-export const DRAFT = [0, 2.5, 4.5, 7.5, 10.5, 14, 16, 19.5, 23.5, 26, 28, 30.5, 33.5, 36, 39, 42, 44, 47.5, 50, 52, 55, 58, 61, 64, 67.5, 70, 72.5, 76.5, 79, 83.5, 85, 88, 90, 92.5, 95, 97.5, 101, 104, 108, 110];
+// ---------------- timeline: cut times from the voice (timing.ts) ----------------
 const COMPS = [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22, S23, S24, S25, S26, S27, S28, S29, S30, S31, S32, S33, S34, S35, S36, S37, S38, S39];
 export const COLD_SHOTS = new Set(['S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S36']);
-export const SHOTS = COMPS.map((C, i) => ({id: `S${String(i + 1).padStart(2, '0')}`, from: DRAFT[i], to: DRAFT[i + 1], C}));
-export const EP_SEC = DRAFT[DRAFT.length - 1];
+export const SHOTS = COMPS.map((C, i) => ({id: `S${String(i + 1).padStart(2, '0')}`, from: CUTS[i], to: CUTS[i + 1], C}));
+export const EP_SEC = CUTS[CUTS.length - 1];

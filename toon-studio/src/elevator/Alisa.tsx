@@ -29,6 +29,7 @@ export type AlisaState = {
   hands: number;   // 0 hands down .. 1 palms up at the chest (pressing the glass / the button)
   turn: number;    // -1..1 head turn
   tremble: number; // px of shiver
+  sit?: number;    // 0 standing .. 1 sitting on the floor, knees up (hands ~0.8 rests them on the knees)
   t: number;
 };
 
@@ -56,6 +57,7 @@ export const Alisa: React.FC<{s: AlisaState; light: TemaLight; id?: string; crop
   const tr = Math.sin(s.t * 37) * s.tremble + Math.sin(s.t * 23 + 1) * s.tremble * 0.6;
   const headY = -1225 + b * 0.6;
   const tx = s.turn * 26, hx = tr * 0.6;
+  const sit = clamp(s.sit ?? 0);
 
   const eye = (side: number) => {
     const cx = side * 88 + tx * (side === Math.sign(s.turn || 1) ? 0.8 : 1.15) + hx, cy = headY + 14;
@@ -116,6 +118,8 @@ export const Alisa: React.FC<{s: AlisaState; light: TemaLight; id?: string; crop
     return {d, end: hand};
   };
   const aL = arm(-1), aR = arm(1);
+  // hands drawn on top of the knees live in world space, so add the sit drop
+  const armW = (side: number) => { const a = arm(side); return {d: a.d, end: {x: a.end.x, y: a.end.y + 446 * sit}}; };
   const sleeve = (a: {d: string}) => (
     <>
       <path d={a.d} stroke={L.ink} strokeWidth={72 + OW * 2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -161,6 +165,7 @@ export const Alisa: React.FC<{s: AlisaState; light: TemaLight; id?: string; crop
         </linearGradient>
       </defs>
       <g filter={`url(#${id}-light)`}>
+        <g transform={`scale(1 ${1 - 0.92 * sit})`} opacity={sit > 0.75 ? 0 : 1}>
         {/* legs + sneakers */}
         <path d="M -160 -485 L -140 -60 L -32 -60 L -18 -485 Z M 160 -485 L 140 -60 L 32 -60 L 18 -485 Z" fill={L.pants} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
         <path d="M -112 -470 L -102 -80" stroke={L.pantsLight} strokeWidth={10} opacity={0.5} />
@@ -171,6 +176,8 @@ export const Alisa: React.FC<{s: AlisaState; light: TemaLight; id?: string; crop
             <path d={`M ${sd * 18} -4 L ${sd * 182} -4 L ${sd * 180} -20 L ${sd * 20} -20 Z`} fill={L.sole} stroke={L.ink} strokeWidth={OW * 0.8} />
           </g>
         ))}
+        </g>
+        <g transform={`translate(0 ${446 * sit})`}>
         {s.hands < 0.5 && sleeve(aL)}
         {s.hands < 0.5 && sleeve(aR)}
         {/* torso: hoodie + backpack straps */}
@@ -231,9 +238,26 @@ export const Alisa: React.FC<{s: AlisaState; light: TemaLight; id?: string; crop
           <path d="M 222 -1300 C 236 -1220 236 -1140 228 -1080" stroke={L.hairLight} strokeWidth={10} fill="none" strokeLinecap="round" opacity={0.5} />
           {brow(-1)}{brow(1)}
         </g>
+        </g>
+        {/* sitting: shins and knees come up in front of the chest */}
+        {sit > 0.6 && (
+          <g opacity={clamp((sit - 0.6) / 0.25)}>
+            {[-1, 1].map((sd) => (
+              <g key={sd}>
+                <path d={`M ${sd * 30} -40 L ${sd * 20} -470 C ${sd * 30} -560 ${sd * 160} -560 ${sd * 170} -470 L ${sd * 175} -40 Z`} fill={L.pants} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+                <path d={`M ${sd * 22} -470 C ${sd * 30} -540 ${sd * 160} -540 ${sd * 168} -470`} stroke={L.pantsLight} strokeWidth={12} fill="none" opacity={0.6} />
+                <path d={`M ${sd * 20} -6 L ${sd * 20} -60 C ${sd * 60} -84 ${sd * 160} -76 ${sd * 185} -30 L ${sd * 188} -6 Z`} fill={L.shoe} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
+              </g>
+            ))}
+            <path d="M 30 -40 L 20 -470 C 30 -560 160 -560 170 -470 L 175 -40 Z M -30 -40 L -20 -470 C -30 -560 -160 -560 -170 -470 L -175 -40 Z" fill={`url(#${id}-down)`} />
+            {hand(armW(-1), -1)}{hand(armW(1), 1)}
+          </g>
+        )}
+        <g transform={`translate(0 ${446 * sit})`}>
         {s.hands >= 0.5 && sleeve(aL)}
         {s.hands >= 0.5 && sleeve(aR)}
-        {hand(aL, -1)}{hand(aR, 1)}
+        {sit <= 0.6 && <>{hand(aL, -1)}{hand(aR, 1)}</>}
+        </g>
       </g>
     </g>
   );
@@ -244,6 +268,7 @@ const AlisaBack: React.FC<{s: AlisaState; light: TemaLight; id: string; crop?: n
   const b = s.breathe * 6;
   const tr = Math.sin(s.t * 37) * s.tremble + Math.sin(s.t * 23 + 1) * s.tremble * 0.6;
   const k = clamp(s.hands);
+  const sit = clamp(s.sit ?? 0);
   const arm = (side: number) => {
     const sh = {x: side * 176, y: -925 + b};
     const mid = {x: lerp(side * 222, side * 240, k) + tr * 0.5, y: lerp(-735, -770, k) + b};
@@ -261,10 +286,13 @@ const AlisaBack: React.FC<{s: AlisaState; light: TemaLight; id: string; crop?: n
         </linearGradient>
       </defs>
       <g filter={`url(#${id}-light)`}>
+        <g transform={`scale(1 ${1 - 0.92 * sit})`}>
         <path d="M -160 -485 L -140 -60 L -32 -60 L -18 -485 Z M 160 -485 L 140 -60 L 32 -60 L 18 -485 Z" fill={L.pants} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
         {[-1, 1].map((sd) => (
           <path key={sd} d={`M ${sd * 24} -6 L ${sd * 24} -64 L ${sd * 160} -64 L ${sd * 166} -6 Z`} fill={L.shoe} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
         ))}
+        </g>
+        <g transform={`translate(0 ${446 * sit})`}>
         {[-1, 1].map((sd) => (
           <g key={sd}>
             <path d={arm(sd)} stroke={L.ink} strokeWidth={72 + OW * 2} strokeLinecap="round" fill="none" />
@@ -286,6 +314,7 @@ const AlisaBack: React.FC<{s: AlisaState; light: TemaLight; id: string; crop?: n
           <path d="M -262 -1036 C -284 -1240 -250 -1474 0 -1530 C 250 -1474 284 -1240 262 -1036 C 180 -1010 -180 -1010 -262 -1036 Z" fill={L.hair} stroke={L.ink} strokeWidth={OW} strokeLinejoin="round" />
           <path d="M -150 -1440 C -80 -1490 50 -1494 130 -1452" stroke={L.hairLight} strokeWidth={14} fill="none" strokeLinecap="round" opacity={0.6} />
           <path d="M -60 -1060 L -60 -1110 M 0 -1050 L 0 -1120 M 60 -1060 L 60 -1110" stroke={L.hairLight} strokeWidth={8} strokeLinecap="round" opacity={0.5} />
+        </g>
         </g>
       </g>
     </g>

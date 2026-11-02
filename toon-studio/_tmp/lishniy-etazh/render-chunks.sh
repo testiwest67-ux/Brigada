@@ -1,5 +1,5 @@
 #!/bin/bash
-# Full render of «Лишний этаж» in 200-frame chunks: every finished chunk is kept, so a container restart
+# Full render of «Лишний этаж» in 60-frame chunks: every finished chunk is kept, so a container restart
 # only loses the chunk in progress. Re-run the script to resume. At the end: concat video + full mix.wav audio.
 cd /home/user/Brigada/toon-studio
 export TOON_BROWSER=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
@@ -7,7 +7,7 @@ LOG=_tmp/lishniy-etazh/render-chunks.log
 DIR=_tmp/lishniy-etazh/chunks
 mkdir -p "$DIR" out
 TOTAL=1731
-STEP=200
+STEP=60
 echo "start $(date -u +%H:%M:%S)" >> "$LOG"
 for ((a=0; a<TOTAL; a+=STEP)); do
   b=$((a+STEP-1)); [ $b -ge $TOTAL ] && b=$((TOTAL-1))

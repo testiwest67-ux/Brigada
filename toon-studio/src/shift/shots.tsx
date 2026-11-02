@@ -52,7 +52,7 @@ type Pup = {
   draw: (view: 'front' | 'back', id: string) => React.ReactNode;
   clips?: V3[][]; opacity?: number;
   cast?: number;                   // shadow cast on the floor (0 = none: the ones without a shadow)
-  sil?: boolean; blur?: number; scale?: number; // a silhouette on a surface (the shadows on the fridge glass)
+  sil?: boolean; blur?: number; scale?: number; black?: boolean; // a silhouette on a surface (the shadows on the fridge glass)
 };
 const counterClip = (pose: CamPose, z: number, x: number): V3[] | null => {
   if (x < COUNTER.x0 - 0.3 || x > COUNTER.x1 + 0.3) return null;
@@ -84,7 +84,10 @@ const ShopView: React.FC<{pose: CamPose; S: ShopState; pups?: Pup[]; fog?: [stri
       <PuppetLayer>
         <defs>
           <filter id="castSil" x="-50%" y="-50%" width="200%" height="200%">
-            <feFlood floodColor="#000" result="k" /><feComposite in="k" in2="SourceAlpha" operator="in" result="sil" /><feGaussianBlur in="sil" stdDeviation={10} />
+            <feFlood floodColor="#000" result="k" /><feComposite in="k" in2="SourceAlpha" operator="in" result="sil" /><feGaussianBlur in="sil" stdDeviation={6} />
+          </filter>
+          <filter id="blackSil" x="-10%" y="-10%" width="120%" height="120%">
+            <feFlood floodColor="#030305" result="k" /><feComposite in="k" in2="SourceAlpha" operator="in" />
           </filter>
           {list.map(({p, q}) => q.map((quad, k) => <ClipQuad key={`${p.id}${k}`} id={`${p.id}-q${k}`} pose={pose} quad={quad} />))}
         </defs>
@@ -100,7 +103,7 @@ const ShopView: React.FC<{pose: CamPose; S: ShopState; pups?: Pup[]; fog?: [stri
               )}
               <Puppet pose={pose} at={p.at} opacity={p.opacity ?? 1}>
                 {p.sil
-                  ? <g transform={`scale(${p.scale ?? 1})`} style={{filter: `blur(${p.blur ?? 3}px)`}}>{body}</g>
+                  ? <g transform={`scale(${p.scale ?? 1})`} style={{filter: `blur(${p.blur ?? 3}px)`}}>{p.black ? <g filter="url(#blackSil)">{body}</g> : body}</g>
                   : body}
               </Puppet>
             </g>
@@ -192,7 +195,7 @@ export const S07: React.FC<{c: Ctx}> = ({c}) => {
 // 8. rule 3: the phone on the wall
 export const S08: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([1.3, 1.6, 0.9], [1.6, 1.55, 0.55], k), hand(c.t, 8, 0.003)), [PHONE[0], PHONE[1] - 0.15, PHONE[2]], lerp(46, 38, k));
+  const pose = cam(add(mix3([0.85, 1.5, -0.3], [1.2, 1.47, -0.45], k), hand(c.t, 8, 0.003)), [PHONE[0], PHONE[1] - 0.12, PHONE[2]], lerp(44, 36, k));
   return <ShopView pose={pose} S={shop(c)} />;
 };
 
@@ -214,8 +217,8 @@ export const S11: React.FC<{c: Ctx}> = ({c}) => {
 export const S12: React.FC<{c: Ctx}> = ({c}) => {
   const open = ramp(c.f, 4, 16, easeOut) * (1 - ramp(c.f, 40, 55));
   const w = ramp(c.f, 6, c.d * c.fps - 8, easeInOut);
-  const pose = cam(add([2.05, 0.95, 0.55], hand(c.t, 12, 0.004)), [1.0, 0.75, 2.9], 58);
-  const b = babkaPup('b12', [1.0, Math.abs(Math.sin(c.t * 6)) * 0.01, lerp(4.0, 1.4, w)], bb(T(c), {smile: 0.6}), NIGHT, {cast: 0.55});
+  const pose = cam(add([1.75, 1.3, 0.1], hand(c.t, 12, 0.004)), [1.0, 0.75, 2.4], 58);
+  const b = babkaPup('b12', [0.95, Math.abs(Math.sin(c.t * 6)) * 0.01, lerp(4.0, 1.75, w)], bb(T(c), {smile: 0.6}), NIGHT, {cast: 0.8});
   return <ShopView pose={pose} S={shop(c, {door: open, clock: '00:12'})} pups={[b]} />;
 };
 
@@ -279,7 +282,7 @@ export const S20: React.FC<{c: Ctx}> = ({c}) => {
 export const S21: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const x = FRIDGE.x0 + (FRIDGE.x1 - FRIDGE.x0) / FRIDGE.n * (WRITE_DOOR + 0.5);
-  const pose = cam(add([x + 0.02, 1.5, lerp(0.45, 0.25, k)], hand(c.t, 21, 0.003)), [x, 1.45, FRIDGE.z], 48);
+  const pose = cam(add([x + 0.02, 1.5, lerp(0.75, 0.5, k)], hand(c.t, 21, 0.003)), [x, 1.45, FRIDGE.z], 48);
   return <ShopView pose={pose} S={N333(c, {write: ramp(c.f, 6, c.d * c.fps - 10)})} fog={FOG_COLD} look={{bloom: 0.5}} />;
 };
 
@@ -305,7 +308,7 @@ export const S24: React.FC<{c: Ctx}> = ({c}) => <ClockShot c={c} time="03:34" o=
 // 25. four o'clock: the wall phone rings
 export const S25: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([1.35, 1.55, 0.9], [1.7, 1.5, 0.45], k), hand(c.t, 25, 0.003)), [PHONE[0], PHONE[1] - 0.15, PHONE[2]], lerp(46, 36, k));
+  const pose = cam(add(mix3([0.95, 1.5, -0.3], [1.35, 1.47, -0.45], k), hand(c.t, 25, 0.003)), [PHONE[0], PHONE[1] - 0.12, PHONE[2]], lerp(44, 34, k));
   const ring = (Math.floor(c.t * 2.5) % 2 === 0 ? 1 : 0);
   return <ShopView pose={pose} S={shop(c, {ring, lamps: 0.7, clock: '04:00'})} />;
 };
@@ -326,8 +329,8 @@ export const S27: React.FC<{c: Ctx}> = ({c}) => {
 
 // 28. he bites his lip, silent
 export const S28: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([2.2, 1.32, 0.12], hand(c.t, 28, 0.002)), [2.2, 1.3, -0.55], 26);
-  return <ShopView pose={pose} S={shop(c, {receiver: false, lamps: 0.7})} pups={[dimaPup('d28', AT_PHONE, dm(T(c), {phone: 1, fear: 0.9, tears: 1, mouth: 0, tremble: 1.5}), NIGHT)]} />;
+  const pose = cam(add([2.2, 1.34, 0.2], hand(c.t, 28, 0.002)), [2.2, 1.3, -0.55], 28);
+  return <ShopView pose={pose} S={shop(c, {receiver: false, lamps: 0.7})} pups={[dimaPup('d28', AT_PHONE, dm(T(c), {phone: 1, fear: 0.9, tears: 1, mouth: 0, bite: 1, tremble: 1.5}), NIGHT)]} />;
 };
 
 // 29. the voice changes: his own voice. A hard push in, a glitch; his face goes stiff
@@ -389,7 +392,7 @@ export const S36: React.FC<{c: Ctx}> = ({c}) => {
   const xs = [-2.6, -2.05, -1.45, -0.9, -0.35, 0.25, 0.8, 1.45];
   const ghosts: Pup[] = xs.map((x, i) => {
     const kind = i % 3;
-    const o = {sil: true, blur: 2, opacity: 0.8, clips: [FRIDGE_GLASS], facing: 1 as const};
+    const o = {sil: true, black: kind === 1, blur: 2, opacity: 0.85, clips: [FRIDGE_GLASS], facing: 1 as const};
     const at: V3 = [x, 0, FRIDGE.z - 0.04];
     if (kind === 1) return {id: `g${i}`, at, ...o, draw: (_v, pid) => <Stas s={st(T(c), {smile: 0.6})} light={{bright: 0.02, warmRim: 0, coldRim: 0, cold: 0}} id={pid} />};
     return {id: `g${i}`, at, ...o, draw: (_v, pid) => <Dima s={dm(T(c) + i, {shade: 1, smile: 0.8, blink: 1, tilt: (i % 2 ? 1 : -1) * 10})} light={{bright: 1, warmRim: 0, coldRim: 0, cold: 0}} id={pid} />};

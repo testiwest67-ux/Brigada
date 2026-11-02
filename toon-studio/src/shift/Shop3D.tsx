@@ -120,24 +120,18 @@ const glassMat = (frost: number, write: number, writing: boolean) => {
       for (let i = 0; i < 40 * fq; i++) { c.fillStyle = `rgba(235,245,250,${0.1 + r() * 0.2})`; c.beginPath(); c.arc(r() * 256, r() * 512, 1 + r() * 4, 0, 7); c.fill(); }
       for (let i = 0; i < 6; i++) { c.fillStyle = 'rgba(230,240,245,0.06)'; c.beginPath(); c.ellipse(r() * 256, r() * 512, 20, 50, 0.3, 0, 7); c.fill(); }
       if (wq > 0) {
-        // wiped strokes: clear the frost where the finger went, letter by letter
-        // a darker wet rim around the wiped letters, then clear the frost inside them
-        c.save(); c.font = 'bold 92px sans-serif'; c.textBaseline = 'middle'; c.textAlign = 'left';
-        { const word = 'ДИМА', n = Math.ceil(wq * word.length), full = c.measureText(word).width;
-          c.translate(128, 210); c.rotate(-0.06); c.lineWidth = 26; c.lineJoin = 'round'; c.strokeStyle = 'rgba(40,60,80,0.55)'; c.strokeText(word.slice(0, n), -full / 2, 0); }
-        c.restore();
-        c.save(); c.globalCompositeOperation = 'destination-out';
-        c.font = 'bold 92px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+        // the name, written from the inside with a finger: wet dark strokes through the frost, letter by letter
         const word = 'ДИМА', n = Math.ceil(wq * word.length);
-        c.lineWidth = 16; c.lineJoin = 'round'; c.strokeStyle = 'rgba(0,0,0,1)';
-        const partial = word.slice(0, n);
+        c.save(); c.font = 'bold 66px sans-serif'; c.textBaseline = 'middle'; c.textAlign = 'left';
+        const full = c.measureText(word).width;
         c.translate(128, 210); c.rotate(-0.06);
-        c.textAlign = 'left'; const full = c.measureText(word).width;
-        c.strokeText(partial, -full / 2, 0); c.fillText(partial, -full / 2, 0);
+        c.lineJoin = 'round';
+        c.lineWidth = 22; c.strokeStyle = 'rgba(70,95,115,0.35)'; c.strokeText(word.slice(0, n), -full / 2, 0);
+        c.lineWidth = 9; c.strokeStyle = 'rgba(25,38,52,0.9)'; c.strokeText(word.slice(0, n), -full / 2, 0);
         c.restore();
         // drips running down from the letters
-        c.fillStyle = 'rgba(180,210,225,0.25)';
-        for (let i = 0; i < n * 2; i++) c.fillRect(70 + i * 15, 240, 4, 30 + (i * 37) % 60);
+        c.fillStyle = 'rgba(25,38,52,0.6)';
+        for (let i = 0; i < n * 2; i++) c.fillRect(70 + i * 15, 250, 3, 30 + (i * 37) % 70);
       }
     })}));
 };
@@ -254,21 +248,28 @@ const Counter: React.FC<{S: ShopState}> = ({S}) => {
 };
 
 const Phone: React.FC<{S: ShopState}> = ({S}) => {
+  // an old Soviet wall phone: dark-red body, a white rotary dial, the black receiver in its cradle on top
   const sh = S.ring * Math.sin(S.t * 90) * 0.004;
+  const body = matte('#7a1c1c', 0.45), black = matte('#141416', 0.35);
   return (
     <group position={[PHONE[0] + sh, PHONE[1], PHONE[2]]}>
-      <Box s={[0.05, 0.24, 0.14]} p={[0, 0, 0]} m={matte('#c8b48a', 0.5)} />
-      <mesh position={[-0.03, 0.03, 0]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.045, 0.045, 0.012, 20]} /><meshStandardMaterial color="#e8e0c8" roughness={0.5} /></mesh>
+      <Box s={[0.012, 0.32, 0.22]} p={[0.012, 0, 0]} m={matte('#5a4a30', 0.7)} shadow={false} />
+      <Box s={[0.07, 0.2, 0.17]} p={[-0.03, -0.02, 0]} m={body} />
+      <mesh position={[-0.066, -0.03, 0]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.055, 0.055, 0.008, 28]} /><meshStandardMaterial color="#efe9da" roughness={0.4} /></mesh>
+      {Array.from({length: 10}, (_, i) => {
+        const a = -0.6 + i * 0.5;
+        return <mesh key={i} position={[-0.071, -0.03 + Math.sin(a) * 0.038, Math.cos(a) * 0.038]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.008, 0.008, 0.004, 10]} /><meshBasicMaterial color="#2a2a2a" /></mesh>;
+      })}
+      <mesh position={[-0.072, -0.03, 0]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.018, 0.018, 0.004, 16]} /><meshStandardMaterial color="#7a1c1c" roughness={0.4} /></mesh>
       {S.receiver && (
-        <group position={[-0.045, 0, 0]} rotation={[S.ring * Math.sin(S.t * 70) * 0.05, 0, 0]}>
-          <Box s={[0.04, 0.26, 0.05]} p={[0, 0.02, 0.09]} m={matte('#d8d2c2', 0.4)} />
-          <Box s={[0.05, 0.06, 0.07]} p={[0, 0.14, 0.09]} m={matte('#d8d2c2', 0.4)} />
-          <Box s={[0.05, 0.06, 0.07]} p={[0, -0.1, 0.09]} m={matte('#d8d2c2', 0.4)} />
+        <group position={[-0.05, 0.1, 0]} rotation={[S.ring * Math.sin(S.t * 70) * 0.06, 0, 0]}>
+          <Box s={[0.045, 0.04, 0.2]} p={[0, 0.02, 0]} m={black} />
+          {[-1, 1].map((sd) => <Box key={sd} s={[0.06, 0.05, 0.06]} p={[0, -0.005, sd * 0.09]} m={black} />)}
         </group>
       )}
-      {/* curly cord */}
+      {/* curly cord from the body down */}
       {Array.from({length: 9}, (_, i) => (
-        <mesh key={i} position={[-0.03, -0.16 - i * 0.04, 0.05]} rotation={[0, 0, Math.PI / 2]}><torusGeometry args={[0.018, 0.005, 6, 12]} /><meshStandardMaterial color="#c8c2b2" roughness={0.6} /></mesh>
+        <mesh key={i} position={[-0.04, -0.15 - i * 0.035, 0.06]} rotation={[0, 0, Math.PI / 2]}><torusGeometry args={[0.016, 0.005, 6, 12]} /><meshStandardMaterial color="#141416" roughness={0.6} /></mesh>
       ))}
     </group>
   );

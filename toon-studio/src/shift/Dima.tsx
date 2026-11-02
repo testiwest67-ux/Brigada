@@ -14,7 +14,7 @@ export const DIMA_LOOK = {
   badge: '#f4f1ea', badgeText: '#b0262a',
   pants: '#3a5276', pantsLight: '#4c6892', shoe: '#ece9e3', sole: '#3a3640',
   eyeWhite: '#f4f1ec', iris: '#4f7a3a', irisDark: '#2e4a22', pupil: '#0d0f19', mouth: '#3b141a', teeth: '#f3eee6',
-  ink: '#14121c', phone: '#d8d2c2', phoneDark: '#8f8878', paper: '#f1ead8',
+  ink: '#14121c', phone: '#1a1a1e', phoneDark: '#0c0c0e', paper: '#f1ead8',
 };
 const SHADE = '#07070b';
 
@@ -34,6 +34,7 @@ export type DimaState = {
   tilt?: number;   // degrees, head tilt (the shadow)
   tremble: number; // px of shiver
   tears?: number;  // 0..1 wet eyes
+  bite?: number;   // 0..1 biting the lower lip (silent)
   shade?: number;  // 0 Dima .. 1 his shadow
   t: number;
 };
@@ -260,6 +261,12 @@ export const Dima: React.FC<{s: DimaState; light: TemaLight; id?: string; crop?:
             <>
               <ellipse cx={mx} cy={my} rx={18 + 12 * mo} ry={4 + 28 * mo} fill={L.mouth} stroke={L.ink} strokeWidth={OW * 0.8} />
               {mo > 0.3 && <rect x={mx - 12 - 6 * mo} y={my - 28 * mo + 2} width={24 + 12 * mo} height={8} rx={4} fill={L.teeth} />}
+              {(s.bite ?? 0) > 0.3 && <>
+                {/* the lower lip pulled in, two front teeth biting it */}
+                <path d={`M ${mx - 34} ${my + 4} Q ${mx} ${my + 22} ${mx + 34} ${my + 4}`} stroke={L.skinDark} strokeWidth={10} fill="none" strokeLinecap="round" />
+                <rect x={mx - 11} y={my - 2} width={10} height={10} rx={2} fill={L.teeth} stroke={L.ink} strokeWidth={2.5} />
+                <rect x={mx + 1} y={my - 2} width={10} height={10} rx={2} fill={L.teeth} stroke={L.ink} strokeWidth={2.5} />
+              </>}
             </>
           )}
           {/* messy ginger hair, front layer */}

@@ -19,6 +19,9 @@ for ((a=0; a<TOTAL; a+=STEP)); do
     && mv "$out.part.mp4" "$out" || { echo "FAIL $a-$b" >> "$LOG"; exit 1; }
 done
 ls "$DIR"/c*.mp4 | sort | sed "s|^|file '$PWD/|; s|$|'|" > "$DIR/list.txt"
-ffmpeg -v error -y -f concat -safe 0 -i "$DIR/list.txt" -i public/lishniy-etazh/mix.wav -map 0:v -map 1:a -c:v copy \
-  -c:a aac -b:a 320k -ar 48000 -ac 2 -shortest -movflags +faststart out/lishniy-etazh.mp4 \
+# Chunk joints drift the timestamps (57.84 s instead of 57.70 s), and -shortest then cut 8 frames:
+# re-time every frame to exactly 1/30 s (setpts) and re-encode, no -shortest.
+ffmpeg -v error -y -f concat -safe 0 -i "$DIR/list.txt" -i public/lishniy-etazh/mix.wav -map 0:v -map 1:a \
+  -vf "setpts=N/30/TB" -r 30 -c:v libx264 -crf 17 -preset medium -pix_fmt yuv420p \
+  -c:a aac -b:a 320k -ar 48000 -ac 2 -movflags +faststart out/lishniy-etazh.mp4 \
   && echo "done $(date -u +%H:%M:%S)" >> "$LOG" || echo "FAIL concat" >> "$LOG"

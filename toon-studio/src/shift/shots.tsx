@@ -95,7 +95,7 @@ const ShopView: React.FC<{pose: CamPose; S: ShopState; pups?: Pup[]; fog?: [stri
             <g key={p.id}>
               {(p.cast ?? 0) > 0 && (
                 <Puppet pose={pose} at={p.at}>
-                  <g transform="matrix(1 0 -0.85 -0.28 0 0)" opacity={p.cast} filter="url(#castSil)">{p.draw(view, `${p.id}s`)}</g>
+                  <g transform="matrix(1 0 0.45 -0.22 0 0)" opacity={p.cast} filter="url(#castSil)">{p.draw(view, `${p.id}s`)}</g>
                 </Puppet>
               )}
               <Puppet pose={pose} at={p.at} opacity={p.opacity ?? 1}>
@@ -137,7 +137,7 @@ const dimaWithShadow = (c: Ctx, s: DimaState, light: TemaLight, lag = 0.35, so: 
 // ---------- inserts ----------
 const ClockShot: React.FC<{c: Ctx; time: string; o?: Partial<ShopState>; blink?: boolean}> = ({c, time, o = {}, blink}) => {
   const k = K(c);
-  const pose = cam(add(mix3([1.0, 2.38, 2.75], [1.0, 2.45, 2.95], k), hand(c.t, 3, 0.003)), CLOCK, 32);
+  const pose = cam(add(mix3([1.0, 2.3, 1.95], [1.0, 2.36, 2.2], k), hand(c.t, 3, 0.003)), CLOCK, 34);
   const show = blink ? (Math.floor(c.t * 2) % 2 === 0 ? time : time.replace(':', ' ')) : time;
   return <ShopView pose={pose} S={shop(c, {clock: show, ...o})} look={{bloom: 0.8}} />;
 };
@@ -156,7 +156,7 @@ export const S01: React.FC<{c: Ctx}> = ({c}) => {
 // 2. Dima's face: yawning, first shift
 export const S02: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c, easeOut);
-  const pose = cam(add([0.78, 1.42, lerp(0.35, 0.18, k)], hand(c.t, 2, 0.004)), [0.75, 1.36, -0.62], 42);
+  const pose = cam(add([0.8, 1.42, lerp(0.75, 0.5, k)], hand(c.t, 2, 0.004)), [0.75, 1.32, -0.62], 40);
   const yawn = clamp(1 - Math.abs(c.t - 0.7) / 0.6);
   return <ShopView pose={pose} S={shop(c, {clock: '23:59'})} pups={dimaWithShadow(c, dm(T(c), {mouth: yawn, blink: lerp(1, 0.2, yawn), lookX: 0.1}), NIGHT)} />;
 };
@@ -177,7 +177,7 @@ export const S05: React.FC<{c: Ctx}> = ({c}) => <NoteInsert focus={1} k={K(c)} t
 
 // 6. Dima raises an eyebrow
 export const S06: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([0.82, 1.42, 0.12], hand(c.t, 6, 0.004)), [0.75, 1.38, -0.62], 38);
+  const pose = cam(add([0.86, 1.42, 0.45], hand(c.t, 6, 0.004)), [0.75, 1.34, -0.62], 36);
   return <ShopView pose={pose} S={shop(c)} pups={dimaWithShadow(c, dm(T(c), {fear: 0.35 * ramp(c.f, 6, 14), lookX: -0.3, turn: -0.15, mouth: 0.1}), NIGHT)} />;
 };
 
@@ -185,14 +185,14 @@ export const S06: React.FC<{c: Ctx}> = ({c}) => {
 export const S07: React.FC<{c: Ctx}> = ({c}) => {
   if (c.t < c.d * 0.4) return <ClockShot c={c} time="03:33" blink />;
   const k = ramp(c.f, c.d * 0.4 * c.fps, c.d * c.fps, easeInOut);
-  const pose = cam([lerp(-2.4, -0.6, k), 1.3, 0.1], [lerp(-2.0, -0.2, k), 1.2, FRIDGE.z], 50);
+  const pose = cam([lerp(-2.4, -0.6, k), 1.35, 0.9], [lerp(-1.9, -0.1, k), 1.15, FRIDGE.z], 50);
   return <ShopView pose={pose} S={shop(c, {fridge: 1.3, frost: 0.15})} fog={FOG_COLD} />;
 };
 
 // 8. rule 3: the phone on the wall
 export const S08: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([1.8, 1.55, 0.45], [2.15, 1.5, 0.0], k), hand(c.t, 8, 0.003)), PHONE, lerp(42, 30, k));
+  const pose = cam(add(mix3([1.3, 1.6, 0.9], [1.6, 1.55, 0.55], k), hand(c.t, 8, 0.003)), [PHONE[0], PHONE[1] - 0.15, PHONE[2]], lerp(46, 38, k));
   return <ShopView pose={pose} S={shop(c)} />;
 };
 
@@ -225,7 +225,7 @@ export const S13: React.FC<{c: Ctx}> = ({c}) => <ClockShot c={c} time="01:00" o=
 // 14. the man in the long coat at the counter, from below; he puts a pack of salt on the belt
 export const S14: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([0.55, 1.05, -0.25], [0.6, 1.0, -0.15], k), hand(c.t, 14, 0.004)), [0.9, 1.75, 0.85], 60);
+  const pose = cam(add(mix3([0.6, 1.08, -0.6], [0.62, 1.05, -0.5], k), hand(c.t, 14, 0.004)), [0.88, 1.62, 0.85], 72);
   const S = shop(c, {lamps: flick(c.g, [c.g - c.f + 30, c.g - c.f + 34]) * 0.8, clock: '01:00'});
   return <ShopView pose={pose} S={S} pups={[stasPup('s14', SPOT.buyer, st(T(c), {reach: ramp(c.f, 20, 40, easeInOut), lookX: -0.3}), {...NIGHT, cold: 0.45})]} />;
 };
@@ -239,7 +239,7 @@ export const S15: React.FC<{c: Ctx}> = ({c}) => {
 
 // 16. Dima, pale: «Касса закрыта»
 export const S16: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([0.74, 1.4, 0.05], hand(c.t, 16, 0.003)), [0.75, 1.37, -0.62], 36);
+  const pose = cam(add([0.74, 1.4, 0.38], hand(c.t, 16, 0.003)), [0.75, 1.34, -0.62], 34);
   return <ShopView pose={pose} S={shop(c, {clock: '01:00'})} pups={dimaWithShadow(c, dm(T(c), {fear: 0.85, tremble: 1.6, mouth: talk(c.t, 0.6, 1.6) * 0.5, lookY: -0.2}), NIGHT)} />;
 };
 
@@ -279,20 +279,20 @@ export const S20: React.FC<{c: Ctx}> = ({c}) => {
 export const S21: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const x = FRIDGE.x0 + (FRIDGE.x1 - FRIDGE.x0) / FRIDGE.n * (WRITE_DOOR + 0.5);
-  const pose = cam(add([x + 0.02, 1.62, lerp(-0.1, -0.3, k)], hand(c.t, 21, 0.003)), [x, 1.6, FRIDGE.z], 46);
+  const pose = cam(add([x + 0.02, 1.5, lerp(0.45, 0.25, k)], hand(c.t, 21, 0.003)), [x, 1.45, FRIDGE.z], 48);
   return <ShopView pose={pose} S={N333(c, {write: ramp(c.f, 6, c.d * c.fps - 10)})} fog={FOG_COLD} look={{bloom: 0.5}} />;
 };
 
 // 22. Dima looks only at the floor (eyes down, shaking)
 export const S22: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([0.72, 1.3, 0.0], hand(c.t, 22, 0.004)), [0.75, 1.36, -0.62], 38);
+  const pose = cam(add([0.72, 1.52, 0.4], hand(c.t, 22, 0.004)), [0.75, 1.3, -0.62], 36);
   return <ShopView pose={pose} S={N333(c, {knock: knockAt(c)})} fog={FOG_COLD} pups={dimaWithShadow(c, dm(T(c), {fear: 0.9, lookY: 1, blink: 0.45, tremble: 2.4}), COLD)} />;
 };
 
 // 23. easter egg: Dima keeps still, but his shadow on the glass turns its head and opens white eyes
 export const S23: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([0.95, 1.4, 1.2], [0.9, 1.38, 0.95], k), hand(c.t, 23, 0.003)), [0.68, 1.25, -0.9], 50);
+  const pose = cam(add(mix3([0.75, 1.4, 1.35], [0.7, 1.38, 1.1], k), hand(c.t, 23, 0.003)), [0.52, 1.22, -0.9], 52);
   const look = ramp(c.f, c.d * 0.25 * c.fps, c.d * 0.7 * c.fps, easeInOut);
   const me = dm(T(c), {fear: 0.9, lookY: 1, blink: 0.45, tremble: 1.5});
   return <ShopView pose={pose} S={N333(c)} fog={FOG_COLD}
@@ -305,7 +305,7 @@ export const S24: React.FC<{c: Ctx}> = ({c}) => <ClockShot c={c} time="03:34" o=
 // 25. four o'clock: the wall phone rings
 export const S25: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([1.75, 1.5, 0.55], [2.2, 1.48, 0.05], k), hand(c.t, 25, 0.003)), PHONE, lerp(46, 30, k));
+  const pose = cam(add(mix3([1.35, 1.55, 0.9], [1.7, 1.5, 0.45], k), hand(c.t, 25, 0.003)), [PHONE[0], PHONE[1] - 0.15, PHONE[2]], lerp(46, 36, k));
   const ring = (Math.floor(c.t * 2.5) % 2 === 0 ? 1 : 0);
   return <ShopView pose={pose} S={shop(c, {ring, lamps: 0.7, clock: '04:00'})} />;
 };
@@ -320,20 +320,20 @@ export const S26: React.FC<{c: Ctx}> = ({c}) => {
 // 27. mom crying in the receiver; tears in his eyes
 export const S27: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add([2.18, 1.4, lerp(0.05, -0.15, k)], hand(c.t, 27, 0.003)), [2.2, 1.38, -0.55], lerp(34, 26, k));
+  const pose = cam(add([2.15, 1.42, lerp(0.45, 0.3, k)], hand(c.t, 27, 0.003)), [2.2, 1.36, -0.55], lerp(36, 30, k));
   return <ShopView pose={pose} S={shop(c, {receiver: false, lamps: 0.7})} pups={[dimaPup('d27', AT_PHONE, dm(T(c), {phone: 1, cover: 1, fear: 0.9, tears: ramp(c.f, 10, 50), tremble: 1.2}), NIGHT)]} />;
 };
 
 // 28. he bites his lip, silent
 export const S28: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([2.2, 1.29, -0.2], hand(c.t, 28, 0.002)), [2.2, 1.28, -0.55], 30);
+  const pose = cam(add([2.2, 1.32, 0.12], hand(c.t, 28, 0.002)), [2.2, 1.3, -0.55], 26);
   return <ShopView pose={pose} S={shop(c, {receiver: false, lamps: 0.7})} pups={[dimaPup('d28', AT_PHONE, dm(T(c), {phone: 1, fear: 0.9, tears: 1, mouth: 0, tremble: 1.5}), NIGHT)]} />;
 };
 
 // 29. the voice changes: his own voice. A hard push in, a glitch; his face goes stiff
 export const S29: React.FC<{c: Ctx}> = ({c}) => {
   const z = easeOut(clamp(c.t / 0.35));
-  const pose = cam(add([2.2, 1.4, lerp(0.35, -0.12, z)], hand(c.t, 29, 0.002)), [2.2, 1.38, -0.55], lerp(44, 30, z));
+  const pose = cam(add([2.2, 1.4, lerp(0.7, 0.25, z)], hand(c.t, 29, 0.002)), [2.2, 1.36, -0.55], lerp(46, 32, z));
   const g = Math.max(0, kick(c.f, 2, c.fps, 6, 6)) * 0.8 + (c.t > c.d - 0.6 ? 0.4 : 0);
   return <ShopView pose={pose} S={shop(c, {receiver: false, lamps: 0.65})} look={{glitch: g, seed: c.f}}
     pups={[dimaPup('d29', AT_PHONE, dm(T(c), {phone: 1, fear: lerp(0.9, 0.1, ramp(c.f, 8, 20)), blink: 1, tears: 1, tremble: lerp(1.5, 0, ramp(c.f, 8, 20)), lookX: 0, lookY: 0}), DARK)]} />;
@@ -358,34 +358,34 @@ export const S31: React.FC<{c: Ctx}> = ({c}) => {
 
 // 32. Dima almost cries with relief
 export const S32: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([0.76, 1.42, 0.12], hand(c.t, 32, 0.003)), [0.75, 1.37, -0.62], 38);
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.55, counter: 0.6})} pups={dimaWithShadow(c, dm(T(c), {smile: ramp(c.f, 4, 20), tears: 0.9, mouth: 0.25}), DAWN)} />;
+  const pose = cam(add([0.78, 1.42, 0.42], hand(c.t, 32, 0.003)), [0.75, 1.34, -0.62], 36);
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.55, counter: 0.6, clock: '06:01'})} pups={dimaWithShadow(c, dm(T(c), {smile: ramp(c.f, 4, 20), tears: 0.9, mouth: 0.25}), DAWN)} />;
 };
 
 // 33. Petrovich stops and looks at the floor in front of the counter
 export const S33: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const pose = cam(add(mix3([0.7, 1.55, -0.3], [0.72, 1.6, -0.05], k), hand(c.t, 33, 0.003)), [0.85, 1.55, 0.85], lerp(48, 38, k));
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.55, counter: 0.6})} pups={[petPup('p33', SPOT.buyer, pv(T(c), {lookY: ramp(c.f, 10, 26), sad: ramp(c.f, 20, 50)}), DAWN)]} />;
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.55, counter: 0.6, clock: '06:01'})} pups={[petPup('p33', SPOT.buyer, pv(T(c), {lookY: ramp(c.f, 10, 26), sad: ramp(c.f, 20, 50)}), DAWN)]} />;
 };
 
 // 34. he takes his glasses off: «Касса закрыта, сынок»
 export const S34: React.FC<{c: Ctx}> = ({c}) => {
-  const pose = cam(add([0.82, 1.62, 0.15], hand(c.t, 34, 0.003)), [0.85, 1.55, 0.82], 34);
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.6})} pups={[petPup('p34', SPOT.buyer, pv(T(c), {glasses: ramp(c.f, 4, 18), sad: 1, lookY: 0.3, mouth: talk(c.t, 0.9, 2.2) * 0.5}), DAWN)]} />;
+  const pose = cam(add([0.8, 1.6, -0.25], hand(c.t, 34, 0.003)), [0.85, 1.5, 0.82], 34);
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.6, clock: '06:01'})} pups={[petPup('p34', SPOT.buyer, pv(T(c), {glasses: ramp(c.f, 4, 18), sad: 1, lookY: 0.3, mouth: talk(c.t, 0.9, 2.2) * 0.5}), DAWN)]} />;
 };
 
 // 35. Dima looks down: no shadow under him (Petrovich's lies right there)
 export const S35: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const pose = cam(add(mix3([1.55, 0.5, -0.05], [1.45, 0.45, -0.15], k), hand(c.t, 35, 0.003)), [0.78, 0.25, -0.62], 50);
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.9})} pups={[dimaPup('d35', D, dm(T(c), {fear: 1, lookY: 1, tremble: 1}), DAWN)]} />;
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.9, clock: '06:02'})} pups={[dimaPup('d35', D, dm(T(c), {fear: 1, lookY: 1, tremble: 1}), DAWN)]} />;
 };
 
 // 36. along the fridge glass: dark silhouettes of shadows, many of them, with white eyes
 export const S36: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam([lerp(-2.4, 0.4, k), 1.35, 0.25], [lerp(-2.1, 0.7, k), 1.15, FRIDGE.z], 50);
+  const pose = cam([lerp(-2.3, 0.3, k), 1.35, 0.85], [lerp(-2.0, 0.6, k), 1.1, FRIDGE.z], 52);
   const xs = [-2.6, -2.05, -1.45, -0.9, -0.35, 0.25, 0.8, 1.45];
   const ghosts: Pup[] = xs.map((x, i) => {
     const kind = i % 3;
@@ -394,7 +394,7 @@ export const S36: React.FC<{c: Ctx}> = ({c}) => {
     if (kind === 1) return {id: `g${i}`, at, ...o, draw: (_v, pid) => <Stas s={st(T(c), {smile: 0.6})} light={{bright: 0.02, warmRim: 0, coldRim: 0, cold: 0}} id={pid} />};
     return {id: `g${i}`, at, ...o, draw: (_v, pid) => <Dima s={dm(T(c) + i, {shade: 1, smile: 0.8, blink: 1, tilt: (i % 2 ? 1 : -1) * 10})} light={{bright: 1, warmRim: 0, coldRim: 0, cold: 0}} id={pid} />};
   });
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.45, fridge: 1.8, frost: 0.35})} fog={FOG_COLD} pups={ghosts} />;
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.45, fridge: 1.8, frost: 0.35, clock: '06:02'})} fog={FOG_COLD} pups={ghosts} />;
 };
 
 // 37. behind the counter stands his shadow in his vest, scanning Petrovich's bread
@@ -402,16 +402,16 @@ export const S37: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
   const pose = cam(add([lerp(1.7, 0.1, k), 1.5, 1.55], hand(c.t, 37, 0.003)), [0.75, 1.3, -0.6], 50);
   const beep = c.f % 40 < 3 ? 1 : 0;
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.7})}
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, counter: 0.7, clock: '06:03'})}
     pups={[dimaPup('d37', D, dm(T(c), {shade: 1, smile: 1, hands: 0.35 + beep * 0.1, tilt: 6}), NIGHT), petPup('p37', SPOT.buyer, pv(T(c), {sad: 1}), DAWN)]} />;
 };
 
 // 38. outside, at dawn: Dima presses his palms to the glass; next to him the man in the coat. No shadows.
 export const S38: React.FC<{c: Ctx}> = ({c}) => {
   const k = K(c);
-  const pose = cam(add(mix3([0.9, 1.45, 0.2], [0.95, 1.42, 2.1], k), hand(c.t, 38, 0.003)), [0.85, 1.3, 4.0], lerp(52, 46, k));
-  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, sign: 0})}
-    pups={[stasPup('s38', [-0.05, 0, 4.15], st(T(c), {smile: 1}), DAWN, {cast: 0}),
+  const pose = cam(add(mix3([0.75, 1.45, 0.2], [0.7, 1.42, 1.9], k), hand(c.t, 38, 0.003)), [0.6, 1.3, 4.0], lerp(56, 50, k));
+  return <ShopView pose={pose} S={shop(c, {dawn: 1, lamps: 0.5, sign: 0, clock: '06:03'})}
+    pups={[stasPup('s38', [0.12, 0, 4.2], st(T(c), {smile: 1}), DAWN, {cast: 0}),
       dimaPup('d38', [1.0, 0, 3.78], dm(T(c), {hands: 1, fear: 1, tremble: 2, mouth: 0.5}), DAWN, {facing: -1})]} />;
 };
 

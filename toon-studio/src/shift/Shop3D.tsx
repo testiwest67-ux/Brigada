@@ -115,12 +115,17 @@ const glassMat = (frost: number, write: number, writing: boolean) => {
   return std(`glass${fq}_${wq}`, () => new THREE.MeshBasicMaterial({transparent: true, depthWrite: false, side: THREE.DoubleSide,
     map: canvasTex(`sglass${fq}_${wq}`, 256, 512, (c) => {
       c.clearRect(0, 0, 256, 512);
-      c.fillStyle = `rgba(200,225,240,${0.06 + 0.62 * fq})`; c.fillRect(0, 0, 256, 512);
+      c.fillStyle = `rgba(214,232,242,${0.06 + 0.8 * fq})`; c.fillRect(0, 0, 256, 512);
       const r = mulberry32(3);
       for (let i = 0; i < 40 * fq; i++) { c.fillStyle = `rgba(235,245,250,${0.1 + r() * 0.2})`; c.beginPath(); c.arc(r() * 256, r() * 512, 1 + r() * 4, 0, 7); c.fill(); }
       for (let i = 0; i < 6; i++) { c.fillStyle = 'rgba(230,240,245,0.06)'; c.beginPath(); c.ellipse(r() * 256, r() * 512, 20, 50, 0.3, 0, 7); c.fill(); }
       if (wq > 0) {
         // wiped strokes: clear the frost where the finger went, letter by letter
+        // a darker wet rim around the wiped letters, then clear the frost inside them
+        c.save(); c.font = 'bold 92px sans-serif'; c.textBaseline = 'middle'; c.textAlign = 'left';
+        { const word = 'ДИМА', n = Math.ceil(wq * word.length), full = c.measureText(word).width;
+          c.translate(128, 210); c.rotate(-0.06); c.lineWidth = 26; c.lineJoin = 'round'; c.strokeStyle = 'rgba(40,60,80,0.55)'; c.strokeText(word.slice(0, n), -full / 2, 0); }
+        c.restore();
         c.save(); c.globalCompositeOperation = 'destination-out';
         c.font = 'bold 92px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
         const word = 'ДИМА', n = Math.ceil(wq * word.length);

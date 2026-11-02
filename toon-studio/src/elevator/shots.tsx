@@ -13,10 +13,12 @@ import {Alisa, AlisaState, ALISA_REST} from './Alisa';
 import {BUTTON, CAB, COR, DOOR_GAP, LiftSet, LiftState, MIR, MIRROR_QUAD} from './Lift3D';
 import {MACH, Machine3D, Misha} from './Misha';
 import {ClipQuad, Rig} from './rig';
+import {CUE, CUTS, mouthAt, S as LS, E as LE, W as LW} from './timing';
 import {Look} from './post';
 
 export type Ctx = {f: number; t: number; d: number; fps: number; g: number};
 const T = (c: Ctx) => c.g / c.fps;
+const at = (c: Ctx, sec: number) => (sec - (c.g - c.f) / c.fps) * c.fps; // global seconds -> local frame
 const cam = (pos: V3, tgt: V3, fov: number, roll = 0): CamPose => ({pos, tgt, fov, roll});
 const mix3 = (a: V3, b: V3, k: number): V3 => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
 const add = (a: V3, b: V3): V3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
@@ -98,9 +100,9 @@ const DISP_POSE = (k: number, sh = 0) => cam([sh, lerp(1.82, 1.9, k), lerp(0.05,
 // ---------------- 1. the display: 11 … 12 … 13 ----------------
 export const S01: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
-  const disp = c.t < 0.75 ? '11' : c.t < 1.5 ? '12' : '13';
-  const sh = kick(c.f, 1.5 * c.fps, c.fps, 9, 5) * 0.012;
-  return <LiftView pose={DISP_POSE(k, sh)} S={lift(c, {disp, lamp: 0.45 * flick(c.g, [20, 47]), dispOn: disp === '13' ? 0.7 + 0.3 * Math.sin(c.t * 40) : 1})} look={{bloom: 0.6}} exposure={0.85} />;
+  const disp = T(c) < CUE.disp12 ? '11' : T(c) < CUE.disp13 ? '12' : '13';
+  const sh = kick(c.f, at(c, CUE.disp13), c.fps, 9, 5) * 0.012;
+  return <LiftView pose={DISP_POSE(k, sh)} S={lift(c, {disp, lamp: 0.4 * flick(c.g, [20, 47]), dispOn: (disp === '13' ? 0.7 + 0.3 * Math.sin(c.t * 40) : 1) * 0.35})} look={{bloom: 0.35}} exposure={0.8} />;
 };
 
 // ---------------- 2. Alisa's face: the lift came to 13 ----------------
@@ -143,17 +145,17 @@ export const S03: React.FC<{c: Ctx}> = ({c}) => {
 };
 export const S04: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
-  const nev = 2.7; // «никогда»
+  const nev = at(c, LW(4, 1)) / c.fps; // «никогда»
   const g = Math.max(0, kick(c.f, nev * c.fps, c.fps, 6, 6)) * 0.9;
   const pose = cam(add(mix3([-0.2, 1.6, 0.55], [-0.24, 1.62, 0.2], k), hand(c.t, 5)), [-0.25, 1.58, -0.55], lerp(44, 36, k));
-  return <MachineView c={c} pose={pose} misha={{finger: ramp(c.f, 6, 18, easeOut), mouth: talk(c.t, 0.3, 4.9), narrow: 0.5 + 0.3 * ramp(c.f, nev * 30, nev * 30 + 6)}} look={{glitch: g, seed: c.f}} />;
+  return <MachineView c={c} pose={pose} misha={{finger: ramp(c.f, 6, 18, easeOut), mouth: mouthAt(T(c), [3, 4]), narrow: 0.5 + 0.3 * ramp(c.f, nev * 30, nev * 30 + 6)}} look={{glitch: g, seed: c.f}} />;
 };
 
 // ---------------- 5. the doors open: your floor, your door, red light ----------------
 export const S05: React.FC<{c: Ctx}> = ({c}) => {
   const k = ramp(c.f, 0, c.d * c.fps, easeInOut);
   const pose = cam(add(mix3([0.3, 1.62, -0.55], [0.27, 1.6, -0.42], k), hand(c.t, 6)), [0.05, 1.15, 3.0], 52);
-  const S = lift(c, {doors: ramp(c.f, 6, 42, easeInOut)});
+  const S = lift(c, {doors: ramp(c.f, at(c, CUE.doorsOpen), at(c, CUE.doorsOpen) + 36, easeInOut)});
   return <LiftView pose={pose} S={S} fog={FOG13} pups={[alisaPup('a5', [0.1, 0, -0.12], al(c.t, {fear: 0.6}), {...LIFT(S.lamp), coldRim: 1, bright: 0.6})]} />;
 };
 
@@ -166,13 +168,13 @@ export const S06: React.FC<{c: Ctx}> = ({c}) => {
   const gap: V3[] = [[edgeX, 0, COR.z1], [COR.door.w / 2, 0, COR.z1], [COR.door.w / 2, COR.door.h, COR.z1], [edgeX, COR.door.h, COR.z1]];
   const momX = lerp(0.5, -0.1, ramp(c.f, 10, 70));
   const mom = {id: 'mom6', at: [momX, 0, COR.z1 + 0.7] as V3, clips: [gap], facing: -1 as const,
-    draw: () => <Mom s={{t: T(c), blink: 1, worry: 0, mouth: talk(c.t, 0.2, 2.4), breathe: 0, knock: 0, shiver: 0}} light={{bright: 0.12, warmRim: 1, coldRim: 0, cold: 0}} id="mom6" />};
+    draw: () => <Mom s={{t: T(c), blink: 1, worry: 0, mouth: mouthAt(T(c), [7]), breathe: 0, knock: 0, shiver: 0}} light={{bright: 0.12, warmRim: 1, coldRim: 0, cold: 0}} id="mom6" />};
   return <LiftView pose={pose} S={S} fog={['#1c0806', 0.1]} pups={[mom]} />;
 };
 
 // ---------------- 7. pressing «1»: the button stays dead ----------------
-const PRESS = [0.35, 1.05, 1.6, 2.15, 2.6];
 export const S07: React.FC<{c: Ctx}> = ({c}) => {
+  const PRESS = CUE.presses.map((p) => at(c, p) / c.fps);
   const shake = PRESS.reduce((a, p) => a + kick(c.f, p * c.fps, c.fps, 8, 9), 0);
   const pose = cam(add([0.26, 1.16, 0.12], [0, shake * 0.004, 0]), [0.55, 1.07, 0.3], 36);
   const S = lift(c, {doors: 1, btn: [13], lamp: flick(c.g, [600, 640, 660, 680])});
@@ -195,8 +197,8 @@ export const S07: React.FC<{c: Ctx}> = ({c}) => {
 // ---------------- 8. the flat door opens: a girl steps out ----------------
 export const S08: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([-0.3, 1.5, -0.55], hand(c.t, 8)), [0.08, 1.12, 4.1], 40);
-  const S = lift(c, {doors: 1, apt: lerp(0.16, 0.95, ramp(c.f, 4, 45, easeInOut)), aptLight: 1});
-  const w = ramp(c.f, 30, 75, easeInOut);
+  const S = lift(c, {doors: 1, apt: lerp(0.16, 0.95, ramp(c.f, at(c, CUE.aptOpen), at(c, CUE.aptOpen) + 40, easeInOut)), aptLight: 1});
+  const w = ramp(c.f, at(c, CUE.aptOpen) + 22, at(c, CUE.aptOpen) + 62, easeInOut);
   const dz = lerp(4.6, 3.95, w);
   const dbl = alisaPup('d8', [0.05, 0, dz], al(c.t, {uncanny: 1, fear: 0, blink: 1, tremble: 0, breathe: 0}), {bright: 0.18, warmRim: 1, coldRim: 0.1, cold: 0},
     {facing: -1, clips: dz > COR.z1 - 0.05 ? [[[-0.45, 0, COR.z1], [0.45, 0, COR.z1], [0.45, COR.door.h, COR.z1], [-0.45, COR.door.h, COR.z1]]] : []});
@@ -225,27 +227,27 @@ export const S10: React.FC<{c: Ctx}> = ({c}) => {
 
 // ---------------- 11. the doors close at the last moment ----------------
 export const S11: React.FC<{c: Ctx}> = ({c}) => {
-  const close = ramp(c.f, 8, 44, (x) => x * x);
-  const bang = kick(c.f, 44, c.fps, 7, 7);
+  const close = ramp(c.f, at(c, CUE.doorsClose), at(c, CUE.doorsShut), (x) => x * x);
+  const bang = kick(c.f, at(c, CUE.doorsShut), c.fps, 7, 7);
   const pose = cam(add([0.0, 1.32, -0.15], [0, bang * 0.01, 0]), [0, 1.2, CAB.front], 48);
   const S = lift(c, {doors: 1 - close, apt: 0.95, aptLight: 1});
-  const dbl = alisaPup('d11', [0, 0, lerp(1.25, 0.9, ramp(c.f, 0, 40))], al(c.t, {uncanny: 1, smile: 1, fear: 0, blink: 1, tremble: 0, hands: 1}), {...RED, bright: 0.45}, {facing: -1});
+  const dbl = alisaPup('d11', [0, 0, lerp(1.25, 0.9, ramp(c.f, 0, at(c, CUE.doorsShut) - 4))], al(c.t, {uncanny: 1, smile: 1, fear: 0, blink: 1, tremble: 0, hands: 1}), {...RED, bright: 0.45}, {facing: -1});
   return <LiftView pose={pose} S={S} fog={FOG13} pups={[dbl]} />;
 };
 
 // ---------------- 12. going down: 12 … 11 … 10; she slides down the wall (the image is late) ----------------
-const SIT_AT = 1.5;
 export const S12: React.FC<{c: Ctx}> = ({c}) => {
-  if (c.t < 1.2) {
-    const disp = c.t < 0.45 ? '12' : c.t < 0.9 ? '11' : '10';
+  const SIT_AT = at(c, CUE.sitDown) / c.fps;
+  if (c.t < SIT_AT - 0.15) {
+    const q = c.t / (SIT_AT - 0.15); const disp = q < 0.33 ? '12' : q < 0.66 ? '11' : '10';
     return <LiftView pose={DISP_POSE(0.6)} S={lift(c, {disp, btn: [], lamp: 0.9, floor: 12})} look={{bloom: 0.9}} />;
   }
-  const k = ramp(c.f, 1.2 * c.fps, c.d * c.fps, easeInOut);
+  const k = ramp(c.f, (SIT_AT - 0.15) * c.fps, c.d * c.fps, easeInOut);
   const pose = cam(add([0.08, lerp(1.25, 1.2, k), 0.56], hand(c.t, 10, 0.004)), [0, 1.0, -0.4], lerp(60, 68, k));
   const S = lift(c, {disp: '10', btn: [], lamp: 0.9, floor: 12});
-  const sit = ramp(c.f, SIT_AT * c.fps, (SIT_AT + 1.1) * c.fps, easeInOut);
+  const sit = ramp(c.f, (SIT_AT + 0.1) * c.fps, (SIT_AT + 1.1) * c.fps, easeInOut);
   const late = ramp(c.f, (SIT_AT + 0.7) * c.fps, (SIT_AT + 1.8) * c.fps, easeInOut);
-  const me = al(c.t, {fear: lerp(0.8, 0.3, sit), sit, hands: sit * 0.8, blink: c.t > 3.0 ? 0.35 : 1, tremble: 0.3, mouth: 0.15});
+  const me = al(c.t, {fear: lerp(0.8, 0.3, sit), sit, hands: sit * 0.8, blink: c.t > SIT_AT + 1.5 ? 0.35 : 1, tremble: 0.3, mouth: 0.15});
   const img = al(c.t, {fear: 0.3, sit: late, hands: late * 0.8, tremble: 0});
   return <LiftView pose={pose} S={S} pups={[imagePup('i12', AL_SIT, img, LIFT(0.8)), alisaPup('a12', AL_SIT, me, LIFT(0.9))]} />;
 };
@@ -288,34 +290,33 @@ export const S15: React.FC<{c: Ctx}> = ({c}) => {
   );
 };
 
-// ---------------- 16. the swap, seen from inside the mirror ----------------
-const BANGS = [2.0, 2.45, 2.9];
+// ---------------- 16. the swap: the double steps out of the glass, Alisa is pulled in ----------------
 export const S16: React.FC<{c: Ctx}> = ({c}) => {
-  const sw = ramp(c.f, 0.5 * c.fps, 1.7 * c.fps, easeInOut);
+  const BANGS = CUE.bangs.map((b) => at(c, b) / c.fps);
+  const sw = ramp(c.f, at(c, CUE.swap[0]), at(c, CUE.swap[1]), easeInOut);
   const bang = BANGS.reduce((a, b) => a + kick(c.f, b * c.fps, c.fps, 9, 9), 0);
-  const pose = cam(add([0.05, 1.3, -1.72], [bang * 0.012, bang * 0.006, 0]), [0.02, 1.1, 0.4], 50);
-  const S = lift(c, {disp: '5', btn: [], floor: 12, lamp: flick(c.g, [1365, 1380])});
-  const glitch = Math.max(0, Math.sin(Math.PI * sw)) * 0.8 + Math.abs(bang) * 0.3;
-  // the double steps out of the glass into the cabin and turns to face us
-  const dz = lerp(-0.78, -0.32, sw), turn = ramp(c.f, 1.9 * c.fps, 2.3 * c.fps);
-  const dbl = alisaPup('d16', [0.18, 0, dz], al(c.t, {uncanny: 1, smile: 1, fear: 0, blink: 1, tremble: 0}), LIFT(0.85),
-    {facing: turn > 0.5 ? -1 : 1, flip: Math.max(0.05, Math.abs(Math.cos(Math.PI * turn)))});
-  // Alisa is pulled through: she stands up and ends behind the glass, palms on it
-  const mz = lerp(-0.27, -0.82, sw);
-  const me = alisaPup('a16', [lerp(0, -0.24, sw), 0, mz], al(c.t, {fear: 1, sit: 1 - sw, hands: lerp(0.8, 1, sw), tremble: 2.5, mouth: 0.6}), LIFT(0.7));
-  return <LiftView pose={pose} S={S} pups={[dbl, me]} look={{glitch, seed: c.f, ripple: Math.sin(Math.PI * sw) * 0.6, rtime: c.t}} />;
+  const pose = cam(add([0.1, 1.12, 0.52], [bang * 0.01, bang * 0.005, 0]), [0.02, 1.12, -0.6], 62);
+  const S = lift(c, {disp: '5', btn: [], floor: 12, lamp: flick(c.g, [1440, 1452])});
+  const glitch = Math.max(0, Math.sin(Math.PI * sw)) * 0.7 + Math.abs(bang) * 0.25;
+  // the double walks out of the mirror, talking, and ends standing in the cabin
+  const dbl = alisaPup('d16', [0.28, 0, lerp(-0.85, -0.42, ramp(c.f, 0, at(c, CUE.swap[0]) + 20, easeInOut))],
+    al(c.t, {uncanny: 1, smile: 1, fear: 0, blink: 1, tremble: 0, mouth: mouthAt(T(c), [16]) * 0.6}), LIFT(0.85));
+  // Alisa is pulled through: from sitting in front of the glass to standing behind it, palms on it, banging
+  const me = alisaPup('a16', [lerp(0, -0.22, sw), 0, lerp(-0.27, -0.8, sw)],
+    al(c.t, {fear: 1, sit: 1 - sw, hands: lerp(0.8, 1, sw), tremble: 2.5, mouth: lerp(0.2, 0.7, sw), lookY: -0.3}), LIFT(lerp(0.9, 0.6, sw)));
+  return <LiftView pose={pose} S={S} pups={[dbl, me]} look={{glitch, seed: c.f, ripple: Math.sin(Math.PI * sw) * 0.5, rtime: c.t}} />;
 };
 
 // ---------------- 17. floor 12: mom hugs "Alisa"; she looks back at the mirror ----------------
 export const S17: React.FC<{c: Ctx}> = ({c}) => {
   const pose = cam(add([0.26, 1.35, -1.6], hand(c.t, 12, 0.004)), [0.02, 1.15, 2.0], 44);
-  const S = lift(c, {doors: ramp(c.f, 0, 22, easeInOut), disp: '12', btn: [], floor: 12, apt: 1, aptLight: 1, corLamp: 1, lamp: 0.9});
-  const w = ramp(c.f, 18, 75, easeInOut), turn = ramp(c.f, 80, 92);
+  const S = lift(c, {doors: ramp(c.f, at(c, CUE.doors12), at(c, CUE.doors12) + 20, easeInOut), disp: '12', btn: [], floor: 12, apt: 1, aptLight: 1, corLamp: 1, lamp: 0.9});
+  const w = ramp(c.f, 12, 58, easeInOut), turn = ramp(c.f, 62, 74);
   const dbl = alisaPup('d17', [-0.08, Math.abs(Math.sin(c.t * 5)) * 0.012 * (w > 0 && w < 1 ? 1 : 0), lerp(-0.2, 3.25, w)],
-    al(c.t, {uncanny: lerp(1, 0.35, w), smile: turn, fear: 0, blink: c.t > 3.2 && c.t < 3.35 ? 0.1 : 1, tremble: 0}), WARM,
+    al(c.t, {uncanny: lerp(1, 0.35, w), smile: turn, fear: 0, blink: c.t > 2.55 && c.t < 2.7 ? 0.1 : 1, tremble: 0}), WARM,
     {facing: turn > 0.5 ? -1 : 1, flip: Math.max(0.05, Math.abs(Math.cos(Math.PI * turn)))});
   const mom = {id: 'mom17', at: [0.3, 0, 3.8] as V3, facing: -1 as const,
-    draw: () => <Mom s={{t: T(c), blink: 1, worry: lerp(0.4, 0, w), mouth: talk(c.t, 0.4, 1.9), breathe: Math.sin(T(c) * 2), knock: 0, shiver: 0}} light={WARM} id="mom17" />};
+    draw: () => <Mom s={{t: T(c), blink: 1, worry: lerp(0.4, 0, w), mouth: mouthAt(T(c), [17]), breathe: Math.sin(T(c) * 2), knock: 0, shiver: 0}} light={WARM} id="mom17" />};
   const me = alisaPup('a17', [-0.2, 0, -0.85], al(c.t, {fear: 1, hands: 1, tremble: 2, mouth: 0.5}), LIFT(0.6));
   return <LiftView pose={pose} S={S} pups={[mom, dbl, me]} fog={['#120c08', 0.08]} />;
 };
@@ -336,8 +337,8 @@ export const S18: React.FC<{c: Ctx}> = ({c}) => {
   );
 };
 
-// ---------------- timeline (draft seconds from the script) ----------------
-const DRAFT = [0, 2.6, 4.8, 7.8, 13.0, 17.0, 19.8, 23.0, 25.5, 28.0, 30.5, 33.0, 37.0, 38.2, 41.5, 45.0, 48.5, 52.0, 55.5];
+// ---------------- timeline: cut times from the voice (timing.ts) ----------------
+const DRAFT = CUTS;
 const COMPS = [S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12, S13, S14, S15, S16, S17, S18];
 const FOG_O = [0.3, 0.4, 0.5, 0.5, 0.9, 0.9, 0.5, 0.9, 0.8, 0.8, 0.5, 0.3, 0.2, 0.4, 0.5, 0.6, 0.4, 0.3];
 export const SHOTS = COMPS.map((C, i) => ({id: `S${String(i + 1).padStart(2, '0')}`, from: DRAFT[i], to: DRAFT[i + 1], C, fog: FOG_O[i]}));

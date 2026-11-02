@@ -1,13 +1,15 @@
 // «Лишний этаж»: the whole short. Shots are cut on their own frames; fog, grain and vignette sit on top.
-// (No voice, sound or subtitles yet — they come at stage 3 after the voice-over.)
 import React from 'react';
-import {AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
-import {Fog, Grain, Vignette} from '../horror/fx';
+import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Fog, Grain, HorrorCaptions, Vignette} from '../horror/fx';
+import {ensureFont} from '../horror/fonts';
+import {CAPTIONS} from './timing';
 import {SHOTS} from './shots';
 
 const RED_SHOTS = new Set(['S05', 'S06', 'S07', 'S08', 'S09', 'S10', 'S11']);
 
 export const LiftEpisode: React.FC = () => {
+  ensureFont();
   const g = useCurrentFrame();
   const {fps} = useVideoConfig();
   const cur = SHOTS.find((s) => g >= Math.round(s.from * fps) && g < Math.round(s.to * fps)) ?? SHOTS[SHOTS.length - 1];
@@ -24,6 +26,8 @@ export const LiftEpisode: React.FC = () => {
       <Fog t={g / fps} o={cur.fog} tint={RED_SHOTS.has(cur.id) ? '210,90,70' : '150,175,170'} />
       <Vignette />
       <Grain f={g} o={0.1} />
+      <HorrorCaptions lines={CAPTIONS} f={g} fps={fps} />
+      <Audio src={staticFile('lishniy-etazh/mix.wav')} />
     </AbsoluteFill>
   );
 };

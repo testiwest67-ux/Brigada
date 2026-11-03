@@ -35,12 +35,17 @@ export const Sky: React.FC<{mood: Mood; t: number; id?: string; h?: number; clou
       {sun && mood === 'dusk' && <circle cx={760} cy={h * 0.62} r={130} fill="#ffcf7a" opacity={0.95} />}
       {sun && mood === 'night' && <><circle cx={800} cy={300} r={60} fill="#f2f0e0" stroke={INK} strokeWidth={OW} /><circle cx={822} cy={286} r={56} fill={a} /></>}
       {mood === 'night' && Array.from({length: 60}, (_, i) => <circle key={i} cx={r() * 1080} cy={r() * h * 0.6} r={1 + r() * 2.2} fill="#fff" opacity={0.4 + r() * 0.5} />)}
+      {Array.from({length: Math.round(6 * clouds)}, (_, i) => {
+        const w = 160 + r() * 200, x = ((r() * 1400 + t * (4 + i * 2)) % 1500) - 300, y = 260 + r() * h * 0.5;
+        return <ellipse key={`f${i}`} cx={x} cy={y} rx={w} ry={w * 0.22} fill={cl} opacity={0.45} filter="url(#b6)" />;
+      })}
       {Array.from({length: Math.round(7 * clouds)}, (_, i) => {
         const w = 220 + r() * 260, x = ((r() * 1400 + t * (10 + i * 3)) % 1500) - 300, y = 140 + r() * h * 0.45;
         return (
           <g key={`c${i}`} opacity={0.9}>
             <path d={`M ${x} ${y} c ${w * 0.1} -${w * 0.25} ${w * 0.35} -${w * 0.3} ${w * 0.45} -${w * 0.1} c ${w * 0.12} -${w * 0.2} ${w * 0.38} -${w * 0.18} ${w * 0.42} ${w * 0.02} c ${w * 0.12} 0 ${w * 0.16} ${w * 0.12} ${w * 0.13} ${w * 0.16} Z`} fill={cl} stroke={INK} strokeWidth={OW} strokeLinejoin="round" />
             <path d={`M ${x + w * 0.1} ${y - 4} L ${x + w * 0.95} ${y - 4}`} stroke={sh} strokeWidth={14} strokeLinecap="round" />
+            <path d={`M ${x + w * 0.12} ${y - w * 0.12} c ${w * 0.08} -${w * 0.16} ${w * 0.26} -${w * 0.2} ${w * 0.34} -${w * 0.06}`} stroke="#fff" strokeWidth={8} fill="none" strokeLinecap="round" opacity={mood === 'storm' || mood === 'night' ? 0.15 : 0.7} />
           </g>
         );
       })}
@@ -315,9 +320,14 @@ export const Cockpit: React.FC<{t: number; mood: Mood; spin?: number; rain?: num
       <Sky mood={mood} t={t} id="ck" clouds={1.2} sun={mood !== 'storm'} />
       {ground}
       {children}
+      <g style={{mixBlendMode: 'screen'}} opacity={mood === 'storm' || mood === 'night' ? 0.25 : 0.5}>
+        <polygon points="160,1300 360,1300 760,300 640,300" fill="#ffffff" opacity={0.12} />
+        <polygon points="420,1300 470,1300 860,320 820,320" fill="#ffffff" opacity={0.18} />
+      </g>
       {/* canopy frame */}
       <path d="M -20 -20 L 1100 -20 L 1100 1960 L -20 1960 Z M 120 380 C 200 200 880 200 960 380 L 1000 1300 L 80 1300 Z" fill={frame} fillRule="evenodd" stroke={INK} strokeWidth={OW} />
       <path d="M 540 220 L 540 380 M 120 380 L 960 380" stroke={frame} strokeWidth={26} />
+      {Array.from({length: 14}, (_, i) => <circle key={`rv${i}`} cx={130 + i * 63} cy={380} r={5} fill="#5a6c86" />)}
       <path d="M 180 330 C 260 250 400 236 500 240" stroke="#fff" strokeWidth={10} opacity={0.35} fill="none" strokeLinecap="round" />
       {rain > 0 && Array.from({length: 80}, (_, i) => {
         const x = 120 + r() * 840, y = ((r() * 1100 + t * (500 + r() * 300)) % 1000) + 300;

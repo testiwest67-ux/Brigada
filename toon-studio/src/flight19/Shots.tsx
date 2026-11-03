@@ -16,6 +16,8 @@ type VL = {i: number; text: string; start: number; end: number; who: string; wor
 const L = (VOICE as {lines: VL[]; total: number}).lines;
 export const TOTAL = (VOICE as {total: number}).total;
 const S = (i: number) => L[i].start, E = (i: number) => L[i].end;
+const ENV = (VOICE as {env: number[]}).env;
+export const envAt = (t: number) => { const k = t * 30, a = ENV[Math.floor(k)] ?? 0, b = ENV[Math.floor(k) + 1] ?? 0; return Math.min(1, a + (b - a) * (k % 1)); };
 const W = (i: number, k: number) => L[i].words[k].t;
 
 const DAY = {bright: 1, warmRim: 0.35, coldRim: 0.3, cold: 0.05};
@@ -183,7 +185,7 @@ export const SHOTS: Shot[] = [
     <g>
       <Cam z={1.55} x={540} y={830} sy={820}>
         <Cockpit t={t} mood="dusk" spin={1}>
-          <Tay x={540} y={2150} s={0.85} st={{talk: 1, mouth: 0.4 + 0.4 * Math.abs(Math.sin(t * 9)), worry: 0.7, sweat: 0.8, lookY: 0.5}} light={{...DAY, warmRim: 0.9}} id="t12" t={t} />
+          <Tay x={540} y={2150} s={0.85} st={{talk: 1, mouth: envAt(t) * 0.95, worry: 0.7, sweat: 0.8, lookY: 0.5}} light={{...DAY, warmRim: 0.9}} id="t12" t={t} />
         </Cockpit>
       </Cam>
       <g transform="translate(860 1180) scale(0.6)"><Compass x={0} y={0} r={200} heading={t * 520} /></g>
@@ -213,7 +215,7 @@ export const SHOTS: Shot[] = [
     <g>
       <Cam z={1.6} x={330} y={800} sy={760} rot={4}>
         <RadioRoom t={t} night={0.4} clock={16 * 60 + 30} glow={1}>
-          <Rad x={330} y={2000} s={0.78} st={{shout: 1, mouth: 0.95, anger: 0.7, fear: 0.3, sweat: 0.6}} light={DAY} id="r14" t={t} />
+          <Rad x={330} y={2000} s={0.78} st={{shout: 1, mouth: t > W(13, 4) - 0.1 ? 0.25 + envAt(t) * 0.75 : 0.05, anger: 0.7, fear: 0.3, sweat: 0.6}} light={DAY} id="r14" t={t} />
         </RadioRoom>
       </Cam>
       <circle cx={940} cy={220} r={50} fill="#ff2a2a" opacity={Math.sin(t * 9) > 0 ? 1 : 0.25} filter="url(#glow)" />
@@ -261,7 +263,7 @@ export const SHOTS: Shot[] = [
       <g>
         <Cam z={1.35} x={540} y={850} sy={820}>
           <Cockpit t={t} mood="storm" rain={1}>
-            <Tay x={540} y={2150} s={0.85} st={{talk: 1, mouth: 0.3 + 0.3 * Math.abs(Math.sin(t * 8)), worry: 1, blink: 0.55, lookY: 0.4}} light={{...STORM, coldRim: 0.75 + fl}} id="t18" t={t} />
+            <Tay x={540} y={2150} s={0.85} st={{talk: 1, mouth: envAt(t) * 0.7, worry: 1, blink: 0.55, lookY: 0.4}} light={{...STORM, coldRim: 0.75 + fl}} id="t18" t={t} />
           </Cockpit>
         </Cam>
         <Flash k={fl * 0.8} />

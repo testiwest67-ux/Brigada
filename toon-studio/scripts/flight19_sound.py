@@ -12,6 +12,7 @@ SR = 48000
 MUS_GAIN, DUCK_MUS = 0.3, 0.87   # −18 dB under the voice
 AMB_GAIN, DUCK_AMB = 0.6, 0.75   # ambience beds −4.5 dB overall, −12 dB more under the voice
 FX_GAIN, DUCK_FX = 0.5, 0.75     # effects −6 dB overall, −12 dB more under the voice (hits in pauses stay full)
+DEAD_AIR = 0.22                  # empty-air static in the radio silence
 LEVEL_DB = 6                     # phrase-by-phrase voice levelling, at most ±6 dB toward the median phrase
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'public', 'reys-19')
 
@@ -139,7 +140,12 @@ def main(vwav, vjson, out):
     fx_gate = gate.copy(); fx_gate[(tt > sil0) & (tt < sil1)] = 0
     fx *= fx_gate * (1 - DUCK_FX * sp) * FX_GAIN
 
-    mix = voice * 1.0 + music + amb + fx
+    # the radio silence is an EMPTY AIR, not dead digital silence (user: «пропажа звука» at 1:04–1:06):
+    # quiet band-limited static from "замолкает" until just before the next line, cut off sharply
+    dead = np.zeros(n)
+    loop(dead, 'radio', sil0 - 0.1, S(20) - 0.08, DEAD_AIR, fade=0.25)
+    k = int((S(20) - 0.08) * SR); dead[k - int(0.04 * SR):k] *= np.linspace(1, 0, int(0.04 * SR))
+    mix = voice * 1.0 + music + amb + fx + dead
     if os.environ.get('STEMS'):  # voice / background before loudnorm, for the voice-vs-background check
         for name, x in (('voice', voice), ('bg', music + amb + fx), ('music', music), ('amb', amb), ('fx', fx)):
             with wave.open(os.path.join(os.environ['STEMS'], name + '.wav'), 'w') as w:

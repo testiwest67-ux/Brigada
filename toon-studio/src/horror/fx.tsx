@@ -52,14 +52,15 @@ export type Word = {w: string; t: number; red?: boolean};
 export type CapLine = {start: number; end: number; words: Word[]};
 
 // one short phrase at a time, words pop in as they are spoken; keywords in red; sits above the Shorts UI
-export const HorrorCaptions: React.FC<{lines: CapLine[]; f: number; fps: number; y?: number}> = ({lines, f, fps, y = 1370}) => {
+// gapX: space between words; the 12 px black stroke eats ~12 px of it, so long two-word lines can look glued at 22
+export const HorrorCaptions: React.FC<{lines: CapLine[]; f: number; fps: number; y?: number; gapX?: number}> = ({lines, f, fps, y = 1370, gapX = 22}) => {
   const t = f / fps;
   const line = lines.find((l) => t >= l.start - 0.05 && t < l.end);
   if (!line) return null;
   const out = clamp((line.end - t) / 0.12);
   return (
     <AbsoluteFill style={{pointerEvents: 'none'}}>
-      <div style={{position: 'absolute', left: 70, right: 70, top: y, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 22px', opacity: out}}>
+      <div style={{position: 'absolute', left: 70, right: 70, top: y, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: `6px ${gapX}px`, opacity: out}}>
         {line.words.map((w, i) => {
           const p = spring01(f, w.t * fps - 1, fps, 3.4, 0.55);
           const shown = f >= w.t * fps - 1;

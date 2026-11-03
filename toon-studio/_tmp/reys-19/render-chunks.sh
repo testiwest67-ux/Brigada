@@ -8,7 +8,7 @@ MODE=${1:-preview}
 FPS=30
 FULL=$(python3 -c "import json;print(round(json.load(open('public/reys-19/voice.json'))['total']*30))")
 if [ "$MODE" = preview ]; then TOTAL=900; SCALE=0.5; DIR=_tmp/reys-19/chunks-preview; OUT=_tmp/reys-19/превью-30с.mp4; CRF=23
-else TOTAL=$FULL; SCALE=1; DIR=_tmp/reys-19/chunks; OUT=out/reys-19.mp4; CRF=18; fi
+else TOTAL=$FULL; SCALE=1; DIR=_tmp/reys-19/chunks-v2; OUT=out/reys-19.mp4; CRF=18; fi
 LOG=_tmp/reys-19/render-$MODE.log
 mkdir -p "$DIR" out
 STEP=120
@@ -18,7 +18,7 @@ for ((a=0; a<TOTAL; a+=STEP)); do
   out=$(printf "%s/c%04d.mp4" "$DIR" "$a")
   [ -f "$out" ] && continue
   echo "chunk $a-$b $(date -u +%H:%M:%S)" >> "$LOG"
-  nice -n 10 npx remotion render src/flight19/index.ts Reys19 "$out.part.mp4" --frames=$a-$b --scale=$SCALE --concurrency=4 --gl=swangle \
+  nice -n 10 npx remotion render src/flight19/index.ts Reys19 "$out.part.mp4" --frames=$a-$b --scale=$SCALE --concurrency=4 --gl=swiftshader \
     --crf=$CRF --muted --timeout=120000 --log=error --browser-executable="$TOON_BROWSER" >> _tmp/reys-19/render-chunk-cur.log 2>&1 \
     && mv "$out.part.mp4" "$out" || { echo "FAIL $a-$b" >> "$LOG"; exit 1; }
 done

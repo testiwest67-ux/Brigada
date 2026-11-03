@@ -63,7 +63,7 @@ export const Flight19Episode: React.FC = () => {
       {flash > 0 && <AbsoluteFill style={{background: '#fff', opacity: flash * 0.85}} />}
       {white > 0 && <AbsoluteFill style={{background: '#fffaf0', opacity: clamp(white)}} />}
       {dip > 0 && <AbsoluteFill style={{background: '#000', opacity: clamp(dip)}} />}
-      <HorrorCaptions lines={CAPTIONS} f={f} fps={30} y={1370} />
+      <HorrorCaptions lines={CAPTIONS} f={f} fps={30} y={1370} gapX={40} />
       <Audio src={staticFile('reys-19/mix.wav')} />
     </AbsoluteFill>
   );

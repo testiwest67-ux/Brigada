@@ -213,7 +213,7 @@ export const MapScene: React.FC<{s: MapState}> = ({s}) => {
       ))}
       {/* six planes vanishing one by one */}
       {(s.planes ?? 0) > 0 && Array.from({length: 6}, (_, i) => {
-        const g = clamp((s.gone ?? 0) * 6 - i), cx = MX(-77.5 + (i % 3) * 3.2), cy = MY(28.5 - Math.floor(i / 3) * 3.6);
+        const g = clamp((s.gone ?? 0) * 6 - i), cx = MX(-74.0 + (i % 3) * 3.1), cy = MY(26.9 - Math.floor(i / 3) * 2.6); // all six INSIDE the triangle (user fix, 03.11)
         return (
           <g key={i} transform={`translate(${cx} ${cy}) rotate(45) scale(${1 - g * 0.6})`} opacity={1 - g}>
             <path d="M 0 -34 L 6 -10 L 34 4 L 34 12 L 6 6 L 4 26 L 14 34 L 14 38 L 0 34 L -14 38 L -14 34 L -4 26 L -6 6 L -34 12 L -34 4 L -6 -10 Z" fill={i === 5 ? '#ffd27a' : '#f4f4f0'} stroke={INK} strokeWidth={3} />
@@ -221,12 +221,19 @@ export const MapScene: React.FC<{s: MapState}> = ({s}) => {
           </g>
         );
       })}
-      {/* course arrows: west to the coast vs. where they flew */}
+      {/* course arrows: west to the coast vs. where they flew. The flight is INSIDE the triangle (near the Bahamas)
+          and their north-east course runs deeper into it — "прямо в сердце треугольника" (user fix, 03.11) */}
       {(s.arrows ?? 0) > 0 && (() => {
-        const k = clamp(s.arrows!), a0 = [MX(-77.6), MY(28.6)];
-        const west = [MX(-80.4), MY(28.6)], ne = [MX(-72.5), MY(32.0)];
+        const k = clamp(s.arrows!), a0 = [MX(-76.7), MY(26.0)];
+        const west = [MX(-79.6), MY(26.1)], ne = [MX(-71.6), MY(27.9)];
+        const heart = clamp((k - 0.85) / 0.15), pulse = (t: number) => (t * 1.6) % 1;
         return (
           <g>
+            {heart > 0 && [0, 0.5].map((o) => {
+              const q = pulse(s.t + o);
+              return <circle key={o} cx={ne[0]} cy={ne[1]} r={20 + q * 90} fill="none" stroke="#ff3a3a" strokeWidth={6} opacity={heart * (1 - q)} />;
+            })}
+            {heart > 0 && <circle cx={ne[0]} cy={ne[1]} r={16} fill="#ff3a3a" stroke={INK} strokeWidth={4} opacity={heart} />}
             <circle cx={a0[0]} cy={a0[1]} r={16} fill="#ffd27a" stroke={INK} strokeWidth={4} />
             <path d={`M ${a0[0]} ${a0[1]} L ${lerp(a0[0], west[0], clamp(k * 2))} ${lerp(a0[1], west[1], clamp(k * 2))}`} stroke="#4ade80" strokeWidth={14} strokeLinecap="round" />
             {k > 0.5 && <path d={`M ${west[0]} ${west[1]} l 34 -24 l 0 48 Z`} fill="#4ade80" stroke={INK} strokeWidth={3} />}

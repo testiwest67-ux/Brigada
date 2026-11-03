@@ -9,3 +9,4 @@ public/**/*.wav
 _tmp/**/*.wav
 _tmp/npm-install.log
 _tmp/**/chunks*/
+__pycache__/

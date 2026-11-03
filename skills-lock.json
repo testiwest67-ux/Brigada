@@ -66,12 +66,24 @@
       "computedHash": "4e3af217554259b375767b677ab5a9542b49ccd9ba9163607d7a242e88b70d89",
       "installMode": "copy"
     },
+    "remotion-video-reviewer": {
+      "source": "ncklrs/startup-os-skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-video-reviewer/SKILL.md",
+      "computedHash": "ea90c94933d985baa518657b6bf96d1ddabc950e48677e4091ade1ba1cee0f4c"
+    },
     "sound-effects": {
       "source": "elevenlabs/skills",
       "sourceType": "github",
       "skillPath": "sound-effects/SKILL.md",
       "computedHash": "90a38dd66bf6c5d900778fe5287e50104e404b9fc29027c774c88dbfe63a8890",
       "installMode": "copy"
+    },
+    "youtube-seo": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/platforms/youtube/SKILL.md",
+      "computedHash": "386bfa9f8b3e94230e51f2cdad4685ff661946cc554a18325a8857ce2f9d01ac"
     }
   }
 }

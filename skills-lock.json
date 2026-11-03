@@ -1,6 +1,13 @@
 {
   "version": 1,
   "skills": {
+    "audio-mixing-mastering": {
+      "source": "calesthio/generative-media-skills",
+      "sourceType": "github",
+      "skillPath": "skills/production/audio-craft/audio-mixing-mastering/SKILL.md",
+      "computedHash": "631776bf2657e763d56fd9707c9ab7814b3e56ee98c5d00e7dd5c93c3ab5cc23",
+      "installMode": "copy"
+    },
     "convert": {
       "source": "remotion-dev/remotion",
       "sourceType": "github",
@@ -19,17 +26,52 @@
       "skillPath": "skills/find-skills/SKILL.md",
       "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
     },
+    "higgsfield-youtube-thumbnail": {
+      "source": "higgsfield-ai/skills",
+      "sourceType": "github",
+      "skillPath": "higgsfield-youtube-thumbnail/SKILL.md",
+      "computedHash": "95f6b06f5f5f7869fad57cb3660f81cfc8c080221435e8e59897542a246b7492",
+      "installMode": "copy"
+    },
     "interactivity-best-practices": {
       "source": "remotion-dev/remotion",
       "sourceType": "github",
       "skillPath": ".agents/skills/interactivity-best-practices/SKILL.md",
       "computedHash": "5d2a777af0938b2109d3b4e92af4c7321595408993c840862ef53b26f34d5ce5"
     },
+    "music": {
+      "source": "elevenlabs/skills",
+      "sourceType": "github",
+      "skillPath": "music/SKILL.md",
+      "computedHash": "f5307770bacfea37e8fb49aa1d5588d6af15dfdcec8a23d4bac781a0c26685de",
+      "installMode": "copy"
+    },
     "player-example": {
       "source": "remotion-dev/remotion",
       "sourceType": "github",
       "skillPath": ".agents/skills/player-example/SKILL.md",
       "computedHash": "a761460ae9d5b57fd2a88bee1924d4db743d531206b2a9194b45a481791cfab5"
+    },
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-best-practices/SKILL.md",
+      "computedHash": "562d0482f6aba777059ee4185a4aa997ffec8388ebeae1ad1dbe749f0127d37b",
+      "installMode": "copy"
+    },
+    "remotion-captions": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-captions/SKILL.md",
+      "computedHash": "4e3af217554259b375767b677ab5a9542b49ccd9ba9163607d7a242e88b70d89",
+      "installMode": "copy"
+    },
+    "sound-effects": {
+      "source": "elevenlabs/skills",
+      "sourceType": "github",
+      "skillPath": "sound-effects/SKILL.md",
+      "computedHash": "90a38dd66bf6c5d900778fe5287e50104e404b9fc29027c774c88dbfe63a8890",
+      "installMode": "copy"
     }
   }
 }

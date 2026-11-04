@@ -28,7 +28,8 @@ def remotion(*args):
 
 
 def sheets(out, files, names, per, cols, prefix='лист'):
-    W, H = 270, 480
+    w0, h0 = Image.open(files[0][1]).size  # cell keeps the frame's aspect: 9:16 → 270×480, 16:9 → 480×270
+    W, H = (270, 480) if h0 >= w0 else (480, 270)
     f1, f2 = font(24), font(15)
     made = []
     for part in range(0, len(files), per):

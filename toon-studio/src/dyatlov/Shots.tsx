@@ -573,7 +573,7 @@ export const Dyatlov: React.FC = () => {
   return (
     <AbsoluteFill>
       <ShotAt t={f / 30} f={f} />
-      <Audio src={staticFile('dyatlov/voice.wav')} />
+      <Audio src={staticFile('dyatlov/mix.wav')} />
     </AbsoluteFill>
   );
 };

@@ -43,3 +43,9 @@ TYPE: voice
 3. python3 scripts/voice_check.py public/dyatlov/voice.wav public/dyatlov/voice.json _tmp/mac-tasks/out/voice-2/только-голос.mp4 --min 0
 В отчёте: длина, замечания автопроверки.
 ```
+
+## Образцы (reference) во Flow — один раз, не для каждой картинки (решение пользователя 05.11)
+В `flow_generate` передавай образец как `asset:<название>` картинки, которая уже есть во Flow (названия — `flow_assets`;
+например одобренный корабль «Мэри Селест» = `asset:mary-celeste-test-scene-02`, лист Бриггса = `asset:mary-celeste-test-scene-01`).
+Путь к файлу на Mac (`/Users/.../x.png`) заставляет загружать один и тот же файл заново для каждой сцены — так не делать.
+Если образца во Flow ещё нет — загрузи его один раз (одна сцена с этим путём), посмотри его название в `flow_assets` и дальше используй `asset:`.

@@ -79,6 +79,12 @@
       "computedHash": "90a38dd66bf6c5d900778fe5287e50104e404b9fc29027c774c88dbfe63a8890",
       "installMode": "copy"
     },
+    "video-marketing": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/content/video/SKILL.md",
+      "computedHash": "908d0f9cd829aca19474f8cd4230062848af5ded572123179be4fe2632c235e4"
+    },
     "youtube-seo": {
       "source": "kostja94/marketing-skills",
       "sourceType": "github",

@@ -11,3 +11,4 @@ _tmp/npm-install.log
 _tmp/**/chunks*/
 __pycache__/
 _tmp/flow-out/
+_tmp/**/*.mp3

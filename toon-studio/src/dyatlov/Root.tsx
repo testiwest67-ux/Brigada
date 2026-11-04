@@ -10,6 +10,7 @@ export const DyatlovRoot: React.FC = () => (
     <Composition id="Storyboard" component={Storyboard} width={1920} height={1080} fps={30} durationInFrames={SCENE_COUNT} />
     <Composition id="ThumbA" component={Thumbnail} defaultProps={{variant: 'A' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="ThumbB" component={Thumbnail} defaultProps={{variant: 'B' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
-    <Composition id="Dyatlov"component={Dyatlov} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(TOTAL * 30)} />
+    <Composition id="ThumbC" component={Thumbnail} defaultProps={{variant: 'C' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
+    <Composition id="Dyatlov" component={Dyatlov} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(TOTAL * 30)} />
   </>
 );

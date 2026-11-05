@@ -3,6 +3,7 @@ import {Composition} from 'remotion';
 import VOICE from '../../public/mary-celeste/voice.json';
 import {makeStory} from '../story/engine';
 import {SCENES} from './scenes';
+import {MCThumb} from './Thumbnail';
 
 const SHIPS = ['m0-01-drift', 'm0-03-deigratia', 'm0-04-boarding', 'm0-11-fog', 'm2-07-open-sea', 'm2-08-deigratia-port', 'm3-01-ocean', 'm3-05-night-sea',
   'm4-01-telescope', 'm4-02-climb', 'm4-03-sails', 'm4-09-two-ships', 'm7-01-waterspout', 'm7-05-lifeboat-island', 'm7-07-two-ships-far',
@@ -22,6 +23,8 @@ export const MC = makeStory({
 export const MaryCelesteRoot: React.FC = () => (
   <>
     <Composition id="Storyboard" component={MC.Storyboard} width={1920} height={1080} fps={30} durationInFrames={MC.SCENE_COUNT} />
-    <Composition id="MaryCeleste" component={MC.Film} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(MC.TOTAL * 30)} />
+    <Composition id="ThumbA" component={MCThumb} defaultProps={{variant: 'A' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
+    <Composition id="ThumbB" component={MCThumb} defaultProps={{variant: 'B' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
+    <Composition id="MaryCeleste"component={MC.Film} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(MC.TOTAL * 30)} />
   </>
 );

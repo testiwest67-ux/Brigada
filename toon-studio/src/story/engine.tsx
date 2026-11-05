@@ -79,14 +79,17 @@ export const makeStory = (cfg: StoryCfg) => {
     const snow = cfg.snow?.[s.img];
     return (
       <AbsoluteFill style={{background: '#05070c', overflow: 'hidden'}}>
-        <div style={{position: 'absolute', left: 0, top: 0, width: W, height: H, transformOrigin: `${W / 2 - tx}px ${H / 2 - ty}px`,
-          transform: `translate(${tx}px, ${ty}px) scale(${z}) rotate(${roll}deg)`}}>
+        {/* the roll turns the whole frame around the screen centre; the camera (translate + scale) lives inside */}
+        <AbsoluteFill style={{transform: roll ? `rotate(${roll}deg) scale(1.03)` : undefined, transformOrigin: '50% 50%'}}>
+        <div style={{position: 'absolute', left: 0, top: 0, width: W, height: H, transformOrigin: '0 0',
+          transform: `translate(${tx}px, ${ty}px) scale(${z})`}}>
           <Img src={staticFile(bg(s.img))} style={{width: W, height: H, objectFit: 'cover',
             filter: `brightness(${1.06 - dark}) contrast(1.05)${s.blur ? ' blur(10px)' : ''}`}} />
           <div style={{position: 'absolute', left: -700 + ((t - s.from) * 60) % 2600, top: -80, width: 1300, height: 520,
             background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(170,195,255,0.12), rgba(170,195,255,0) 70%)', filter: 'blur(30px)'}} />
           {DRIFT.has(s.img) && <GroundDrift t={t} o={0.8} />}
         </div>
+        </AbsoluteFill>
         {FOG.has(s.img) && !s.blur && [0, 1, 2].map((i) => {
           const x = ((t * (35 + i * 18) + i * 700) % (W + 1600)) - 800;
           return <div key={i} style={{position: 'absolute', left: x, top: 380 + i * 170, width: 1500, height: 300, opacity: 0.55,

@@ -47,7 +47,7 @@ export const SCENES: Sc[] = [
   // 2. Трое
   sc(58, 'f2-01-keepers-room', 'in', 'гл.2 трое', {title: true, ov: [{k: 'title', n: '2', a: 'ТРОЕ', b: 'ДЕКАБРЬ 1900'}]}),
   sc(60, 'f2-01-keepers-room', 'still', 'трое на острове', {dark: 0.45, blur: true, ov: [{k: 'seq', items: [
-    {a: 'ДУКАТ', at: 61, who: 'ducat'}, {a: 'МАРШАЛЛ', at: 64, who: 'marshall'}, {a: 'МАКАРТУР', at: 68, who: 'mcarthur'}]}]}),
+    {a: 'ДУКАТ', at: 60, who: 'ducat'}, {a: 'МАРШАЛЛ', at: 60, who: 'marshall'}, {a: 'МАКАРТУР', at: 60, who: 'mcarthur'}]}]}),
   card(61, 'f2-01-keepers-room', 'ducat', 'ДЖЕЙМС ДУКАТ', 'ГЛАВНЫЙ СМОТРИТЕЛЬ'),
   sc(63, 'f2-03-lewis-shore', 'in', 'семья на берегу'),
   card(64, 'f2-01-keepers-room', 'marshall', 'ТОМАС МАРШАЛЛ', 'ПОМОЩНИК'),

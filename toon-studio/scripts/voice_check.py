@@ -13,7 +13,7 @@
 import argparse, json, os, re, subprocess, sys, wave
 import numpy as np
 
-VOW = set('аеёиоуыэюяaeiouy')
+VOW = set('аеёиоуыэюяіїєaeiouy')
 WHO = {'narrator': 'рассказчик', 'mom': 'мама', 'petrovich': 'Петрович', 'shade': 'тень', 'misha': 'дед Миша',
        'refl': 'отражение'}
 

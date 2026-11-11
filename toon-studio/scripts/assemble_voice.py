@@ -12,7 +12,7 @@ import numpy as np
 
 FF = 'ffmpeg'
 SR = 48000
-VOW = set('аеёиоуыэюяaeiouy')
+VOW = set('аеёиоуыэюяіїєaeiouy')
 
 
 def run(*a): subprocess.run([FF, '-v', 'error', '-y', *a], check=True)

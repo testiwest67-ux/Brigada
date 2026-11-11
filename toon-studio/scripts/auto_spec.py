@@ -10,7 +10,7 @@ import argparse, json, os, re, subprocess
 import numpy as np
 
 SR = 16000
-VOW = set('аеёиоуыэюяaeiouy')
+VOW = set('аеёиоуыэюяіїєaeiouy')
 syl = lambda s: max(1, sum(ch in VOW for ch in s.lower()))
 
 

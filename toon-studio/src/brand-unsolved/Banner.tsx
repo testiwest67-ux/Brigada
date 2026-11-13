@@ -43,7 +43,6 @@ export const Banner: React.FC<{guides?: boolean}> = ({guides = false}) => {
       <div style={{position: 'absolute', left: SAFE.x, width: SAFE.w, top: SAFE.y, height: SAFE.h, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
         <div style={{...T, fontSize: 132, letterSpacing: 4, lineHeight: 1, textShadow: '0 8px 0 #05070c, 0 0 40px rgba(0,0,0,0.9)'}}>НЕРАЗГАДАННОЕ</div>
         <div style={{...T, fontSize: 46, fontWeight: 800, color: '#dfe6f2', WebkitTextStroke: '7px #05070c', marginTop: 22}}>Настоящие загадки, у которых до сих пор нет ответа</div>
-        <div style={{...T, fontSize: 34, fontWeight: 800, color: '#ff4a3a', WebkitTextStroke: '6px #05070c', marginTop: 18, letterSpacing: 3}}>ПЕРЕВАЛ ДЯТЛОВА · МЭРИ СЕЛЕСТ · МАЯК ФЛАННАН</div>
       </div>
       {guides && (
         <svg width={2560} height={1440} style={{position: 'absolute', inset: 0}}>

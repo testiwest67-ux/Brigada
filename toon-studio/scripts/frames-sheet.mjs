@@ -28,7 +28,7 @@ for (let k = 0; k < frames.length; k++) {
   await R.renderStill({composition: c, serveUrl, output: full, frame: frames[k], scale: keep ? 1 : w / c.width, puppeteerInstance: browser, chromiumOptions: {gl}, logLevel: 'error', timeoutInMilliseconds: 120000});
   // label: the tile number (1-based), drawn by ffmpeg
   const tile = path.join(tmp, `s${String(k).padStart(4, '0')}.png`);
-  const rr = spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', full, '-vf', `scale=${w}:-1,drawtext=text='${k + 1}':x=10:y=8:fontsize=${Math.round(w / 9)}:fontcolor=white:box=1:boxcolor=black@0.6:boxborderw=6`, tile]);
+  const rr = spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', full, '-vf', `scale=${w}:-1,drawtext=${process.platform === 'win32' ? "fontfile='C\\:/Windows/Fonts/arial.ttf':" : ''}text='${k + 1}':x=10:y=8:fontsize=${Math.round(w / 9)}:fontcolor=white:box=1:boxcolor=black@0.6:boxborderw=6`, tile]);
   if (rr.status !== 0) { console.error(String(rr.stderr)); process.exit(1); }
   process.stdout.write(`${k + 1}/${frames.length} `);
 }

@@ -24,7 +24,7 @@ def font(size):
 def remotion(*args):
     cmd = ['npx', 'remotion', *args]
     if os.path.exists(BROWSER): cmd += ['--browser-executable', BROWSER]
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, shell=(os.name == 'nt'))  # Windows: npx is npx.cmd, found only through the shell
 
 
 def sheets(out, files, names, per, cols, prefix='лист'):

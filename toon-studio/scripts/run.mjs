@@ -36,7 +36,13 @@ let args = process.argv.slice(2);
 if (!args.length) { console.log('usage: node scripts/run.mjs py <script.py> ... | ffmpeg ... | <команда> ...'); process.exit(1); }
 if (args[0] === 'py') args = [...python(), ...args.slice(1)];
 
-// на Windows npx/npm — это .cmd, их находит только оболочка
-const r = spawnSync(args[0], args.slice(1), {cwd: ROOT, env, stdio: 'inherit', shell: WIN});
+// Обычные программы (python, ffmpeg, node) запускаем напрямую — так слова с пробелами не режутся.
+// На Windows npx/npm — это .cmd, их запускает только оболочка; тогда каждое слово берём в кавычки.
+const opts = {cwd: ROOT, env, stdio: 'inherit'};
+let r = spawnSync(args[0], args.slice(1), opts);
+if (WIN && r.error && ['ENOENT', 'EINVAL'].includes(r.error.code)) {
+  const q = (a) => (/^[\w\-.:\\/=+,@]+$/.test(a) ? a : `"${a.replace(/(\\*)"/g, '$1$1\\"').replace(/(\\+)$/, '$1$1')}"`);
+  r = spawnSync([args[0], ...args.slice(1)].map(q).join(' '), {...opts, shell: true});
+}
 if (r.error) { console.error(`Не получилось запустить «${args[0]}»: ${r.error.message}`); process.exit(1); }
 process.exit(r.status ?? 1);

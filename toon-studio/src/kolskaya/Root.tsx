@@ -4,6 +4,7 @@ import VOICE from '../../public/kolskaya/voice.json';
 import {makeStory} from '../story/engine';
 import {SCENES} from './scenes';
 import {KlThumb} from './Thumbnail';
+import {KLT} from './Trailer';
 
 export const KL = makeStory({
   dir: 'kolskaya',
@@ -23,6 +24,8 @@ export const KolskayaRoot: React.FC = () => (
     <Composition id="Storyboard" component={KL.Storyboard} width={1920} height={1080} fps={30} durationInFrames={KL.SCENE_COUNT} />
     <Composition id="Kolskaya" component={KL.Film} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(KL.TOTAL * 30)} />
     <Composition id="KolskayaClean" component={KL.Clean} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(KL.TOTAL * 30)} />
+    <Composition id="Trailer" component={KLT.Trailer} width={1080} height={1920} fps={30} durationInFrames={Math.round(KLT.TOTAL * 30)} />
+    <Composition id="TrailerStoryboard" component={KLT.Storyboard} width={1080} height={1920} fps={30} durationInFrames={KLT.SCENES} />
     <Composition id="ThumbA" component={KlThumb} defaultProps={{variant: 'A' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="ThumbB" component={KlThumb} defaultProps={{variant: 'B' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
   </>

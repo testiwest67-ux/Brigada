@@ -3,6 +3,8 @@ import {Composition} from 'remotion';
 import {DyatlovTest, PART} from './TestScene';
 import {Dyatlov, SCENE_COUNT, Storyboard, TOTAL} from './Shots';
 import {Thumbnail} from './Thumbnail';
+import {TrailerCover} from './TrailerCover';
+import {DyTrailer, DyTrailerStoryboard, TR_SCENES, TR_TOTAL} from './Trailer';
 
 export const DyatlovRoot: React.FC = () => (
   <>
@@ -12,5 +14,9 @@ export const DyatlovRoot: React.FC = () => (
     <Composition id="ThumbB" component={Thumbnail} defaultProps={{variant: 'B' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="ThumbC" component={Thumbnail} defaultProps={{variant: 'C' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="Dyatlov" component={Dyatlov} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(TOTAL * 30)} />
+    <Composition id="Trailer" component={DyTrailer} width={1080} height={1920} fps={30} durationInFrames={Math.round(TR_TOTAL * 30)} />
+    <Composition id="TrailerCoverA" component={TrailerCover} defaultProps={{variant: 'A' as const}} width={1080} height={1920} fps={30} durationInFrames={1} />
+    <Composition id="TrailerCoverB" component={TrailerCover} defaultProps={{variant: 'B' as const}} width={1080} height={1920} fps={30} durationInFrames={1} />
+    <Composition id="TrailerStoryboard" component={DyTrailerStoryboard} width={1080} height={1920} fps={30} durationInFrames={TR_SCENES} />
   </>
 );

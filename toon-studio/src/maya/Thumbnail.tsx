@@ -5,14 +5,18 @@ import {ensureFont, FONT} from '../horror/fonts';
 
 const STROKE = (px: number): React.CSSProperties => ({WebkitTextStroke: `${px}px #05070c`, paintOrder: 'stroke fill', textShadow: '0 6px 0 #05070c, 0 0 30px rgba(0,0,0,0.8)'});
 type Line = {t: string; c: string; size: number};
-const V: Record<'A' | 'B', {img: string; left: number; lines: Line[]; top: string; bottom: string}> = {
+const V: Record<'A' | 'B' | 'C' | 'D', {img: string; left: number; lines: Line[]; top: string; bottom: string}> = {
   A: {img: 'm0-03-empty-city', left: -260, top: 'ЗАГАДКА МАЙЯ', lines: [{t: 'МИЛЛИОНЫ ЛЮДЕЙ', c: '#fff', size: 68}, {t: 'ИСЧЕЗЛИ', c: '#ff2e2e', size: 132}],
     bottom: 'ГОРОДА ПУСТЫ 1100 ЛЕТ'},
   B: {img: 'm3-04-tonina', left: -260, top: 'ЗАГАДКА МАЙЯ', lines: [{t: 'ПОСЛЕДНЯЯ ДАТА', c: '#fff', size: 76}, {t: '909 ГОД', c: '#ff2e2e', size: 140}],
     bottom: 'ДАЛЬШЕ — ТИШИНА'},
+  C: {img: 'm4-03-jade', left: -60, top: 'ЗАГАДКА МАЙЯ · КАНКУЭН', lines: [{t: '31 ТЕЛО В ВОДОЁМЕ', c: '#fff', size: 66}, {t: 'КТО ИХ', c: '#ff2e2e', size: 140}, {t: 'УБИЛ?', c: '#ff2e2e', size: 140}],
+    bottom: 'ГОРОД ОПУСТЕЛ НАВСЕГДА'},
+  D: {img: 'm4-04-night-attack', left: -60, top: 'ЗАГАДКА МАЙЯ · КАНКУЭН', lines: [{t: 'ЦАРЬ И ЕГО ЗНАТЬ', c: '#fff', size: 72}, {t: 'УБИТЫ', c: '#ff2e2e', size: 150}],
+    bottom: 'КТО НАПАЛ — НЕИЗВЕСТНО'},
 };
 
-export const MYThumb: React.FC<{variant: 'A' | 'B'}> = ({variant}) => {
+export const MYThumb: React.FC<{variant: 'A' | 'B' | 'C' | 'D'}> = ({variant}) => {
   ensureFont();
   const v = V[variant];
   return (

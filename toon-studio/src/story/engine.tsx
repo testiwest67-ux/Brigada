@@ -115,7 +115,7 @@ export const makeStory = (cfg: StoryCfg) => {
       <span style={{...TXT, fontSize: size, color: red ? '#ff3b3b' : '#fff', WebkitTextStroke: `${Math.round(size * 0.09)}px #05070c`}}>{a}</span>
     </div>
   );
-  const fmt = (v: number, dec = 0) => (v < 0 ? '−' : '') + Math.abs(v).toFixed(dec).replace('.', ',');
+  const fmt = (v: number, dec = 0) => { const [a, b] = Math.abs(v).toFixed(dec).split('.'); return (v < 0 ? '−' : '') + (a.length > 4 ? a.replace(/\B(?=(\d{3})+$)/g, ' ') : a) + (b ? ',' + b : ''); };
 
   // heads at x 0.25/0.42/0.59/0.76, y≈FACE_Y; front view at x≈0.33 (same layout as the approved sheets)
   const Crop: React.FC<{who: string; face?: number; body?: boolean; w: number; h: number}> = ({who, face = 0, body, w, h}) => {
@@ -286,5 +286,10 @@ export const makeStory = (cfg: StoryCfg) => {
       </AbsoluteFill>
     );
   };
-  return {ShotAt, Storyboard, Film, TOTAL, SCENE_COUNT: SC.length, SCENE_NAMES: SC.map((s, i) => `${i + 1}. ${s.name}`)};
+  // for editing in CapCut: the same picture without subtitles and without sound (subtitles go as .srt, sound as stems)
+  const Clean: React.FC = () => {
+    const f = useCurrentFrame();
+    return <ShotAt t={f / 30} f={f} caps={false} />;
+  };
+  return {ShotAt, Storyboard, Film, Clean, TOTAL, SCENE_COUNT: SC.length, SCENE_NAMES: SC.map((s, i) => `${i + 1}. ${s.name}`)};
 };

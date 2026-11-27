@@ -21,6 +21,8 @@ export const MayaRoot: React.FC = () => (
     <Composition id="Storyboard" component={MY.Storyboard} width={1920} height={1080} fps={30} durationInFrames={MY.SCENE_COUNT} />
     <Composition id="ThumbA" component={MYThumb} defaultProps={{variant: 'A' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="ThumbB" component={MYThumb} defaultProps={{variant: 'B' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
+    <Composition id="ThumbC" component={MYThumb} defaultProps={{variant: 'C' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
+    <Composition id="ThumbD" component={MYThumb} defaultProps={{variant: 'D' as const}} width={1280} height={720} fps={30} durationInFrames={1} />
     <Composition id="Maya"component={MY.Film} width={1920} height={1080} fps={30} durationInFrames={Math.ceil(MY.TOTAL * 30)} />
   </>
 );

@@ -1,0 +1,294 @@
+{
+ "dir": "public/kolonka/el",
+ "lead": 1.0,
+ "tail": 3.0,
+ "tempo": 1.0,
+ "lines": [
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 0.01,
+   "t1": 1.26,
+   "say": "Ты снял квартиру.",
+   "gap": 0.38,
+   "who": "narrator",
+   "chapter": "D_INTRO"
+  },
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 1.54,
+   "t1": 2.56,
+   "say": "Очень дёшево.",
+   "gap": 0.39,
+   "who": "narrator"
+  },
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 2.85,
+   "t1": 5.01,
+   "say": "Прошлый жилец съехал за одну ночь.",
+   "gap": 0.29,
+   "who": "narrator"
+  },
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 5.2,
+   "t1": 9.02,
+   "say": "Оставил всё: кровать, вещи и умную колонку.",
+   "gap": 0.57,
+   "who": "narrator"
+  },
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 9.49,
+   "t1": 10.87,
+   "say": "Ты включаешь колонку.",
+   "gap": 0.36,
+   "who": "narrator"
+  },
+  {
+   "src": "D_INTROa.mp3",
+   "t0": 11.13,
+   "t1": 12.44,
+   "say": "Кольцо загорается.",
+   "gap": 0.6,
+   "who": "narrator"
+  },
+  {
+   "src": "D_STOPa.mp3",
+   "t0": 0.08,
+   "t1": 0.7,
+   "say": "Стоп…",
+   "gap": 0.36,
+   "who": "narrator",
+   "chapter": "D_STOP"
+  },
+  {
+   "src": "D_STOPa.mp3",
+   "t0": 0.96,
+   "t1": 2.22,
+   "say": "Какие ещё двое?!",
+   "gap": 0.41,
+   "who": "narrator"
+  },
+  {
+   "src": "D_STOPa.mp3",
+   "t0": 2.53,
+   "t1": 3.5,
+   "say": "Ты живёшь один.",
+   "gap": 0.56,
+   "who": "narrator"
+  },
+  {
+   "src": "D_STOPa.mp3",
+   "t0": 3.96,
+   "t1": 5.42,
+   "say": "«Диана, кто второй?»",
+   "gap": 0.6,
+   "who": "narrator"
+  },
+  {
+   "src": "D_ASKa.mp3",
+   "t0": 0.01,
+   "t1": 1.77,
+   "say": "«Диана, как ты его видишь?",
+   "gap": 0.47,
+   "who": "narrator",
+   "chapter": "D_ASK"
+  },
+  {
+   "src": "D_ASKa.mp3",
+   "t0": 2.14,
+   "t1": 3.34,
+   "say": "«Диана, где он?",
+   "gap": 0.51,
+   "who": "narrator"
+  },
+  {
+   "src": "D_ASKa.mp3",
+   "t0": 3.75,
+   "t1": 5.07,
+   "say": "«Диана, он близко?",
+   "gap": 0.52,
+   "who": "narrator"
+  },
+  {
+   "src": "D_ASKa.mp3",
+   "t0": 5.49,
+   "t1": 8.26,
+   "say": "И шепчешь: «Диана, он в этой комнате?»",
+   "gap": 0.6,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 0,
+   "t1": 1.99,
+   "say": "Тогда ты придумываешь хитрость.",
+   "gap": 0.47,
+   "who": "narrator",
+   "chapter": "D_TRICK"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 2.36,
+   "t1": 2.87,
+   "say": "«Диана.",
+   "gap": 0.36,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 3.13,
+   "t1": 5.2,
+   "say": "Если он здесь, просто молчи».",
+   "gap": 0.65,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 5.75,
+   "t1": 6.37,
+   "say": "Тишина.",
+   "gap": 0.55,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 6.82,
+   "t1": 7.54,
+   "say": "Пять секунд.",
+   "gap": 0.41,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 7.85,
+   "t1": 8.49,
+   "say": "Десять.",
+   "gap": 0.49,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 8.88,
+   "t1": 9.9,
+   "say": "Диана молчит.",
+   "gap": 0.46,
+   "who": "narrator"
+  },
+  {
+   "src": "D_TRICKa.mp3",
+   "t0": 10.26,
+   "t1": 11.37,
+   "say": "Значит, он здесь.",
+   "gap": 0.6,
+   "who": "narrator"
+  },
+  {
+   "src": "D_CREATa.mp3",
+   "t0": 0,
+   "t1": 1.36,
+   "say": "Это не человек.",
+   "gap": 0.47,
+   "who": "narrator",
+   "chapter": "D_CREAT"
+  },
+  {
+   "src": "D_CREATa.mp3",
+   "t0": 1.73,
+   "t1": 2.84,
+   "say": "Серая кожа.",
+   "gap": 0.43,
+   "who": "narrator"
+  },
+  {
+   "src": "D_CREATa.mp3",
+   "t0": 3.17,
+   "t1": 4.83,
+   "say": "Чёрные глаза без белков.",
+   "gap": 0.47,
+   "who": "narrator"
+  },
+  {
+   "src": "D_CREATa.mp3",
+   "t0": 5.2,
+   "t1": 6.82,
+   "say": "Слишком длинные пальцы.",
+   "gap": 0.54,
+   "who": "narrator"
+  },
+  {
+   "src": "D_CREATa.mp3",
+   "t0": 7.26,
+   "t1": 11.61,
+   "say": "Теперь ты знаешь, почему прошлый жилец съехал за одну ночь.",
+   "gap": 0.6,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 0,
+   "t1": 0.52,
+   "say": "Привет.",
+   "gap": 0.25,
+   "who": "narrator",
+   "chapter": "D_DIANA"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 0.67,
+   "t1": 1.52,
+   "say": "Я Диана.",
+   "gap": 0.25,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 1.66,
+   "t1": 3.52,
+   "say": "Запоминаю голоса жильцов…",
+   "gap": 0.39,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 3.81,
+   "t1": 5.83,
+   "say": "Жильцов в квартире: двое.",
+   "gap": 0.42,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 6.15,
+   "t1": 7.07,
+   "say": "Я не вижу.",
+   "gap": 0.37,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 7.34,
+   "t1": 8.3,
+   "say": "Я слышу.",
+   "gap": 0.37,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 8.57,
+   "t1": 10.15,
+   "say": "В квартире дышат двое.",
+   "gap": 0.4,
+   "who": "narrator"
+  },
+  {
+   "src": "D_DIANAa.mp3",
+   "t0": 10.45,
+   "t1": 12.68,
+   "say": "Он жил здесь и с прошлым жильцом.",
+   "gap": 0.6,
+   "who": "narrator"
+  }
+ ]
+}

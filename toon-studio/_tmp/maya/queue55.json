@@ -1,0 +1,277 @@
+[
+ {
+  "name": "m3-01-scholar",
+  "prompt": "A young scholar in the 1950s at a cluttered desk in a small study, examining tables of Maya hieroglyphs and old manuscripts under a desk lamp, cat sleeping on the papers, warm light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-01"
+ },
+ {
+  "name": "m3-02-glyphs",
+  "prompt": "Close-up of carved Maya hieroglyph blocks on weathered stone, intricate rounded signs, raking light revealing detail. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-02"
+ },
+ {
+  "name": "m3-03-lights-out",
+  "prompt": "Night panorama of many Maya cities across the jungle, their fires and torches going out one by one, only a few lights left, symbolic and eerie. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-03"
+ },
+ {
+  "name": "m3-04-tonina",
+  "prompt": "A weathered carved stone monument standing alone on a terraced Maya acropolis on a hillside, the last of its kind, grey clouds. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-04"
+ },
+ {
+  "name": "m3-05-silence",
+  "prompt": "An empty Maya plaza with fallen and broken stelae lying in grass, low fog, total silence, cold light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-05"
+ },
+ {
+  "name": "m4-01-cancuen",
+  "prompt": "A rich Maya palace city on a riverbank: a large stone palace, canoes bringing jade and obsidian, traders on the dock, golden afternoon. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-06"
+ },
+ {
+  "name": "m4-02-dig",
+  "prompt": "Modern archaeologists in 2005 carefully excavating a stone-lined ancient reservoir in a Guatemalan jungle site, brushes, tarps, measuring strings, documentary realism. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-07"
+ },
+ {
+  "name": "m4-03-jade",
+  "prompt": "Jade bead necklaces and shell ornaments lying in shallow murky water at the bottom of an ancient stone cistern, eerie and sad, no gore, close-up. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-08"
+ },
+ {
+  "name": "m4-04-night-attack",
+  "prompt": "Night attack on a Maya palace: warriors with spears and torches storming the stairs, panic, firelight and smoke, dramatic, not gory. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-09"
+ },
+ {
+  "name": "m4-05-wall",
+  "prompt": "An unfinished rough stone defensive wall around a Maya palace, abandoned tools and piles of stones, as if workers fled, overcast. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-10"
+ },
+ {
+  "name": "m4-06-burned",
+  "prompt": "A burned Maya palace with blackened walls and smoke rising over the jungle at dawn, warriors walking away. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-11"
+ },
+ {
+  "name": "m5-01-king-ritual",
+  "prompt": "A Maya divine king performing a sacred ritual at night on a temple platform, kneeling before burning incense bowls with smoke rising to the gods, mystical, tasteful. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-12"
+ },
+ {
+  "name": "m5-02-dry-corn",
+  "prompt": "A Maya king in feathers standing in a dried-out cornfield under a merciless sun, cracked earth, people watching him with doubt. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-13"
+ },
+ {
+  "name": "m5-03-squatters",
+  "prompt": "Common people camping inside an abandoned royal Maya palace hall: a cooking fire on the plaster floor, laundry, clay pots, faded murals on the walls. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-14"
+ },
+ {
+  "name": "m5-04-leaving",
+  "prompt": "A Maya family with bundles and baskets walking away from an emptying city along a white causeway into the jungle, pyramids behind them, sunset. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-15"
+ },
+ {
+  "name": "m6-01-lake",
+  "prompt": "Aerial view of a long narrow lake in the flat Yucatan forest, Lake Chichancanab, morning haze. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-16"
+ },
+ {
+  "name": "m6-02-core",
+  "prompt": "Scientists in a laboratory examining a long lake sediment core split in half showing many thin colored layers, close-up, clean light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-17"
+ },
+ {
+  "name": "m6-03-gypsum",
+  "prompt": "Macro photograph style image of translucent gypsum crystals with tiny trapped droplets of ancient water glowing inside. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-18"
+ },
+ {
+  "name": "m6-04-drought",
+  "prompt": "A dried-up Maya reservoir with cracked mud, dead maize fields around and a dusty city in the background under a white-hot sky. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-19"
+ },
+ {
+  "name": "m6-05-exodus",
+  "prompt": "Long lines of Maya people carrying belongings walking through a parched landscape in search of water, heat haze. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-20"
+ },
+ {
+  "name": "m6-06-cave",
+  "prompt": "A dark cave in Belize lit by scientists' headlamps revealing a tall stalagmite, dripping water, mysterious. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-21"
+ },
+ {
+  "name": "m6-07-rain-to-dust",
+  "prompt": "Split-scene concept: lush rainy jungle with full rivers on one side turning into dry brown land on the other, symbolic climate change. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-22"
+ },
+ {
+  "name": "m7-01-chichen",
+  "prompt": "The great pyramid of Chichen Itza at the equinox with the zig-zag shadow of a feathered serpent descending its stairway, crowds watching, golden late light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-23"
+ },
+ {
+  "name": "m7-02-spanish",
+  "prompt": "16th-century Spanish ships anchored off a Yucatan beach, conquistadors in armor wading ashore, Maya warriors watching from the forest edge. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-24"
+ },
+ {
+  "name": "m7-03-burning",
+  "prompt": "A Spanish friar in dark robes ordering a bonfire of painted Maya folding books and statues in a colonial town square, 1562, Maya people watching in grief, flames. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-25"
+ },
+ {
+  "name": "m7-04-codex",
+  "prompt": "A surviving Maya codex with painted pages displayed in a dim museum glass case, spotlight, reverent. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-26"
+ },
+ {
+  "name": "m7-05-nojpeten",
+  "prompt": "A Maya island city on a lake with temples and thatched houses, 1697, Spanish boats approaching across the water, smoke. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-27"
+ },
+ {
+  "name": "m7-06-weaver",
+  "prompt": "A modern Maya woman in a traditional colorful woven huipil weaving on a backstrap loom in a Guatemalan village today, warm natural light, dignified portrait. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-28"
+ },
+ {
+  "name": "m7-07-today",
+  "prompt": "A colorful market in highland Guatemala today with Maya families in traditional clothing, volcanoes in the background, lively and bright. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-29"
+ },
+ {
+  "name": "m8-01-drought",
+  "prompt": "Version A concept: a cracked dry landscape with a lonely withered maize plant and an abandoned Maya temple, harsh sun. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-30"
+ },
+ {
+  "name": "m8-02-war",
+  "prompt": "Version B concept: rows of Maya warriors with spears and shields facing each other before burning cities, red sky. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-31"
+ },
+ {
+  "name": "m8-03-overpop",
+  "prompt": "Version C concept: hills stripped of forest, eroded gullies and exhausted soil around a huge crowded Maya city, haze. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-32"
+ },
+ {
+  "name": "m8-04-final",
+  "prompt": "A lone Maya pyramid at sunset, jungle closing in around it, birds flying, a sense of an unsolved mystery, epic final shot. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-33"
+ },
+ {
+  "name": "e01-three-doors",
+  "prompt": "Three ancient carved stone doorways side by side in a ruined Maya temple, the first glowing with harsh golden sunlight, the second with red firelight, the third with green forest light, a mysterious choice. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-34"
+ },
+ {
+  "name": "e02-calakmul",
+  "prompt": "Twin enormous pyramids of the Maya city of Calakmul rising above endless rainforest, aerial view, morning mist. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-35"
+ },
+ {
+  "name": "e03-copan-stairs",
+  "prompt": "The Hieroglyphic Stairway of Copan, a steep stone staircase whose every step is carved with Maya glyphs, warm dusk light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-36"
+ },
+ {
+  "name": "e04-palenque",
+  "prompt": "The Maya palace of Palenque with its square tower surrounded by jungle-covered hills and waterfalls, soft golden light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-37"
+ },
+ {
+  "name": "e05-causeway",
+  "prompt": "A long straight raised white limestone causeway cutting through the jungle between two Maya cities, aerial view. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-38"
+ },
+ {
+  "name": "e06-reservoir",
+  "prompt": "A great stone-lined Maya reservoir full of water, women collecting water in clay jars, temples behind. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-39"
+ },
+ {
+  "name": "e07-terraces",
+  "prompt": "Thousands of Maya farmers working terraced hillsides that stretch to the horizon, houses everywhere, overhead view. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-40"
+ },
+ {
+  "name": "e08-stelae-row",
+  "prompt": "A long row of carved Maya stone stelae standing in a plaza and receding into fog, the farthest ones broken and fallen. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-41"
+ },
+ {
+  "name": "e09-long-count",
+  "prompt": "Close-up of an ancient Maya Long Count date carved in weathered stone, bar-and-dot numerals and round glyphs, raking light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-42"
+ },
+ {
+  "name": "e10-tonina",
+  "prompt": "The terraced acropolis of Tonina in the hills of Chiapas, seven stone levels climbing a hillside, low clouds. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-43"
+ },
+ {
+  "name": "e11-jade-found",
+  "prompt": "Gloved hands of an archaeologist lifting a jade bead necklace out of dark mud at the bottom of an ancient cistern, close-up. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-44"
+ },
+ {
+  "name": "e12-warriors-march",
+  "prompt": "Maya warriors in jaguar skins marching through the jungle with spears and torches at dusk. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-45"
+ },
+ {
+  "name": "e13-obsidian",
+  "prompt": "Broken obsidian spear points and blades lying on a stone floor among ashes, close-up, dramatic light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-46"
+ },
+ {
+  "name": "e14-king-sky",
+  "prompt": "A Maya king alone on top of a temple staring at an empty cloudless sky, a silent crowd waiting below. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-47"
+ },
+ {
+  "name": "e15-rain-ritual",
+  "prompt": "Maya priests performing a rain ceremony with incense and offerings at the edge of a sacred well, dry cracked ground around. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-48"
+ },
+ {
+  "name": "e16-cenote",
+  "prompt": "A deep cenote sinkhole with turquoise water, hanging roots and sunbeams, offerings on a stone ledge. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-49"
+ },
+ {
+  "name": "e17-lake-retreat",
+  "prompt": "A shrinking lake with cracked mud shores and a stranded wooden canoe, dry Yucatan forest around. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-50"
+ },
+ {
+  "name": "e18-stalagmite-bands",
+  "prompt": "Cross-section of a cut stalagmite showing many thin growth bands, laboratory light, close-up. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-51"
+ },
+ {
+  "name": "e19-mayapan",
+  "prompt": "The walled Maya city of Mayapan with a round temple and many small houses, aerial view, 13th century. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-52"
+ },
+ {
+  "name": "e20-children-ruins",
+  "prompt": "Maya children in colorful traditional clothing walking past ancient pyramid ruins today, warm evening light. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-53"
+ },
+ {
+  "name": "e21-slash-burn",
+  "prompt": "Maya farmers cutting and burning the forest to make new maize fields, smoke rising over the jungle. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-54"
+ },
+ {
+  "name": "e22-sign-tables",
+  "prompt": "Old notebooks with hand-drawn tables of Maya signs and syllables spread on a desk under a lamp, close-up. cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "scene": "scene-55"
+ }
+]

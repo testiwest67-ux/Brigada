@@ -1,0 +1,28 @@
+{
+  "_": "Доп. картинки против повторов (просьба пользователя 11.11). line = строка голоса сцены, у которой заменить картинку. Генерировать в Flow (Nano Banana Pro, 16:9) после сброса лимита, суффикс стиля как в КАРТИНКИ.md.",
+  "style": "cinematic painted digital illustration, moody historical documentary look, rich detail, dramatic volumetric light, deep jungle greens, warm stone and gold, film grain, 16:9, no text, no letters, no watermark.",
+  "images": [
+    {"name": "e01-three-doors", "lines": [28, 256], "prompt": "Three ancient carved stone doorways side by side in a ruined Maya temple, the first glowing with harsh golden sunlight, the second with red firelight, the third with green forest light, a mysterious choice"},
+    {"name": "e02-calakmul", "lines": [39], "prompt": "Twin enormous pyramids of the Maya city of Calakmul rising above endless rainforest, aerial view, morning mist"},
+    {"name": "e03-copan-stairs", "lines": [88], "prompt": "The Hieroglyphic Stairway of Copan, a steep stone staircase whose every step is carved with Maya glyphs, warm dusk light"},
+    {"name": "e04-palenque", "lines": [32], "prompt": "The Maya palace of Palenque with its square tower surrounded by jungle-covered hills and waterfalls, soft golden light"},
+    {"name": "e05-causeway", "lines": [43], "prompt": "A long straight raised white limestone causeway cutting through the jungle between two Maya cities, aerial view"},
+    {"name": "e06-reservoir", "lines": [70], "prompt": "A great stone-lined Maya reservoir full of water, women collecting water in clay jars, temples behind"},
+    {"name": "e07-terraces", "lines": [68, 246], "prompt": "Thousands of Maya farmers working terraced hillsides that stretch to the horizon, houses everywhere, overhead view"},
+    {"name": "e08-stelae-row", "lines": [90], "prompt": "A long row of carved Maya stone stelae standing in a plaza and receding into fog, the farthest ones broken and fallen"},
+    {"name": "e09-long-count", "lines": [102], "prompt": "Close-up of an ancient Maya Long Count date carved in weathered stone, bar-and-dot numerals and round glyphs, raking light"},
+    {"name": "e10-tonina", "lines": [101], "prompt": "The terraced acropolis of Tonina in the hills of Chiapas, seven stone levels climbing a hillside, low clouds"},
+    {"name": "e11-jade-found", "lines": [118], "prompt": "Gloved hands of an archaeologist lifting a jade bead necklace out of dark mud at the bottom of an ancient cistern, close-up"},
+    {"name": "e12-warriors-march", "lines": [138], "prompt": "Maya warriors in jaguar skins marching through the jungle with spears and torches at dusk"},
+    {"name": "e13-obsidian", "lines": [136], "prompt": "Broken obsidian spear points and blades lying on a stone floor among ashes, close-up, dramatic light"},
+    {"name": "e14-king-sky", "lines": [149], "prompt": "A Maya king alone on top of a temple staring at an empty cloudless sky, a silent crowd waiting below"},
+    {"name": "e15-rain-ritual", "lines": [147], "prompt": "Maya priests performing a rain ceremony with incense and offerings at the edge of a sacred well, dry cracked ground around"},
+    {"name": "e16-cenote", "lines": [143], "prompt": "A deep cenote sinkhole with turquoise water, hanging roots and sunbeams, offerings on a stone ledge"},
+    {"name": "e17-lake-retreat", "lines": [185], "prompt": "A shrinking lake with cracked mud shores and a stranded wooden canoe, dry Yucatan forest around"},
+    {"name": "e18-stalagmite-bands", "lines": [192], "prompt": "Cross-section of a cut stalagmite showing many thin growth bands, laboratory light, close-up"},
+    {"name": "e19-mayapan", "lines": [210], "prompt": "The walled Maya city of Mayapan with a round temple and many small houses, aerial view, 13th century"},
+    {"name": "e20-children-ruins", "lines": [227], "prompt": "Maya children in colorful traditional clothing walking past ancient pyramid ruins today, warm evening light"},
+    {"name": "e21-slash-burn", "lines": [247], "prompt": "Maya farmers cutting and burning the forest to make new maize fields, smoke rising over the jungle"},
+    {"name": "e22-sign-tables", "lines": [84], "prompt": "Old notebooks with hand-drawn tables of Maya signs and syllables spread on a desk under a lamp, close-up"}
+  ]
+}

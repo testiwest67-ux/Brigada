@@ -1,0 +1,625 @@
+[
+ {
+  "batch": 1,
+  "scene": "scene-01",
+  "name": "k0-01-tundra",
+  "prompt": "Endless snowy tundra under a dark grey Arctic sky, wind blowing snow over low rocks, a cluster of abandoned industrial buildings far away. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-02",
+  "name": "k0-02-ruins",
+  "prompt": "Abandoned Soviet industrial building in the Arctic, broken windows, collapsed roof, rusted metal, snow drifting inside. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-03",
+  "name": "k0-03-cap",
+  "prompt": "Close-up of a small rusty round steel cap welded shut and bolted onto a concrete floor among debris and snow, the only object in the frame. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-04",
+  "name": "k0-04-cap-wide",
+  "prompt": "A small rusty welded steel cap in the middle of a cracked concrete floor of a ruined hall, cold light through holes in the roof. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-05",
+  "name": "k0-05-crosssection",
+  "prompt": "Cutaway illustration of the Earth's crust: a tiny thin vertical shaft going straight down 12 kilometres through layered rock, the drilling tower on the surface looks microscopic. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-06",
+  "name": "k0-06-everest",
+  "prompt": "Side by side comparison: Mount Everest standing above the ground and a thin borehole going even deeper below the ground, scale diagram painted. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-07",
+  "name": "k0-07-microphone",
+  "prompt": "An old reel-to-reel tape recorder and a microphone on a long cable lowered into a dark round hole in the ground, red glow below. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-08",
+  "name": "k0-08-screams",
+  "prompt": "Faint ghostly distorted faces screaming in red smoke rising from a deep dark shaft, horror atmosphere. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-09",
+  "name": "k0-09-workers",
+  "prompt": "Silhouettes of Soviet drillers in padded jackets and helmets standing on a drilling platform at night, steam, orange work lights. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-10",
+  "name": "k1-01-coldwar",
+  "prompt": "A Soviet rocket and an American rocket on opposite sides of a dark starry sky, cold war space race mood. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-11",
+  "name": "k1-02-sputnik",
+  "prompt": "The first artificial satellite, a shiny metal sphere with four long antennas, orbiting above the Earth. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-12",
+  "name": "k1-03-moon",
+  "prompt": "An astronaut boot print in grey lunar dust, the Earth rising above the Moon's horizon. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-13",
+  "name": "k1-04-underfoot",
+  "prompt": "A person standing on a meadow, the ground below cut away to show deep dark unknown layers of rock fading into blackness. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-14",
+  "name": "k1-05-stars",
+  "prompt": "A large old observatory telescope pointed at a sky full of stars and galaxies at night. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-15",
+  "name": "k1-06-seismic",
+  "prompt": "A seismograph drawing jagged lines on a paper roll in a laboratory, lamp light, papers with wave diagrams. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-16",
+  "name": "k1-07-layers",
+  "prompt": "Painted textbook-style cross-section of the Earth: crust of granite, then basalt, then the glowing mantle, clean and clear. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-17",
+  "name": "k1-08-mohole",
+  "prompt": "An ocean drilling barge in rough grey sea in the 1960s, a drilling derrick on the deck, storm clouds. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-18",
+  "name": "k1-09-kola-map",
+  "prompt": "Aerial view of the Kola Peninsula coast: rocky tundra, lakes and the Barents Sea, low winter sun. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-19",
+  "name": "k1-10-ancient-rock",
+  "prompt": "Ancient pink and grey granite rock outcrops in the tundra with lichen, very old weathered stone. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-20",
+  "name": "k1-11-first-drill",
+  "prompt": "A drill bit entering frozen rocky ground for the first time, workers in padded jackets watching, a Soviet red banner on the rig without writing. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-21",
+  "name": "k1-12-target",
+  "prompt": "A long thin borehole diagram drawn on blueprint paper on a desk, a ruler and pencil, a lamp. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-22",
+  "name": "k2-01-zapolyarny",
+  "prompt": "A small Soviet Arctic town of five-storey concrete apartment blocks in snow, factory chimneys, low polar light. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-23",
+  "name": "k2-02-polar-night",
+  "prompt": "Polar night over the tundra: dark blue sky with green northern lights, a lit drilling tower in the distance. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-24",
+  "name": "k2-03-midnight-sun",
+  "prompt": "Midnight sun hanging low over the summer tundra and lakes, a drilling tower on the horizon. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-25",
+  "name": "k2-04-shift",
+  "prompt": "Soviet drillers in padded jackets and fur hats changing shifts at the foot of a drilling tower in snowfall, steam from their breath. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-26",
+  "name": "k2-05-lab",
+  "prompt": "Soviet geologists in white coats in a lab examining rock samples under microscopes, 1980s equipment, notebooks. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-27",
+  "name": "k2-06-tower",
+  "prompt": "A tall enclosed Soviet drilling tower in the Arctic tundra, its lights glowing against the dark sky, snow. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-28",
+  "name": "k2-07-rig",
+  "prompt": "A huge Soviet drilling rig being assembled in the Arctic in 1974, cranes, trucks, workers, snow. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-29",
+  "name": "k2-08-pipes",
+  "prompt": "Long steel drill pipes being screwed together on a drilling floor by workers with huge wrenches, oil and steam. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-30",
+  "name": "k2-09-bit",
+  "prompt": "Close-up of a worn heavy rotary drill bit with steel teeth grinding through dark granite deep underground. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-31",
+  "name": "k2-10-narrow",
+  "prompt": "A narrow round dark borehole seen from directly above, a gloved hand spread wide next to it for scale. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-32",
+  "name": "k2-11-trip",
+  "prompt": "Workers pulling a long drill string up out of the borehole at night, stands of pipe racked in the tower, orange lamps. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-33",
+  "name": "k2-12-core",
+  "prompt": "Long cylindrical rock core samples laid out in wooden boxes in rows, labelled with tags without writing, a geologist leaning over them. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-34",
+  "name": "k3-01-record",
+  "prompt": "Soviet drilling crew celebrating at night on the drilling floor, raising fists, steam and lights. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-35",
+  "name": "k3-02-oklahoma",
+  "prompt": "A tall American drilling rig in flat Oklahoma plains at sunset in the 1970s. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-36",
+  "name": "k3-03-twelve",
+  "prompt": "Cutaway view of the borehole reaching twelve kilometres deep, deeper than an outline of the ocean trench beside it. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-37",
+  "name": "k3-04-trench",
+  "prompt": "The dark deep ocean trench seen in cross-section, faint light from above fading into blackness. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-38",
+  "name": "k3-05-congress",
+  "prompt": "A large conference hall in Moscow in 1984 filled with international scientists, a big screen with a drilling diagram, applause. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-39",
+  "name": "k3-06-visitors",
+  "prompt": "Foreign scientists in winter coats visiting the Arctic drilling site, Soviet geologists showing them rock cores. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-40",
+  "name": "k4-01-lifting",
+  "prompt": "Tense drillers watching the gauges as a drill string is lifted out of the hole, close-up of a needle dropping. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-41",
+  "name": "k4-02-broken",
+  "prompt": "The broken twisted end of a steel drill pipe coming up out of the borehole, workers staring in shock. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-42",
+  "name": "k4-03-lost-pipes",
+  "prompt": "Cutaway view: kilometres of broken steel pipes stuck deep in the narrow borehole far underground, darkness. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-43",
+  "name": "k4-04-sidetrack",
+  "prompt": "Cutaway diagram of a new borehole branching sideways around the old blocked one and continuing down. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-44",
+  "name": "k4-05-years",
+  "prompt": "A wall calendar with pages flying, a drilling tower outside the window through seasons of snow and summer. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-45",
+  "name": "k4-06-guinness",
+  "prompt": "An old thick record book open on a desk next to a rock core sample, warm lamp. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-46",
+  "name": "k5-01-textbook",
+  "prompt": "An old Soviet geology textbook open on a diagram of granite and basalt layers, a hand pointing. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-47",
+  "name": "k5-02-granite-deep",
+  "prompt": "A rock core of pink-grey granite under a bright lamp, a geologist's gloved hand turning it. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-48",
+  "name": "k5-03-no-basalt",
+  "prompt": "Geologists arguing over seismic charts and rock cores on a table, surprised faces, cigarette smoke, 1980s. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-49",
+  "name": "k5-04-water",
+  "prompt": "Deep underground cracks in granite filled with seeping water glistening in darkness. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-50",
+  "name": "k5-05-mud",
+  "prompt": "Grey drilling mud bubbling and foaming as it flows out into a steel trough at the drilling site, steam. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-51",
+  "name": "k5-06-cracks",
+  "prompt": "A crumbling fractured rock core breaking apart in a geologist's hands, dust and fragments. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-52",
+  "name": "k5-07-plankton",
+  "prompt": "Microscope view of tiny round fossil microorganisms preserved in dark rock, glowing outlines. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-53",
+  "name": "k5-08-microscope",
+  "prompt": "A Soviet scientist looking into a microscope in a dim lab, rock thin sections on the table. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-54",
+  "name": "k5-09-ancient-earth",
+  "prompt": "The young Earth 2.7 billion years ago: a dark ocean, bare volcanic rock, no plants, a hazy orange sky. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-55",
+  "name": "k6-01-thermometer",
+  "prompt": "A gauge with a needle rising into the red zone, sweating engineers watching, steam. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-56",
+  "name": "k6-02-hot-rock",
+  "prompt": "Deep underground: glowing hot rock squeezing around a narrow borehole, red heat, the rock looks soft. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-57",
+  "name": "k6-03-bent-pipe",
+  "prompt": "A twisted bent steel drill pipe and a destroyed drill bit lying on the snow, workers looking at it. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-58",
+  "name": "k6-04-aluminium",
+  "prompt": "Lightweight silver aluminium drill pipes stacked on the rig, workers handling them. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-59",
+  "name": "k6-05-accident",
+  "prompt": "A dark tense drilling floor after an accident, alarm red light, workers standing still. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-60",
+  "name": "k6-06-germany",
+  "prompt": "A tall modern drilling tower in the green Bavarian countryside in the 1990s. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-61",
+  "name": "k6-07-limit",
+  "prompt": "Cutaway of the Earth with a thin borehole stopped by a wall of red heat, the deep mantle glowing far below, unreachable. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-62",
+  "name": "k7-01-magazine",
+  "prompt": "A small 1980s religious magazine lying on a kitchen table in Finland, a cup of coffee, winter window. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-63",
+  "name": "k7-02-tv",
+  "prompt": "An old 1989 television set in a dark American living room showing a preacher on stage, blue glow. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-64",
+  "name": "k7-03-siberia",
+  "prompt": "A drilling tower in a dark Siberian forest at night, ominous red light from below, legend illustration. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-65",
+  "name": "k7-04-void",
+  "prompt": "A drill bit breaking through into a vast dark cavern underground, glowing red heat below. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-66",
+  "name": "k7-05-mic-lowered",
+  "prompt": "A microphone hanging on a long cable deep in a dark hellish shaft, red glow, smoke. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-67",
+  "name": "k7-06-melting",
+  "prompt": "A microphone melting and dripping in red-hot smoke. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-68",
+  "name": "k7-07-gas",
+  "prompt": "A cloud of glowing gas bursting out of a drilling tower at night, a dark winged shape in the smoke. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-69",
+  "name": "k7-08-flee",
+  "prompt": "Silhouettes of terrified workers running away from a drilling tower at night, red glow behind them. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-70",
+  "name": "k7-09-internet",
+  "prompt": "A computer screen in a dark room playing an audio waveform, a person in headphones listening, red light. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-71",
+  "name": "k7-10-compare",
+  "prompt": "A split image: left side a hellish fiery cavern, right side plain grey granite rock under work lights. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-72",
+  "name": "k8-01-chain",
+  "prompt": "A newspaper clipping passed from hand to hand across a table, then a fax machine and a TV studio in the background, 1989. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-73",
+  "name": "k8-02-letter",
+  "prompt": "A man writing a letter at a desk by a window in Norway, seen from behind, a newspaper clipping and scissors on the desk. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-74",
+  "name": "k8-03-clipping",
+  "prompt": "A Norwegian newspaper article clipping with an English typed translation beside it, a pen, 1989 desk. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-75",
+  "name": "k8-04-bat",
+  "prompt": "A black bat flying out of a dark shaft in red smoke, legend illustration. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-76",
+  "name": "k8-05-studio",
+  "prompt": "A 1990 TV studio with bright lights and a camera pointed at an empty stage. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-77",
+  "name": "k8-06-truth",
+  "prompt": "A man laughing while reading a newspaper in a 1990 cafe, seen from the side, face in shadow. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-78",
+  "name": "k8-07-tape-loop",
+  "prompt": "Old audio tape loops and a mixing console with layered sound waves, dim studio light. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-79",
+  "name": "k8-08-alaska",
+  "prompt": "An oil rig in the frozen Alaskan sea at night, ominous red glow, legend illustration. cinematic painted digital illustration, dark horror documentary look, deep red and black, volumetric smoke, film grain, 16:9, no text, no letters, no writing, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-80",
+  "name": "k8-09-movie",
+  "prompt": "A dark cinema hall with an audience watching a horror film on the screen, red light on faces. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-81",
+  "name": "k9-01-ussr-end",
+  "prompt": "A red flag being lowered at dusk over a snowy Soviet town in 1991, quiet and sad. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-82",
+  "name": "k9-02-empty-lab",
+  "prompt": "An abandoned Soviet geology lab with dust, broken microscopes and scattered rock cores, light through dirty windows. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-83",
+  "name": "k9-03-dismantle",
+  "prompt": "Workers dismantling a drilling tower and loading metal onto trucks in grey Arctic weather. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-84",
+  "name": "k9-04-abandoned",
+  "prompt": "The abandoned Kola drilling complex in the tundra today, rusting buildings under snow, a raven on a wall. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-85",
+  "name": "k9-05-weld",
+  "prompt": "A welder in a mask welding a steel cap shut over a borehole, bright sparks in a dark hall. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-86",
+  "name": "k9-06-sakhalin",
+  "prompt": "An offshore oil platform in the cold sea, a long well drawn going almost horizontally under the seabed, cutaway. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-87",
+  "name": "k9-07-earth-scale",
+  "prompt": "The whole Earth cut in half with its glowing core, a tiny scratch on the surface marking how deep humans have drilled. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-88",
+  "name": "k9-08-voyager",
+  "prompt": "A space probe drifting far away from the Sun into dark interstellar space. cinematic painted digital illustration, moody documentary look, rich detail, dramatic light, muted tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ },
+ {
+  "batch": 1,
+  "scene": "scene-89",
+  "name": "k9-09-cap-snow",
+  "prompt": "The rusty welded cap at the borehole slowly being covered with snow, silence, last light. cinematic painted digital illustration, moody documentary look, Soviet Arctic 1970s-1980s, Kola Peninsula tundra, rich detail, dramatic volumetric light, cold blue-grey polar light with warm sodium-orange work lamps, deep shadows, muted desaturated tones with rust-red accents, film grain, 16:9, no text, no letters, no writing, no logos, no watermark.",
+  "refs": []
+ }
+]

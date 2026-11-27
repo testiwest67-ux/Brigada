@@ -8,7 +8,8 @@
 #   "events": [{"type": "tick"|"thump"|"notes"|"glide", "t", "gain", ...}],
 #   "music":  {"file": "public/music/track.mp3", "gain": 0.2, "t0": 0, "t1": "end", "from": 0, "loop": true, "fade": 2}
 #             (or a list of such pieces, e.g. to stop the track before the big hit and start it again after),
-#   "duck":   {"db": 7, "music_db": 9, "smooth": 0.12} | false}
+#   "duck":   {"db": 7, "music_db": 9, "smooth": 0.12} | false,
+#   "end_fade": 0.8 (fade of the whole bed at the end; tiny for looping shorts)}  music also takes "fade_in" (default 0.5)
 #   tick: short click (f1, f2, decay) | thump: low hit (f0, f1, decay) | notes: soft bell notes (notes, step, decay) | glide: tonal swell (f0, f1, dur)
 # Times: seconds, or relative to the voice so nothing drifts after re-voicing:
 #   "@word+0.2" (first word starting like that), "line:4-0.15" (start of line 4), "end" (end of the episode).
@@ -137,11 +138,11 @@ for M in (MUS if isinstance(MUS, list) else [MUS]):  # one track, or a list of p
         if M.get('loop', True) and len(trk) < n: trk = np.tile(trk, (n // len(trk) + 1, 1))
         seg = fit(trk, n)
         k = np.arange(n) / SR
-        seg = seg * (np.clip(k / 0.5, 0, 1) * np.clip((n / SR - k) / max(M.get('fade', 2.0), 0.01), 0, 1))[:, None]
+        seg = seg * (np.clip(k / max(M.get('fade_in', 0.5), 0.01), 0, 1) * np.clip((n / SR - k) / max(M.get('fade', 2.0), 0.01), 0, 1))[:, None]
         bed[i0:i1] += seg * M.get('gain', 0.2) * duck_music[i0:i1, None]
         print('music', os.path.basename(mp), f'{t0:.1f}-{t1:.1f} s, gain', M.get('gain', 0.2))
 
-bed *= np.clip((C['total'] - t) / 0.8, 0, 1)[:, None]
+bed *= np.clip((C['total'] - t) / max(C.get('end_fade', 0.8), 0.01), 0, 1)[:, None]
 
 
 def write_wav(path, x):

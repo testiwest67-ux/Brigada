@@ -1,0 +1,550 @@
+🧹 Webpack config change detected. Clearing cache... 
+Bundling 6%
+Bundling 21%
+Bundling 32%
+Bundling 43%
+Bundling 54%
+Bundling 65%
+Bundling 71%
+Bundling 76%
+Bundling 81%
+Bundling 87%
+Bundling 92%
+Bundling 98%
+Bundling 100%
+Copying public dir 13.8 MB
+Copying public dir 27 MB
+Copying public dir 40.1 MB
+Copying public dir 50.9 MB
+Copying public dir 63.6 MB
+Copying public dir 76.2 MB
+Copying public dir 89.4 MB
+Copying public dir 103.1 MB
+Copying public dir 116.6 MB
+Copying public dir 129.8 MB
+Copying public dir 142.9 MB
+Copying public dir 156.2 MB
+Copying public dir 169.4 MB
+Copying public dir 181.7 MB
+Copying public dir 194.4 MB
+Copying public dir 207.5 MB
+Copying public dir 220.6 MB
+Copying public dir 233.5 MB
+Copying public dir 246.5 MB
+Copying public dir 260 MB
+Copying public dir 273.6 MB
+Copying public dir 286.1 MB
+Copying public dir 299.4 MB
+Copying public dir 312.7 MB
+Copying public dir 326 MB
+Copying public dir 339.1 MB
+Copying public dir 351.9 MB
+Copying public dir 365.3 MB
+Copying public dir 377.9 MB
+Copying public dir 382.5 MB
+Copying public dir 394.3 MB
+Copying public dir 567.9 MB
+Copying public dir 740.7 MB
+Copying public dir 913.4 MB
+Copying public dir 923.9 MB
+Copying public dir 934.7 MB
+Copying public dir 945.4 MB
+Copying public dir 956.2 MB
+Copying public dir 966.8 MB
+Copying public dir 977.4 MB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.1 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.2 GB
+Copying public dir 1.3 GB
+Copying public dir 1.3 GB
+Copying public dir 1.3 GB
+Copying public dir 1.3 GB
+Copying public dir 1.3 GB
+Copying public dir 1.3 GB
+Copying public dir 1.5 GB
+Copying public dir 1.5 GB
+Copying public dir 1.5 GB
+Copying public dir 1.5 GB
+Copying public dir 1.5 GB
+Copying public dir 1.5 GB
+Copying public dir 1.6 GB
+Copying public dir 1.6 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.7 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.8 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 1.9 GB
+Copying public dir 2 GB
+Copying public dir 2 GB
+Copying public dir 2 GB
+Copying public dir 2 GB
+Copying public dir 2 GB
+Copying public dir 2 GB
+Copying public dir 2.2 GB
+Copying public dir 2.3 GB
+Copying public dir 2.5 GB
+Copying public dir 2.5 GB
+Copying public dir 2.5 GB
+Copying public dir 2.5 GB
+Copying public dir 2.5 GB
+Copying public dir 2.5 GB
+Copying public dir 2.6 GB
+Copying public dir 2.6 GB
+Copying public dir 2.6 GB
+Copying public dir 2.6 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.7 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.8 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 2.9 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.1 GB
+Copying public dir 3.2 GB
+Copying public dir 3.2 GB
+Copying public dir 3.2 GB
+Copying public dir 3.2 GB
+Copying public dir 3.3 GB
+Copying public dir 3.5 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.7 GB
+Copying public dir 3.8 GB
+Copying public dir 3.8 GB
+Copying public dir 3.8 GB
+Copying public dir 3.8 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 3.9 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.1 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.2 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.3 GB
+Copying public dir 4.5 GB
+Copying public dir 4.5 GB
+Copying public dir 4.5 GB
+Copying public dir 4.5 GB
+Copying public dir 4.5 GB
+Copying public dir 4.6 GB
+Copying public dir 4.6 GB
+Copying public dir 4.6 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.7 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.8 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 4.9 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5 GB
+Copying public dir 5.1 GB
+Copying public dir 5.1 GB
+Copying public dir 5.1 GB
+Copying public dir 5.1 GB
+Copying public dir 5.3 GB
+Copying public dir 5.3 GB
+Copying public dir 5.3 GB
+Copying public dir 5.3 GB
+Copying public dir 5.3 GB
+Copying public dir 5.3 GB
+Copying public dir 5.4 GB
+Copying public dir 5.4 GB
+Copying public dir 5.5 GB
+Getting composition
+⚡️ Cached bundle. Subsequent renders will be faster.
+[90mComposition          Storyboard[39m
+[90mCodec                h264[39m
+[90mOutput               _tmp/tanceval-chuma/кадры-сцен[39m
+[90mConcurrency          4x[39m
+Rendered 1/244
+Rendered 2/244
+Rendered 3/244
+Rendered 4/244
+Rendered 5/244
+Rendered 6/244
+Rendered 7/244
+Rendered 8/244
+Rendered 9/244
+Rendered 10/244
+Rendered 11/244
+Rendered 12/244
+Rendered 13/244
+Rendered 14/244
+Rendered 15/244
+Rendered 16/244
+Rendered 17/244
+Rendered 18/244
+Rendered 19/244
+Rendered 20/244
+Rendered 21/244
+Rendered 22/244
+Rendered 23/244
+Rendered 24/244
+Rendered 25/244
+Rendered 26/244
+Rendered 27/244
+Rendered 28/244
+Rendered 29/244
+Rendered 30/244
+Rendered 31/244
+Rendered 32/244
+Rendered 33/244
+Rendered 34/244
+Rendered 35/244
+Rendered 36/244
+Rendered 37/244
+Rendered 38/244
+Rendered 39/244
+Rendered 40/244
+Rendered 41/244
+Rendered 42/244
+Rendered 43/244
+Rendered 44/244
+Rendered 45/244
+Rendered 46/244
+Rendered 47/244
+Rendered 48/244
+Rendered 49/244
+Rendered 50/244
+Rendered 51/244
+Rendered 52/244
+Rendered 53/244
+Rendered 54/244
+Rendered 55/244
+Rendered 56/244
+Rendered 57/244
+Rendered 58/244
+Rendered 59/244
+Rendered 60/244
+Rendered 61/244
+Rendered 62/244
+Rendered 63/244
+Rendered 64/244
+Rendered 65/244
+Rendered 66/244
+Rendered 67/244
+Rendered 68/244
+Rendered 69/244
+Rendered 70/244
+Rendered 71/244
+Rendered 72/244
+Rendered 73/244
+Rendered 74/244
+Rendered 75/244
+Rendered 76/244
+Rendered 77/244
+Rendered 78/244
+Rendered 79/244
+Rendered 80/244
+Rendered 81/244
+Rendered 82/244
+Rendered 83/244
+Rendered 84/244
+Rendered 85/244
+Rendered 86/244
+Rendered 87/244
+Rendered 88/244
+Rendered 89/244
+Rendered 90/244
+Rendered 91/244
+Rendered 92/244
+Rendered 93/244
+Rendered 94/244
+Rendered 95/244
+Rendered 96/244
+Rendered 97/244
+Rendered 98/244
+Rendered 99/244
+Rendered 100/244
+Rendered 101/244
+Rendered 102/244
+Rendered 103/244
+Rendered 104/244
+Rendered 105/244
+Rendered 106/244
+Rendered 107/244
+Rendered 108/244
+Rendered 109/244
+Rendered 110/244
+Rendered 111/244
+Rendered 112/244
+Rendered 113/244
+Rendered 114/244
+Rendered 115/244
+Rendered 116/244
+Rendered 117/244
+Rendered 118/244
+Rendered 119/244
+Rendered 120/244
+Rendered 121/244
+Rendered 122/244
+Rendered 123/244
+Rendered 124/244
+Rendered 125/244
+Rendered 126/244
+Rendered 127/244
+Rendered 128/244
+Rendered 129/244
+Rendered 130/244
+Rendered 131/244
+Rendered 132/244
+Rendered 133/244
+Rendered 134/244
+Rendered 135/244
+Rendered 136/244
+Rendered 137/244
+Rendered 138/244
+Rendered 139/244
+Rendered 140/244
+Rendered 141/244
+Rendered 142/244
+Rendered 143/244
+Rendered 144/244
+Rendered 145/244
+Rendered 146/244
+Rendered 147/244
+Rendered 148/244
+Rendered 149/244
+Rendered 150/244
+Rendered 151/244
+Rendered 152/244
+Rendered 153/244
+Rendered 154/244
+Rendered 155/244
+Rendered 156/244
+Rendered 157/244
+Rendered 158/244
+Rendered 159/244
+Rendered 160/244
+Rendered 161/244
+Rendered 162/244
+Rendered 163/244
+Rendered 164/244
+Rendered 165/244
+Rendered 166/244
+Rendered 167/244
+Rendered 168/244
+Rendered 169/244
+Rendered 170/244
+Rendered 171/244
+Rendered 172/244
+Rendered 173/244
+Rendered 174/244
+Rendered 175/244
+Rendered 176/244
+Rendered 177/244
+Rendered 178/244
+Rendered 179/244
+Rendered 180/244
+Rendered 181/244
+Rendered 182/244
+Rendered 183/244
+Rendered 184/244
+Rendered 185/244
+Rendered 186/244
+Rendered 187/244
+Rendered 188/244
+Rendered 189/244
+Rendered 190/244
+Rendered 191/244
+Rendered 192/244
+Rendered 193/244
+Rendered 194/244
+Rendered 195/244
+Rendered 196/244
+Rendered 197/244
+Rendered 198/244
+Rendered 199/244
+Rendered 200/244
+Rendered 201/244
+Rendered 202/244
+Rendered 203/244
+Rendered 204/244
+Rendered 205/244
+Rendered 206/244
+Rendered 207/244
+Rendered 208/244
+Rendered 209/244
+Rendered 210/244
+Rendered 211/244
+Rendered 212/244
+Rendered 213/244
+Rendered 214/244
+Rendered 215/244
+Rendered 216/244
+Rendered 217/244
+Rendered 218/244
+Rendered 219/244
+Rendered 220/244
+Rendered 221/244
+Rendered 222/244
+Rendered 223/244
+Rendered 224/244
+Rendered 225/244
+Rendered 226/244
+Rendered 227/244
+Rendered 228/244
+Rendered 229/244
+Rendered 230/244
+Rendered 231/244
+Rendered 232/244
+Rendered 233/244
+Rendered 234/244
+Rendered 235/244
+Rendered 236/244
+Rendered 237/244
+Rendered 238/244
+Rendered 239/244
+Rendered 240/244
+Rendered 241/244
+Rendered 242/244
+Rendered 243/244
+Rendered 244/244
+[34m○                    _tmp/tanceval-chuma/кадры-сцен[39m
+Листы для проверки:
+  _tmp/tanceval-chuma/кадры-сцен\лист-1.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-2.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-3.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-4.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-5.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-6.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-7.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-8.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-9.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-10.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-11.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-12.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-13.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-14.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-15.png
+  _tmp/tanceval-chuma/кадры-сцен\лист-16.png
+Пришли листы в чат и жди «ок» или номера кадров с правками (правило 10).
